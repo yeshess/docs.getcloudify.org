@@ -68,6 +68,7 @@ However, you should be aware of certain implications:
 
 * SSH port (22 by default) should be open for incoming connections.
 * An SSH server should be running on the host.
+* The agent user must have sudo privileges.
 
 ## Pre-requisites for Windows Remote Agent Installation
 
@@ -96,7 +97,7 @@ However, you should be aware of certain implications:
 ## Pre-requisites for Init Script and Provided Agent Installations
 
 To use the `init_script` and `provided` installation methods, an IaaS plugin that supports it should be used. At the moment, only the Openstack and AWS plugins support these installation methods.
-
+The agent user must have sudo privileges.
 
 # Configuration Locations
 
