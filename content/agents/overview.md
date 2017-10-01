@@ -10,7 +10,7 @@ sc_link: https://technet.microsoft.com/en-us/library/bb490995.aspx
 current_link: http://docs.getcloudify.org
 
 ---
-{{% gsNote title="Installation Environment" %}}You are looking at documentation for an older release. Not what you’re looking for? See the [current release documentation]{{< field "current_link" >}}.{{% /gsNote %}}
+{{% gsNote title="Installation Environment" %}}You are looking at documentation for an older release. Not what you’re looking for? See the [current release documentation]({{< field "current_link" >}}).{{% /gsNote %}}
 
 Cloudify Agents are entities installed on hosts that are part of your blueprint and are used to communicate with the Manager.
 
