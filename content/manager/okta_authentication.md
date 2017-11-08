@@ -21,12 +21,21 @@ To configure Okta authentication in Cloudify, first add Cloudify as an applicati
 3. Choose “Add Application”
 4. Select “Create New App”
 5. In the “Create a New Application” form, choose as sign on method “SAML 2.0”
+
+![Create App]({{< img "okta/okta1.png" >}})
+
+
+
 6. Under General Settings configure the application name (Cloudify) and logo
 7. Under SAML Settings, configure the following:
     General:
     a. As Single sign on URL: https://cloudify-manager-ip/stage/auth/saml/callback (or http if client side SSL is not used)
     b. Make sure the box for “Use this for Recipient URL and Destination URL” is marked
     c. As Audience URI: https://cloudify-manager-ip/stage/auth/saml/callback (or http if client side SSL is not used)
+
+![Create App]({{< img "okta/okta2.png" >}})
+
+
     d. Attribute statements - add the following:
     Name - firstname , Value - user.firstName
     Name - lastname , Value - user.lastName
