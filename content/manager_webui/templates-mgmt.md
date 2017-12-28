@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Templates Management
+
+
+
+##  Templates Management
+
+
 category: Web Interface
 draft: false
 abstract: Templates Management
@@ -12,7 +17,7 @@ In Cloudify’s premium edition, the UI framework allows sys-admins to define wh
 * A UI template applies for specific user-roles, in specific tenants.
 
 
-## Default Templates
+### Default Templates
 Cloudify provides by default the following templates: 
 
 ***Initial-template-admin*** - Applies to sys-admin users in all the tenants, and includes the following pages: 
@@ -47,7 +52,7 @@ Cloudify provides by default the following templates:
 
 The users permissions to perform actions in these pages depend on the roles they have on the tenant.
 
-## Custom Templates
+### Custom Templates
 In order to create new templates, sys-admins can choose the “Template Management’ option in the user menu: 
 
 ![Template Management]({{<img "ui/ui_templates_menu.png">}})
@@ -58,7 +63,7 @@ Choosing this option will present all the existing templates and pages on the cu
 ![Template Creation]({{<img "ui/ui_templates_create.png">}})
 
 
-### Creating new templates
+#### Creating new templates
 
 After clicking the “Create template” button, specify the template’s name and choose to which user roles and in which tenants it should apply. 
 Next, choose the pages you would like to include in the template from the pages’ list on the left, and choose “Create”. 
@@ -69,7 +74,7 @@ In order for the template to apply to users who already logged in the system onc
 
 In case a user fits more than one template in a specific tenant (if the user has more than one role in this tenant), the template which will apply to it will be the first template on the list, from all those it fits.
 
-### Creating a new page
+#### Creating a new page
 
 After clicking the “Create page”  button and specifying the name of the new page, you will see the new page appear in the page’s list, and a Page Id will be automatically created for it. You will then be able to choose or edit it from the actions menu to its right. 
 Upon choosing the edit option, the page will be open in “edit mode”, in which you can add widgets and edit their properties, order and appearance.

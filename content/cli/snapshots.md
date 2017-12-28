@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: snapshots
+
+
+
+##  snapshots
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -13,7 +18,7 @@ You can use the command to create, upload, download, delete and list snapshots a
 
 See [snapshots]({{< relref "manager/snapshots.md" >}}) for more information.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
@@ -21,11 +26,11 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
-### create
+#### create
 
-#### Usage 
+##### Usage 
 `cfy snapshots create [OPTIONS] [SNAPSHOT_ID]`
 
 Create a snapshot on Cloudify Manager.
@@ -35,7 +40,7 @@ previous state.
 
 `SNAPSHOT_ID` is the ID to attach to the snapshot.
 
-#### Optional flags
+##### Optional flags
 
 * `--include-metrics` - Include metrics data in the snapshot
 * `--exclude-credentials` - 
@@ -48,7 +53,7 @@ previous state.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots create
@@ -60,22 +65,22 @@ Started workflow execution. The execution's id is 2219928b-69fd-49f1-8982-c42da5
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy snapshots delete [OPTIONS] SNAPSHOT_ID`
 
 Delete a snapshot from Cloudify Manager.
 
 `SNAPSHOT_ID` is the ID of the snapshot to delete.
 
-#### Optional flags
+##### Optional flags
 
 * ` -t, --tenant-name TEXT` -  The name of the tenant of the snapshot. If unspecified, the current tenant is used.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots delete snapshot_XLHCNV
@@ -87,22 +92,22 @@ Snapshot deleted successfully
 ...
 {{< /gsHighlight >}}
 
-### download
+#### download
 
-#### Usage 
+##### Usage 
 `cfy snapshots download [OPTIONS] SNAPSHOT_ID`
 
 Download a snapshot from Cloudify Manager.
 
 `SNAPSHOT_ID` is the ID of the snapshot to download.
 
-#### Optional flags
+##### Optional flags
 
 * `-o, --output-path TEXT` - The local path to download to
 * `-t, --tenant-name TEXT` -  The name of the tenant of the snapshot. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots download snapshot_XLHCNV
@@ -116,14 +121,14 @@ Snapshot downloaded as snapshot_XLHCNV.zip
 {{< /gsHighlight >}}
 
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy snapshots list [OPTIONS]`
 
 List all snapshots on Cloudify Manager.
 
-#### Optional flags
+##### Optional flags
 
 * `--sort-by TEXT` - Key for sorting the list.
 * `--descending` - Sort list in descending order. [default: False]
@@ -134,7 +139,7 @@ List all snapshots on Cloudify Manager.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots list
@@ -151,22 +156,22 @@ Snapshots:
 {{< /gsHighlight >}}
 
 
-### remove-permission
+#### remove-permission
 
-#### Usage 
+##### Usage 
 ` cfy snapshots remove-permission [OPTIONS] SNAPSHOT_ID`
 
 Remove `viewer`/`owner` permissions from users on a certain snapshot.
 
 `SNAPSHOT_ID` is the ID of the snapshot from which to remove permissions.
 
-#### Required flags
+##### Required flags
 
 *  `-u, --users TEXT` - Username of user to whom the permissions
                                   apply. This argument can be used multiple
                                   times.  [required]
 
-#### Optional flags
+##### Optional flags
 
 *  `-p, --permission [viewer|owner]`
                                   The permission applicable to a resource
@@ -174,9 +179,9 @@ Remove `viewer`/`owner` permissions from users on a certain snapshot.
 * ` -t, --tenant-name TEXT` -  The name of the tenant of the snapshot. If unspecified, the current tenant is used.
 
 
-### restore
+#### restore
 
-#### Usage 
+##### Usage 
 `cfy snapshots restore [OPTIONS] SNAPSHOT_ID`
 
 Restore Cloudify Manager to its previous state, or migrate a version 3.x snapshot to a tenant on Cloudify Manager 4.x (i.e migration).
@@ -184,7 +189,7 @@ Restore Cloudify Manager to its previous state, or migrate a version 3.x snapsho
 `SNAPSHOT_ID` is the ID of the snapshot to use for restoration.archive<br>
 
 
-#### Optional flags
+##### Optional flags
 
 * `--without-deployments-envs` - 
 						Restore without recreating the currently existing
@@ -215,7 +220,7 @@ Restore Cloudify Manager to its previous state, or migrate a version 3.x snapsho
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots restore snapshot_CAMWZ5
@@ -228,16 +233,16 @@ Started workflow execution. The execution's id is 53921762-2b72-430b-b6fe-d6f1fa
 {{< /gsHighlight >}}
 
 
-### upload
+#### upload
 
-#### Usage 
+##### Usage 
 `cfy snapshots upload [OPTIONS] SNAPSHOT_PATH`
 
 Upload a snapshot to Cloudify Manager.
 
 `SNAPSHOT_PATH` is the path of the snapshot to upload.
 
-#### Optional flags
+##### Optional flags
 
 * `-s, --snapshot-id TEXT` - 
 						The unique identifier for the snapshot
@@ -249,7 +254,7 @@ Upload a snapshot to Cloudify Manager.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy snapshots upload snapshot_XLHCNV.zip

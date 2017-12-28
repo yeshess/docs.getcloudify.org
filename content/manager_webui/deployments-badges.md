@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Workflow Execution in the UI
+
+
+
+##  Workflow Execution in the UI
+
+
 category: Web Interface
 draft: true
 abstract: Workflow badges Reference
@@ -14,7 +19,7 @@ execute_workflow_link: getting-started-execute-workflow.html
 When executing a `Workflow` for a `Deployment` (e.g. the `install` workflow), the topology nodes show badges that reflect the workflow execution state.<br/>
 See more details on executing workflows [here]({{< relref "manager/execute-workflow.md" >}}).<br/>
 
-## Badges
+### Badges
 
 * Install state - The workflow execution is in progress for this node
 * Done state - The workflow execution was completed successfully for this node
@@ -23,7 +28,7 @@ See more details on executing workflows [here]({{< relref "manager/execute-workf
 
 ![Deployment Topology Node Badges]({{< img "ui/ui-deployment-topology-badges.png" >}})
 
-## Workflow states represented by badges
+### Workflow states represented by badges
 A deployment before any workflow was executed
 
 ![Deployment Topology]({{< img "ui/ui-deployment-topology-1.png" >}})

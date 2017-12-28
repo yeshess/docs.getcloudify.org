@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: nodes
+
+
+
+##  nodes
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,7 +16,7 @@ The `cfy nodes` command is used to view information on the different nodes of a 
 
 You can use the command to list all nodes and get information on a single node.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
@@ -19,12 +24,12 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy nodes list [OPTIONS] COMMAND [ARGS]`
 
 Lists all nodes for a deployment.
@@ -32,7 +37,7 @@ Lists all nodes for a deployment.
 If `DEPLOYMENT_ID` is provided, lists nodes for that deployment. Otherwise,
 list nodes for all deployments.
 
-#### Optional flags
+##### Optional flags
 
 * `-d, --deployment-id TEXT` - 
 						The unique identifier for the deployment.
@@ -44,7 +49,7 @@ list nodes for all deployments.
                             the user. This argument cannot be used simultaneously with the `tenant-name` argument.  
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy nodes list
@@ -84,25 +89,25 @@ Nodes:
 {{< /gsHighlight >}}
 
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 `cfy nodes get [OPTIONS] NODE_ID`
 
 Retrieve information for a specific node of a specific deployment.
 
 `NODE_ID` is the ID of the node for which to retrieve information.
 
-#### Required flags
+##### Required flags
 
 *  `-d, --deployment-id TEXT` - The unique identifier for the deployment. [required]
 
-#### Optional flags
+##### Optional flags
 *  `-t, --tenant-name TEXT` -  The name of the tenant of the node. If unspecified, the current tenant is used
 						
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy nodes get -d cloudify-nodecellar-example nodecellar

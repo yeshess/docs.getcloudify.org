@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Cancelling Workflow Executions
+
+
+
+##  Cancelling Workflow Executions
+
+
 category: Workflows
 draft: false
 abstract: How to cancel an Execution of a running Workflow

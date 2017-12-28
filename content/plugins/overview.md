@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview
+
+
+
+##  Overview
+
+
 category: Docs
 draft: false
 weight: 1
@@ -24,14 +29,14 @@ Many services can be supported with a generic existing plugin, such as Cloudify'
 - How to work with [Containers]({{< relref "plugins/container-support.md" >}})
 
 
-# Distribution
+## Distribution
 
 Cloudify distributes plugins in [Wagon](https://github.com/cloudify-cosmo/wagon/blob/master/README.md) format. Wagon packages sets of Python [Wheels](https://packaging.python.org/tutorials/distributing-packages/#wheels) for dependency management. Cloudify publishes official wagons, which are found on [plugins download page](http://cloudify.co/plugins).
 
 _Note: The [Script plugin]({{< relref "plugins/script.md" >}}) is distributed with Cloudify._
 
 
-# Plugin Installation
+## Plugin Installation
 
 The first step to using a plugin is to upload the plugin to your Cloudify Manager tenant.
 
@@ -52,7 +57,7 @@ $ wagon install -s [path-to-wagon-file]
 _Note: This method is available when working in a [Local CLI profile]({{< relref "cli/profiles.md ">}})._
 
 
-# Usage
+## Usage
 
 Plugin usage inside of blueprints varies. However, these two general rules apply:
 
@@ -62,7 +67,7 @@ Plugin usage inside of blueprints varies. However, these two general rules apply
 See specific plugin documentation for complete usage information. 
 
 
-# Plugin Development
+## Plugin Development
 
 Cloudify plugins are Python projects with functions that that may be called by Cloudify.
 

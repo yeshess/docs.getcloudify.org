@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Host-Pool Plugin
+
+
+
+##  Host-Pool Plugin
+
+
 category: Plugins
 draft: false
 abstract: "Cloudify Host-Pool plugin description and configuration"
@@ -13,15 +18,15 @@ When the plugin is requested to provision a host, it makes a request to the host
 The same flow is executed when the plugin is requested to release that host.
 The pool of available hosts is determined at the time of the host-pool service installation, as explained in this topic.
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python Versions:
     * 2.7.x
     * 2.6.x
 
-# Host-Pool Plugin
+## Host-Pool Plugin
 
-## cloudify.hostpool.nodes.Host
+### cloudify.hostpool.nodes.Host
 
 The base type for a pool host.
 
@@ -55,7 +60,7 @@ The base type for a pool host.
   * `key` - The content of the keyfile used to login to the host.
 
 
-## cloudify.hostpool.nodes.LinuxHost
+### cloudify.hostpool.nodes.LinuxHost
 
 **Derived From:** [cloudify.hostpool.nodes.Host]
 
@@ -64,7 +69,7 @@ The base type for a pool host.
   * `os` - The Linux operating system. (This is an implementation detail. Do not override it.)
 
 
-## cloudify.hostpool.nodes.WindowsHost
+### cloudify.hostpool.nodes.WindowsHost
 
 **Derived From:** [cloudify.hostpool.nodes.Host]
 
@@ -73,7 +78,7 @@ The base type for a pool host.
   * `os` - The Windows operating system. (This is an implementation detail. Do not override it.)
 
 
-# Host-Pool Service
+## Host-Pool Service
 
 The Host-Pool service is a Web service that is designed to manage a large pool of hosts for use by Cloudify deployments.
 It enables the use of multiple existing hosts to be allocated for a deployment. It supports defining hosts by:
@@ -88,7 +93,7 @@ must to be provisioned/terminated.
 
 To simplify the installation of this service, it is provided as a regular Cloudify node type.
 
-## cloudify.nodes.HostPoolService
+### cloudify.nodes.HostPoolService
 
 **Derived From:** [cloudify.nodes.SoftwareComponent]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -125,7 +130,7 @@ You must have a running Host-Pool service before you can start using the plugin.
 {{% /gsInfo %}}
 
 
-# Examples
+## Examples
 
 
 {{% gsCloak "Basic" %}}

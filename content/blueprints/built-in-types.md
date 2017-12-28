@@ -1,13 +1,18 @@
 ---
 layout: bt_wiki
-title: Built-in Node Types
+
+
+
+##  Built-in Node Types
+
+
 category: Blueprints
 draft: false
 weight: 550
 
 ---
 
-# Abstract Types
+## Abstract Types
 
 The following `node_types` are basic types from which concrete types with specific plugin implementations are derived.
 

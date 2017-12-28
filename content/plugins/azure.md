@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Azure Plugin
+
+
+
+##  Azure Plugin
+
+
 category: Plugins
 draft: false
 weight: 100
@@ -11,13 +16,13 @@ The Azure plugin enables you to use Cloudify to manage cloud resources on Azure.
 
 This documentation covers the superficial usage via node types. For more information on the Python code see the [Python documentation](https://github.com/cloudify-incubator/cloudify-azure-plugin/tree/1.4.2/docs). These can be generated using [Sphinx](http://www.sphinx-doc.org/en/stable/tutorial.html).
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python Versions 2.7.x.
 * Azure account
 
 
-# Compatibility
+## Compatibility
 
 The Azure plugin is tested against these Azure API Versions:
 
@@ -26,11 +31,11 @@ STORAGE = '2015-06-15'<br>
 NETWORK = '2016-03-30'<br>
 COMPUTE = '2016-03-30'
 
-# Azure Plugin Configuration
+## Azure Plugin Configuration
 The Azure plugin requires credentials and endpoint setup information in order to authenticate and interact with Azure.
 
 
-### Providing Credentials as Secrets
+#### Providing Credentials as Secrets
 
  It is recommended that you store your credentials as [secrets]({{< relref "manager/using-secrets.md" >}}). You can do this using the [CLI]({{< relref "cli/secrets.md" >}}).
  Secrets can then be accessed inside your blueprints, as follows:
@@ -48,7 +53,7 @@ The Azure plugin requires credentials and endpoint setup information in order to
         client_secret: { get_secret: client_secret }
  {{< /gsHighlight >}}   
 
-### Providing Credentials as Environment Variables that are not Stored as Secrets
+#### Providing Credentials as Environment Variables that are not Stored as Secrets
 If you do not use secret storage, you must provide the following credentials as environment variables:
 
 {{< gsHighlight  yaml  >}}
@@ -60,11 +65,11 @@ If you do not use secret storage, you must provide the following credentials as 
  {{< /gsHighlight >}}   
 
 
-# Types
+## Types
 
 The following are [node type]({{< relref "blueprints/spec-node-types.md" >}}) definitions. Nodes describe resources in your cloud infrastructure. For more information, see [node types]({{< relref "blueprints/spec-node-types.md" >}}).
 
-### Common Properties
+#### Common Properties
 
 All cloud resource nodes have common properties:
 
@@ -86,7 +91,7 @@ Each time that you manage a resource with Cloudify, one or more clients are crea
 
 See the `cloudify.datatypes.azure.Config` data type definition in the plugin's plugin.yaml.
 
-## cloudify.azure.nodes.ResourceGroup
+### cloudify.azure.nodes.ResourceGroup
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -119,7 +124,7 @@ This example shows adding resource parameters, and explicitly defining the azure
   * `cloudify.interfaces.lifecycle.delete` Deletes a resource group.
 
 
-## cloudify.azure.nodes.storage.StorageAccount
+### cloudify.azure.nodes.storage.StorageAccount
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -155,7 +160,7 @@ This example shows adding storage parameters, and explicitly defining the azure_
   * `cloudify.interfaces.lifecycle.delete` Deletes a storage account.
 
 
-## cloudify.azure.nodes.network.VirtualNetwork
+### cloudify.azure.nodes.network.VirtualNetwork
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -192,7 +197,7 @@ This example shows adding virtual network parameters, and explicitly defining th
   * `cloudify.interfaces.lifecycle.delete` Deletes a network.
 
 
-## cloudify.azure.nodes.network.Subnet
+### cloudify.azure.nodes.network.Subnet
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -231,7 +236,7 @@ This example shows adding subnet parameters, and explicitly defining the azure_c
   * `cloudify.interfaces.lifecycle.delete` Deletes a subnet.
 
 
-## cloudify.azure.nodes.network.NetworkSecurityGroup
+### cloudify.azure.nodes.network.NetworkSecurityGroup
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -278,7 +283,7 @@ This example shows adding security group parameters, and explicitly defining the
   * `cloudify.interfaces.lifecycle.delete` Deletes a network security group.
 
 
-## cloudify.azure.nodes.network.NetworkSecurityRule
+### cloudify.azure.nodes.network.NetworkSecurityRule
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -331,7 +336,7 @@ This example shows adding security group rule parameters, and explicitly definin
   * `cloudify.interfaces.lifecycle.delete` Deletes a network security group rule.
 
 
-## cloudify.azure.nodes.network.RouteTable
+### cloudify.azure.nodes.network.RouteTable
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -366,7 +371,7 @@ This example shows adding route table parameters, and explicitly defining the az
   * `cloudify.interfaces.lifecycle.delete` Deletes a route table.
 
 
-## cloudify.azure.nodes.network.Route
+### cloudify.azure.nodes.network.Route
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -406,7 +411,7 @@ This example shows adding route rule parameters, and explicitly defining the azu
   * `cloudify.interfaces.lifecycle.delete` Deletes the route rule.
 
 
-## cloudify.azure.nodes.network.IPConfiguration
+### cloudify.azure.nodes.network.IPConfiguration
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -443,7 +448,7 @@ This example shows adding route IP configuration parameters, and explicitly defi
   * `cloudify.interfaces.lifecycle.delete` Deletes the route IP configuration.
 
 
-## cloudify.azure.nodes.network.PublicIPAddress
+### cloudify.azure.nodes.network.PublicIPAddress
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -482,7 +487,7 @@ This example shows adding public IP address parameters, and explicitly defining 
   * `cloudify.interfaces.lifecycle.delete` Deletes the public IP address.
 
 
-## cloudify.azure.nodes.compute.AvailabilitySet
+### cloudify.azure.nodes.compute.AvailabilitySet
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -517,7 +522,7 @@ This example shows adding availability set parameters, and explicitly defining t
   * `cloudify.interfaces.lifecycle.delete` Deletes the availability set.
 
 
-## cloudify.azure.nodes.compute.VirtualMachine
+### cloudify.azure.nodes.compute.VirtualMachine
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -580,7 +585,7 @@ This example shows adding VM parameters, and explicitly defining the azure_confi
   * `cloudify.interfaces.lifecycle.delete` Deletes the VM.
 
 
-## cloudify.azure.nodes.compute.VirtualMachineExtension
+### cloudify.azure.nodes.compute.VirtualMachineExtension
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -626,7 +631,7 @@ This example shows adding VM extension parameters, and explicitly defining the a
   * `cloudify.interfaces.lifecycle.delete` Deletes the VM extension.
 
 
-## cloudify.azure.nodes.network.LoadBalancer
+### cloudify.azure.nodes.network.LoadBalancer
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -668,7 +673,7 @@ This example shows adding load balancer parameters, and explicitly defining the 
   * `cloudify.interfaces.lifecycle.delete` Deletes a load balancer.
 
 
-## cloudify.azure.nodes.network.LoadBalancer.BackendAddressPool
+### cloudify.azure.nodes.network.LoadBalancer.BackendAddressPool
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -704,7 +709,7 @@ This example shows adding load balancer pool parameters, and explicitly defining
   * `cloudify.interfaces.lifecycle.delete` Deletes a load balancer pool.
 
 
-## cloudify.azure.nodes.network.LoadBalancer.Probe
+### cloudify.azure.nodes.network.LoadBalancer.Probe
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -752,7 +757,7 @@ This example shows adding load balancer probe parameters, and explicitly definin
   * `cloudify.interfaces.lifecycle.delete` Deletes a load balancer probe.
 
 
-## cloudify.azure.nodes.network.LoadBalancer.IncomingNATRule
+### cloudify.azure.nodes.network.LoadBalancer.IncomingNATRule
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -773,7 +778,7 @@ See the [Common Properties](#common-properties) section.
   * `cloudify.interfaces.lifecycle.delete` Deletes a NAT Rule.
 
 
-## cloudify.azure.nodes.network.LoadBalancer.Rule
+### cloudify.azure.nodes.network.LoadBalancer.Rule
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -826,7 +831,7 @@ This example shows adding load balancer rule parameters, and explicitly defining
   * `cloudify.interfaces.lifecycle.delete` Deletes a load balancer rule.
 
 
-# Relationships
+## Relationships
 
 See [relationships]({{< relref "blueprints/spec-relationships.md" >}}).
 
@@ -851,9 +856,9 @@ The following plugin relationship operations are defined in the Azure plugin:
  * `cloudify.azure.relationships.vmx_contained_in_vm` Sets a dependency between a VM extension and a VM.
  * `cloudify.azure.relationships.nic_connected_to_lb_be_pool` Sets a dependency between a NIC and a load balancer pool.
 
-# Types Common Behaviors
+## Types Common Behaviors
 
-# Using Existing Resources
+## Using Existing Resources
 
 You can use existing resources on Azure, regardless of whether they have been created by a different Cloudify deployment or outside of Cloudify.
 

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: users
+
+
+
+##  users
+
+
 category: Docs
 draft: false
 weight: 255
@@ -9,7 +14,7 @@ weight: 255
 The `cfy users` command is used to manage users and passwords on Cloudify Manager.<br>
 If you choose not to integrate Cloudify Manager with LDAP/AD, you must add each user individually and set a password for them. You can also create groups and add users to them. The users and user groups can be assigned to one or more tenants.
 
-#### Requirements
+##### Requirements
 
 * To use the command you must have Cloudify `admin` credentials.<br>
 * User names and passwords must conform to the following requirements:  
@@ -20,7 +25,7 @@ If you choose not to integrate Cloudify Manager with LDAP/AD, you must add each 
   * Value must begin with a letter
   * Cannot be empty
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
@@ -28,29 +33,29 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
 
-### create
+#### create
 
-#### Usage 
+##### Usage 
 `cfy users create [OPTIONS] USERNAME`
 
 Create a new user on Cloudify Manager.
 
 `USERNAME` is the user name for the user.
 
-#### Required flags
+##### Required flags
   
 * `-p, --password TEXT` - Cloudify Manager password.
 
-#### Optional flags
+##### Optional flags
   
 * `-r, --security-role [admin|user]` - A role to specifies the user's permissions
                                   on the manager. (default: user)
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users create sue -p test1
@@ -61,22 +66,22 @@ User `sue` created
 ...
 {{< /gsHighlight >}}
 
-### set-password
+#### set-password
 
-#### Usage 
+##### Usage 
 
 `cfy users set-password [OPTIONS] USERNAME`
 
 Set the password for a specific user. Use this command in a non-LDAP/AD setup.<br>
  `USERNAME` is the username of the user.
 
-#### Required flags
+##### Required flags
   
 * `-p, --password TEXT` - Cloudify Manager password.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users set-password sue -p new_pass
@@ -88,9 +93,9 @@ New password set
 ...
 {{< /gsHighlight >}}
 
-### set-role
+#### set-role
 
-#### Usage 
+##### Usage 
 `cfy users set-role [OPTIONS] USERNAME`
 
 Set a role for a specific user. <br>
@@ -102,14 +107,14 @@ Users are created with the default `user` role. This command enables you to chan
 * An `admin` user can perform all commands on all tenants in the Cloudify Manager instance. 
 * Someone with a `user` role has access to all public resources in the tenant(s) to which they are assigned, and to private resources of which they are the owner. 
 
-#### Optional flags
+##### Optional flags
 
 * `-r, --security-role [admin|user]` - A role to specifies the user's permissions
                                   on the manager. (default: user)
                                 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users set-role sue -r admin
@@ -122,9 +127,9 @@ New role `admin` set
 {{< /gsHighlight >}}
 
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 ` cfy users delete [OPTIONS] USERNAME`
 
 Delete a user from Cloudify Manager, including from any groups to which they have been assigned.
@@ -132,7 +137,7 @@ Delete a user from Cloudify Manager, including from any groups to which they hav
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users delete sue2
@@ -144,15 +149,15 @@ User removed
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy users list`
 
 List all users defined in this Cloudify Manager.<br>
 By default, when you generate the list of users, only the number of linked resources are displayed. You can retrieve full details with the use of a `--get-data` flag.
 
-#### Optional flags
+##### Optional flags
 
 * `--sort-by TEXT` - Key for sorting the list.
 * `--descending` - Sort list in descending order. [default: False]
@@ -164,7 +169,7 @@ By default, when you generate the list of users, only the number of linked resou
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users list
@@ -185,16 +190,16 @@ Users:
 {{< /gsHighlight >}}
 
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 ` cfy users get [OPTIONS] USERNAME`
 
 Get details for a single user.
 
 `USERNAME` is the username of the user.
 
-#### Optional flags
+##### Optional flags
 
 * `--get-data` - When set to `True`, displays the full list of connected
                   resources (users/tenants/user-groups), for each listed
@@ -204,7 +209,7 @@ Get details for a single user.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users get sue2
@@ -222,9 +227,9 @@ Requested user info:
 ...
 {{< /gsHighlight >}}
 
-### deactivate
+#### deactivate
 
-#### Usage 
+##### Usage 
 `cfy users deactivate [OPTIONS] USERNAME`
 
 Deactivate a user. Suspends a user's access, without deleting their details.
@@ -234,7 +239,7 @@ Deactivate a user. Suspends a user's access, without deleting their details.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users deactivate assi2
@@ -247,9 +252,9 @@ User deactivated
 {{< /gsHighlight >}}
 
 
-### activate
+#### activate
 
-#### Usage 
+##### Usage 
 `cfy users activate [OPTIONS] USERNAME`
 
 Activate a user.
@@ -257,7 +262,7 @@ Activate a user.
 `USERNAME` is the username of the user.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy users activate sue2

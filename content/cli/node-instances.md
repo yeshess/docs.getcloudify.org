@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: node-instances
+
+
+
+##  node-instances
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,18 +16,18 @@ The `cfy node-instances` command is used to view information about the different
 
 You can use the command to list the node-instances of a specific deployment or of all deployments, and to retrieve information about a single node-instance.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy node-instances list [OPTIONS]`
 
 List node-instances.
@@ -30,7 +35,7 @@ List node-instances.
 If `DEPLOYMENT_ID` is provided, lists node-instances for that deployment.
 Otherwise, lists node-instances for all deployments.
 
-#### Optional flags
+##### Optional flags
 
 *  `-d, --deployment-id TEXT` - 
 						The unique identifier for the deployment
@@ -46,7 +51,7 @@ Otherwise, lists node-instances for all deployments.
 
 &nbsp;
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy node-instances list
@@ -69,21 +74,21 @@ Node-instances:
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 `cfy node-instances get [OPTIONS] NODE_INSTANCE_ID`
 
 Retrieve information for a specific node-instance.
 
 `NODE_INSTANCE_ID` is the ID of the node-instance for which to retrieve information.
 
-#### Optional flags
+##### Optional flags
 
 *  ` -t, --tenant-name TEXT`  The name of the tenant of the node-instance. If unspecified, the current tenant is used.
 
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy node-instances get nodecellar_gj0mj2

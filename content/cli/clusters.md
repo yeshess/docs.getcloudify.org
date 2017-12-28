@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: cluster
+
+
+
+##  cluster
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -9,7 +14,7 @@ weight: 32
 
 The `cfy cluster` command is used to manage clusters of tenants in Cloudify Manager.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command
 
@@ -17,11 +22,11 @@ These will work on each command
                         times (i.e. -vvv)
 *  `-h, --help` -       Show this message and exit.
 
-## Commands
+### Commands
 
-### Start
+#### Start
 
-#### Usage
+##### Usage
 `cfy cluster start [OPTIONS]`
 
 Start a Cloudify Manager cluster with the current manager as the master.
@@ -31,14 +36,14 @@ This initializes all the Cloudify Manager cluster components on the
   join the cluster by passing this manager's IP address and
   encryption key.
 
-#### Optional flags
+##### Optional flags
 
 *  `--timeout INTEGER` - Operation timeout in seconds (The execution itself will keep going, but the CLI will stop waiting for it to terminate) [default: 900]
 *  `-o, --options TEXT` - Additional options for the cluster node configuration (Can be provided as wildcard based paths (*.yaml, /my_inputs/, etc..) to YAML files, a JSON string or as key1=value1;key2=value2). This argument can be used multiple times
 * `--cluster-host-ip TEXT` - The IP of this machine to use for advertising to the cluster
 * `--cluster-node-name TEXT` - Name of this manager machine to be used internally in the cluster
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster start
@@ -58,16 +63,16 @@ Cloudify Manager cluster started at 10.239.0.148.
 {{< /gsHighlight >}}
 
 
-### Join
+#### Join
 
-#### Usage
+##### Usage
 `cfy cluster join [OPTIONS] JOIN_PROFILE`
 
 Join a Cloudify Manager cluster on this manager.
 
 A cluster with at least one machine must already exist. Pass the address of at least one member of the cluster as `--cluster-join`. Specifying multiple addresses, even all members of the cluster, is recommended, to enable joining the cluster even if some of the current members are unreachable. However, it is not required.
 
-#### Optional flags
+##### Optional flags
 
 *  `--timeout INTEGER` - Operation timeout in seconds (The execution itself will keep going, but the CLI will stop waiting for it to terminate) [default: 900]
 *  `-o, --options TEXT` - Additional options for the cluster node configuration (Can be provided as wildcard based paths (*.yaml, /my_inputs/, etc..) to YAML files, a JSON string or as key1=value1;key2=value2). This argument can be used multiple times
@@ -75,7 +80,7 @@ A cluster with at least one machine must already exist. Pass the address of at l
 * `--cluster-node-name TEXT` - Name of this manager machine to be used internally in the cluster
 
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster join 10.239.0.148
@@ -95,9 +100,9 @@ Cloudify Manager joined cluster successfully.
 {{< /gsHighlight >}}
 
 
-### Update Profile
+#### Update Profile
 
-#### Usage
+##### Usage
 `cfy cluster update-profile`
 
 Fetch the list of cluster nodes and update the current profile.
@@ -108,7 +113,7 @@ contacted in the event of a cluster master failure.
 
 This means that when a cluster administrator adds or removes a node from the cluster, all users must run this command to update their CLI profile.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster update-profile
@@ -121,25 +126,25 @@ Profile is up to date with 2 nodes
 {{< /gsHighlight >}}
 
 
-### Nodes
+#### Nodes
 
-#### Usage
+##### Usage
 `cfy cluster nodes [OPTIONS] COMMAND [ARGS]`
 
 Manage the nodes in the cluster. (Applicable only in `cluster`.)
 
-#### Subcommands
+##### Subcommands
 
 *  `list`             - Lists the nodes in the cluster.
 
 *  `remove`           - Remove a node from the cluster.
 
 
-#### list
+##### list
 
 Display a table with basic information about the nodes in the cluster. This is the primary way of retrieving the cluster status.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster nodes list
@@ -154,7 +159,7 @@ HA Cluster nodes
 {{< /gsHighlight >}}
 
 
-#### remove
+##### remove
 
 Unregister a node from the cluster.
 
@@ -162,7 +167,7 @@ Note that this will not teardown the removed node, only remove it from the
 cluster. Removed replicas are not usable as Cloudify Managers, so it is
 left to the user to examine and teardown the node.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster nodes remove cloudify_manager_W81PXP
@@ -170,15 +175,15 @@ Node cloudify_manager_W81PXP was removed successfully!
 {{< /gsHighlight >}}
 
 
-### Set Active
+#### Set Active
 
-#### Usage
+##### Usage
 `cfy cluster set-active NODE_NAME`
 
 Specify the node that will be the active node (master) in the cluster.
 
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster set-active cloudify_manager_UAFA8Y
@@ -189,14 +194,14 @@ cloudify_manager_UAFA8Y set as the new active node
 ...
 {{< /gsHighlight >}}
 
-### Status
+#### Status
 
-#### Usage
+##### Usage
 `cfy cluster status`
 
 Display the current installation status of the Cloudify Manager cluster.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy cluster status

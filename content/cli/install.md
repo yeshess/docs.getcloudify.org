@@ -1,6 +1,11 @@
 install---
 layout: bt_wiki
-title: install
+
+
+
+##  install
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -10,7 +15,7 @@ weight: 100
 The `cfy install` command is used to install an application using a Cloudify manager without having to manually go through the process of uploading a blueprint, creating a deployment and executing a workflow.
 
 
-#### Usage 
+##### Usage 
 `cfy install [OPTIONS] [BLUEPRINT_PATH]`
 
 Install an application via the manager
@@ -22,7 +27,7 @@ archive; a url to a blueprint archive or an
 This will upload the blueprint, create a deployment and execute the
 `install` workflow.
 
-#### Optional flags
+##### Optional flags
 
 *  `-b, --blueprint-id TEXT` -  
                         The unique identifier for the blueprint [manager only]
@@ -61,7 +66,7 @@ This will upload the blueprint, create a deployment and execute the
 *  `-h, --help` - Show this message and exit.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy install -p cloudify-hello-world-example-master/ec2-blueprint.yaml

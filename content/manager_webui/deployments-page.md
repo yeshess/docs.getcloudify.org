@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Deployments Page
+
+
+
+##  Deployments Page
+
+
 category: Web Interface
 draft: false
 abstract: Deployment Page Reference
@@ -22,7 +27,7 @@ Each deployment in the list includes details about the attached blueprint, when 
 * **Orange:** The number of nodes that are in warning state
 * **Red:** The number of nodes that are deleted or stopped
 
-## Creating a Deployment
+### Creating a Deployment
 
 1. In the Deployments widget, click **Create new deployment**.
 2. Enter a name for the deployment.
@@ -34,7 +39,7 @@ The deployment is added to the list.
 
 
 
-## Deployment Details and Actions
+### Deployment Details and Actions
 When you click on a deployment in the list, a deployment-specific page opens that, by default, displays the following widgets. 
 
 * Topology
@@ -48,7 +53,7 @@ When you click on a deployment in the list, a deployment-specific page opens tha
 You can also execute workflows, and update and delete deployments from this page.<br/>
 
 
-### Execute a Workflow
+#### Execute a Workflow
 
 Each of the actions are described in detail [here]({{< relref "workflows/built-in-workflows.md" >}}).
 
@@ -63,7 +68,7 @@ Each of the actions are described in detail [here]({{< relref "workflows/built-i
     * Install New Agents
     * Uninstall 
 
-### Updating a Deployment
+#### Updating a Deployment
 
 1. Click **Update deployment**.
 2. Select the blueprint file for the updated deployment (from the local blueprint archive) or specify the URL of the remote archive in which the blueprint is located.
@@ -80,7 +85,7 @@ Each of the actions are described in detail [here]({{< relref "workflows/built-i
 
  For more information about creating custom workflows, [click here]({{< relref "workflows/creating-your-own-workflow.md" >}}).
 
-### Deleting a Deployment
+#### Deleting a Deployment
 
 1. Click **Delete deployment**.
 2. When prompted to verify that you want to remove the deployment, click **Yes**.

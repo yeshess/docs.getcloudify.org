@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Packaging a Blueprint
+
+
+
+##  Packaging a Blueprint
+
+
 category: Blueprints
 draft: false
 weight: 350
@@ -31,7 +36,7 @@ When you create a package, your blueprint's archive must include a folder contai
 
    The output file of the tar command above will be `blueprint-name.tar.gz`.
 
-## Supported CLI Archive Formats
+### Supported CLI Archive Formats
 
 The following archive formats are supported for uploading a blueprint via the CLI:
 
@@ -40,7 +45,7 @@ The following archive formats are supported for uploading a blueprint via the CL
 * zip
 * tar.bz
 
-## UI Archive Formats Support
+### UI Archive Formats Support
 
 The following archive format is supported for uploading a blueprint via the Cloudify user interface:
 

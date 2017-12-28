@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: vSphere Plugin
+
+
+
+##  vSphere Plugin
+
+
 category: Plugins
 draft: false
 weight: 300
@@ -11,7 +16,7 @@ plugin_link: http://getcloudify.org.s3.amazonaws.com/spec/vSphere-plugin/2.0/plu
 
 The vSphere plugin enables you to use a vSphere-based infrastructure for deploying services and applications.
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python versions:
     * 2.7.x
@@ -39,10 +44,10 @@ The vSphere plugin enables you to use a vSphere-based infrastructure for deployi
             * dvPort group/Delete
 
 
-# vSphere Plugin Configuration
+## vSphere Plugin Configuration
 The vSphere plugin requires credentials and endpoint setup information in order to authenticate and interact with vSphere.
 
-## Accessing Secrets
+### Accessing Secrets
 
  It is recommended that you store your credentials as [secrets]({{< relref "manager/using-secrets.md" >}}). You can do this using the [CLI]({{< relref "cli/secrets.md" >}}).
  Secrets can then be accessed inside your blueprints, as follows:
@@ -59,7 +64,7 @@ The vSphere plugin requires credentials and endpoint setup information in order 
         datacenter_name: { get_secret: datacenter_name }            
  {{< /gsHighlight >}}   
 
-## Providing Credentials as Environment Variables that are not Stored as Secrets
+### Providing Credentials as Environment Variables that are not Stored as Secrets
 If you do not use secret storage, you must provide the following credentials as environment variables:
 
 {{< gsHighlight  yaml  >}}
@@ -71,11 +76,11 @@ If you do not use secret storage, you must provide the following credentials as 
  {{< /gsHighlight >}}   
 
 
-## vSphere Environment
+### vSphere Environment
 
 * You require a working vSphere environment. The plugin was tested with version 5.5.
 
-## SSH Keys
+### SSH Keys
 * You need SSH keys to be generated for both the Manager and the application VM's. If you are using the default key locations in the inputs, you can create them using the following commands:
 
 {{< gsHighlight  bash  >}}
@@ -83,7 +88,7 @@ ssh-keygen -b2048 -N "" -q -f ~/.ssh/cloudify-manager-kp.pem
 ssh-keygen -b2048 -N "" -q -f ~/.ssh/cloudify-agent-kp.pem
 {{< /gsHighlight >}}
 
-## OS Templates
+### OS Templates
 
 * You need two OS templates for your preferred operating systems (e.g. Ubuntu Trusty) within the vSphere datastores, one for Cloudify Manager and one for the application VMs. The application VM template must accept the Cloudify agent public key for its root user. The Cloudify Manager template must accept the Cloudify Manager public key. Note that you can use same template for both the Manager and the application VMs. In that case, the shared template must accept both public keys.
 * Both templates must have SSH activated and open on the firewall.
@@ -92,14 +97,14 @@ ssh-keygen -b2048 -N "" -q -f ~/.ssh/cloudify-agent-kp.pem
 * The template must not have any network interfaces.
 
 
-# Types
+## Types
 
 {{% gsTip title="Tip" %}}
 Each type has a `connection_config` property. It can be used to pass parameters for authentication. Overriding this property is not required. By default, the authentication occurs with the same credentials that were used for the Cloudify bootstrap process.
 {{% /gsTip %}}
 
 
-## cloudify.vsphere.nodes.Server
+### cloudify.vsphere.nodes.Server
 
 **Derived From:** cloudify.nodes.Compute
 
@@ -145,7 +150,7 @@ Each type has a `connection_config` property. It can be used to pass parameters 
     * `mac` - The MAC address of the NIC on this network.
     * `ip` The IP address assigned to the NIC on this network, or `None` if there is no IP address.
 
-## cloudify.vsphere.nodes.WindowsServer
+### cloudify.vsphere.nodes.WindowsServer
 
 **Derived From:** cloudify.nodes.Compute
 
@@ -199,7 +204,7 @@ Each type has a `connection_config` property. It can be used to pass parameters 
     * `mac` - The MAC address of the NIC on this network.
     * `ip` - The IP address assigned to the NIC on this network, or `None` if there is no IP address.
 
-## cloudify.vsphere.nodes.Network
+### cloudify.vsphere.nodes.Network
 
 **Derived From:** cloudify.nodes.Network
 
@@ -216,7 +221,7 @@ Each type has a `connection_config` property. It can be used to pass parameters 
 * `network_name` - The name of the network on vSphere.
 * `switch_distributed` `True` if this is a distributed port group, `False` otherwise.
 
-## cloudify.vsphere.nodes.Storage
+### cloudify.vsphere.nodes.Storage
 
 **Derived From:** cloudify.nodes.Volume
 
@@ -233,9 +238,9 @@ Each type has a `connection_config` property. It can be used to pass parameters 
 * `datastore_file_name` - The datastore and filename on that datastore of this virtual disk. e.g. "[Datastore-1] myserver-a12b3/myserver-a12b3_1.vmdk".
 * `scsi_id` - The SCSI ID, in the form `bus_id:unit_id, e.g. "0:1"`
 
-# Examples
+## Examples
 
-## Example I
+### Example I
 
 {{% gsCloak "Example I" %}}
 

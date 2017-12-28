@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: JavaScript Client
+
+
+
+##  JavaScript Client
+
+
 category: APIs
 draft: true
 weight: 400
@@ -15,7 +20,7 @@ Read below to see how.
 {{% /gsNote %}}
 
 
-# NodeJS Client
+## NodeJS Client
 
 To use this client run the command `npm install cloudify-cosmo/cloudify-js#3.2.0 --save`
 
@@ -37,7 +42,7 @@ logger.info('this is body',body);
 For more examples on how to use in front end please read the official javascript documentation
 
 
-# JavaScript Client - How to enable CORS
+## JavaScript Client - How to enable CORS
 
 If you wish to use the cloudify javascript client, you will run into CORS issues.
 

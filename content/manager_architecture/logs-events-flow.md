@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Logs and Events Workflow
+
+
+
+##  Logs and Events Workflow
+
+
 category: Manager Architecture
 draft: false
 abstract: Describes the flow of streaming metrics from a host to the Cloudify management environment

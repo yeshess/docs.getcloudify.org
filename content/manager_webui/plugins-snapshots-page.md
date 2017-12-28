@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Managing System Resources
+
+
+
+##  Managing System Resources
+
+
 category: Web Interface
 draft: false
 weight: 150
@@ -8,25 +13,25 @@ weight: 150
 
 The appearance of this page depends on your permissions. Only an `admin` can view information about snapshots.
 
-## Plugins
+### Plugins
 
 Plugins are tenant-specific because a blueprint on one tenant cannot access a plugin on a different tenant.  The Plugins table provides a list of all plugins that have been uploaded to the current tenant. For information about using default plugins or creating your own, [click here]({{< relref "plugins/overview.md" >}}).
 
-### Uploading a Plugin
+#### Uploading a Plugin
 
 1. Click **Upload** above the Plugins table.
 2. Either enter the URL of the plugin or select the plugin file from your file repository.
 3. Click **Upload**.<br>
 The plugin details appear in the Plugins table.
 
-## Snapshots
+### Snapshots
 
 The Snapshots table provides a list of all snapshots that have been uploaded to the current tenant. The Snapshots table is only available if you have `admin` credentials.
 
 The snapshots creation process captures data in the entire Cloudify Manager, not just that of a specific tenant. However, the snapshot is created in the context of the current tenant, and therefore must be restored from it. 
 
 
-### Creating a Snapshot
+#### Creating a Snapshot
 
 1. Click **Create** above the Snapshots table.
 2. Specify a unique ID for the snapshot and click **Create**.   
@@ -37,7 +42,7 @@ The snapshots creation process captures data in the entire Cloudify Manager, not
 The snapshot is saved as a ZIP file and appears in the Snapshots table, together with details of its creator, creation date and time, and current status.
 
 
-### Restoring a Snapshot
+#### Restoring a Snapshot
 
 If you are restoring a snapshot from a Cloudify Manager instance prior to version 4.0, refer to the [Restoring Snapshots of Legacy Cloudify Manager Instances]({{< relref "manager_webui/plugins-snapshots-page.md" >}}#restoring-snapshots-of-legacy-cloudify-manager-instances) section below.
 
@@ -54,7 +59,7 @@ If you restore a snapshot to a Cloudify Manager instance that already contains d
 
 6. The snapshot is restored and its details appear in the Snapshots table.
 
-#### Restoring Snapshots of Legacy Cloudify Manager Instances
+##### Restoring Snapshots of Legacy Cloudify Manager Instances
 
 This subsection refers to the process for restoring snapshots of Cloudify Manager instances that were created prior to Cloudify Mananger 4.0.
 
@@ -68,11 +73,11 @@ Depending on your requirements, the tenant may be prepared according to one of t
 * if the snapshot's resources use plugin installation from source, to keep working in this manner, restore directly to a clean tenant. 
 
 
-### Deleting a Snapshot
+#### Deleting a Snapshot
 
 1.  In the Snapshots widget, click the List icon on the far right of the snapshot entry that you want to delete.
 2. Click **Delete** to delete the snapshot from Cloudify Manager.
 
-## Working with Secrets
+### Working with Secrets
 
 Secret storage provides a tenant-wide variable store for data that you do not want to expose in plain text in Cloudify blueprints, such as login credentials for a platform. For more information about secret storage, [click here]({{< relref "manager_architecture/security.md" >}}(#additional-security-information).

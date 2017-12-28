@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: blueprints
+
+
+
+##  blueprints
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -15,7 +20,7 @@ You can use the command to upload, delete, download, validate and list blueprint
 Use of spaces is not supported in file names.
 {{% /gsNote %}}
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command
 
@@ -23,11 +28,11 @@ These will work on each command
                         times (i.e. -vvv)
 *  `-h, --help` -       Show this message and exit.
 
-## Commands
+### Commands
 
-### upload
+#### upload
 
-#### Usage 
+##### Usage 
 `cfy blueprints upload [options] BLUEPRINT_PATH`
 
 Upload a blueprint to a Cloudify Manager. 
@@ -36,7 +41,7 @@ Upload a blueprint to a Cloudify Manager.
 archive; a url to a blueprint archive or an
 `organization/blueprint_repo[:tag/branch]` (to be retrieved from GitHub)
 
-#### Optional flags
+##### Optional flags
 
 * `-b, --blueprint-id=BLUEPRINT_ID` - 
                         The unique identifier for the blueprint
@@ -61,7 +66,7 @@ archive; a url to a blueprint archive or an
                         
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprint upload simple-blueprint.yaml 
@@ -82,22 +87,22 @@ Blueprint validated successfully
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy blueprints delete [OPTIONS] BLUEPRINT_ID`
 
 
 Delete a blueprint. It's important to note that deleting a blueprint does not delete the deployments created from that blueprint and resources of those deployments.
 
-#### Optional Flags
+##### Optional Flags
 
 * `--tenant-name TEXT` -   The name of the tenant of the relevant  
                            deployment(s). If not specified, the 
                            current tenant is used
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 
@@ -110,9 +115,9 @@ Blueprint deleted
 ...
 {{< /gsHighlight >}}
 
-### package
+#### package
 
-#### Usage 
+##### Usage 
 `cfy blueprints package [OPTIONS] BLUEPRINT_PATH`
 
 Create a blueprint archive
@@ -120,14 +125,14 @@ Create a blueprint archive
 `BLUEPRINT_PATH` -      The path to the blueprint yaml or to the directory in which the
                         blueprint yaml files resides.
 
-#### Optional flags
+##### Optional flags
 
 *  `-o, --output-path TEXT` -
                         The local path to download to
 *  `--validate` -       Validate the blueprint first
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints package simple-python-webserver-blueprint/blueprint.yaml
@@ -139,22 +144,22 @@ Packaging complete!
 ...
 {{< /gsHighlight >}}
 
-### download
+#### download
 
-#### Usage 
+##### Usage 
 `cfy blueprints download [OPTIONS] BLUEPRINT_ID`
 
 Download a blueprint from Cloudify Manager.
 
 `BLUEPRINT_ID` -        The ID of the blueprint to download.
 
-#### Optional flags
+##### Optional flags
 
 *  `-o, --output-path TEXT` -
                         The local path to download to
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints download simple-python-webserver-blueprint
@@ -167,9 +172,9 @@ Blueprint downloaded as simple-python-webserver-blueprint.tar.gz
 ...
 {{< /gsHighlight >}}
 
-### validate
+#### validate
 
-#### Usage 
+##### Usage 
 `cfy blueprints validate [OPTIONS] BLUEPRINT_PATH`
 
 Validate a blueprint. Checks that the blueprint's syntax is valid and that all imports are accessible.
@@ -181,7 +186,7 @@ Import validation is done only on the client side. That means that if, for some 
 `BLUEPRINT_PATH` -      The path of the blueprint to validate.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints validate simple-python-webserver-blueprint/blueprint.yaml
@@ -193,9 +198,9 @@ Blueprint validated successfully
 ...
 {{< /gsHighlight >}}
 
-### create-requirements
+#### create-requirements
 
-#### Usage 
+##### Usage 
 `cfy blueprints create-requirements [OPTIONS] BLUEPRINT_PATH`
 
 Generate a pip-compliant requirements file for a specific blueprint.
@@ -203,13 +208,13 @@ Generate a pip-compliant requirements file for a specific blueprint.
 `BLUEPRINT_PATH` -      The path to the blueprint for which the file will be
                         generated.
 
-#### Optional flags
+##### Optional flags
 
 *  `-o, --output-path TEXT` -
                         The local path to download to
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints create-requirements nodecellar-blueprint/aws-ec2-blueprint.yaml
@@ -221,9 +226,9 @@ https://github.com/cloudify-cosmo/cloudify-diamond-plugin/archive/1.3.3.zip
 ...
 {{< /gsHighlight >}}
 
-### install-plugins
+#### install-plugins
 
-#### Usage 
+##### Usage 
 `cfy blueprints install-plugins [OPTIONS] BLUEPRINT_PATH`
 
 Install the necessary plugins for a specific blueprint in the local
@@ -234,7 +239,7 @@ Only supports passing the YAML of the blueprint directly.
 `BLUEPRINT_PATH` -      The path to the blueprint to install plugins for.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints install-plugins nodecellar-blueprint/aws-ec2-blueprint.yaml
@@ -252,14 +257,14 @@ Successfully installed boto-2.38.0 cloudify-aws-plugin-1.4.3
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy blueprints list [OPTIONS]`
 
 List all existing blueprints.
 
-#### Optional flags
+##### Optional flags
 
 *  `--sort-by TEXT`     Key for sorting the list
 
@@ -275,7 +280,7 @@ List all existing blueprints.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints list
@@ -294,22 +299,22 @@ Blueprints:
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 `cfy blueprints get [OPTIONS] BLUEPRINT_ID`
 
 Retrieve information for a specific blueprint.
 
 `BLUEPRINT_ID` -        The ID of the blueprint for which to retrieve information.
 
-#### Optional flags
+##### Optional flags
 
 *  `-t --tenant-name TEXT`     The name of the tenant for which to retrieve the blueprint information. If
                           not specified, the current tenant is used. 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints get cloudify-nodecellar-example
@@ -333,22 +338,22 @@ Existing deployments:
 ...
 {{< /gsHighlight >}}
 
-### inputs
+#### inputs
 
-#### Usage 
+##### Usage 
 `cfy blueprints inputs [OPTIONS] BLUEPRINT_ID`
 
 Retrieve inputs for a specific blueprint
 
 `BLUEPRINT_ID` -        The path of the blueprint for which to retrieve inputs.
 
-#### Optional flags
+##### Optional flags
 
 *  `-t --tenant-name TEXT`     The name of the tenant from which to retrieve the blueprints. If
                           not specified, the current tenant is used. 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints inputs cloudify-hello-world-example
@@ -369,9 +374,9 @@ Inputs:
 ...
 {{< /gsHighlight >}}
 
-### set-global
+#### set-global
 
-#### Usage
+##### Usage
 `cfy blueprints set-global [OPTIONS] BLUEPRINT_ID`
 
 Set the blueprint's availability to global
@@ -379,7 +384,7 @@ Set the blueprint's availability to global
 `BLUEPRINT_ID` - The id of the blueprint to set global.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy blueprints set-global cloudify-nodecellar-example

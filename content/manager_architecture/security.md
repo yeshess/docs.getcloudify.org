@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Security
+
+
+
+##  Security
+
+
 category: Manager Architecture
 draft: false
 weight: 900
@@ -32,10 +37,10 @@ error.
 The */version* endpoint is not a secured resource, and is therefore open to all users.
 {{% /gsNote %}}
 
-### Authorization
+#### Authorization
 A combination of roles, permissions and multi-tenancy provides the framework for authorization and resource isolation.
 
-#### Roles & Permissions
+##### Roles & Permissions
 
 Cloudify includes built-in user roles with which users are associated:
 
@@ -45,7 +50,7 @@ Cloudify includes built-in user roles with which users are associated:
 
 Each role has different permissions, ensuring a role-based access control operation. For example, users with the `user` role cannot perform Cloudify administration operations such as snapshot management. A user can be suspended using the `deactivate` command. A deactivated user cannot perform operations.
 
-#### Isolation
+##### Isolation
 Cloudify supports the concept of users, user groups, and tenants. These elements can be either defined locally in Cloudify, or taken from an external user management system (LDAP integration is native). In the latter case, passwords are not stored in Cloudify, authentication is performed via LDAP and a token is generated and used for the user session.<br>
 A user can be associated with one or more groups, and one or more tenants.<br>
 A group can be associated with one or more tenant.
@@ -68,13 +73,13 @@ Admin APIs are provided for the following resources (and are available only to `
 
 RabbitMQ isolation is achieved through the use of virtual hosts and the association between hosts and users, which enables authorization at the queue/exchange level and results in isolation of queues between tenants. In this configuration it is impossible for a host VM from tenant A to access/request operations on host VMs that belong to tenant B.
 
-### Communication
-#### Scope
+#### Communication
+##### Scope
 Communication from the external environment to Cloudify Manager and its SSL/TLS configuration is the user’s responsibility (CA/host verification, etc.), where the endpoints include the UI and REST API.
 Communication between Cloudify agents and Cloudify Manager (and within Cloudify Manager) is the responsibility of Cloudify, and is determined by Cloudify. Cloudify generates the necessary certificates for internal communication.
 Credentials do not appear in log files (cloud/RabbitMQ/Cloudify).
 
-#### Communication channels
+##### Communication channels
 * Internal services access the REST API/file server over HTTPS on port 53333
 through the manager's private IP with a Cloudify generated authentication token.
 * External access to REST API/file server (e.g. CLI, UI) is done by
@@ -85,7 +90,7 @@ is done via a Cloudify generated authentication token or with user and password.
 HTTPS (53333). By default agents access the manager over its private IP,
 but can be configured to use other additional IPs.
 
-#### SSL for internal communication
+##### SSL for internal communication
 All internal communications between internal services/agents and the
 REST API/RabbitMQ are done over SSL.
 
@@ -99,7 +104,7 @@ As part of the agent's installation script, Cloudify's internal CA certificate i
 propagated to the agent's host in order to validate the manager's certificate.
 There are no agent-host certificates.
 
-#### Customizing SSL for internal communication
+##### Customizing SSL for internal communication
 
 It is possible to override the internal Manager certificate, and the CA certificate
 during bootstrap. In order to provide a custom internal CA certificate (which will be
@@ -127,7 +132,7 @@ generated automatically by Cloudify, or passed in the `ca_key` input.
 {{% /gsNote %}}
 
 
-#### SSL mode for external communication
+##### SSL mode for external communication
 
 Cloudify manager, by default, doesn't use SSL for external communication.
 You can set the manager to use ssl for the external communication during bootstrap or after bootstrap.
@@ -151,7 +156,7 @@ In order to update the certificate in the cli-profile, you'll need to run the fo
 In case you renew the certificate, just update it in the manager, under /etc/cloudify/ssl.
 
 
-## Additional Security Information
+### Additional Security Information
 
 * All services required by Cloudify run under the Cloudify (and not root) user in the manager VM. The only exception is the parent process of Nginx, which runs as root in order to enable use of port 80. It is not recommended to change this behavior.<br>
 * A secrets store is implemented inside the Cloudify PostgreSQL database, which provides a tenant-wide variable store:
@@ -165,7 +170,7 @@ In case you renew the certificate, just update it in the manager, under /etc/clo
 For more information about the secrets store, [click here]({{< relref "blueprints/spec-secretstore.md" >}}).
 
 
-## Auditing
+### Auditing
 Security operations, such as authenticating success or failure and user details, are audited in dedicated log file on the management server.<br>
 The default configuration is:
 

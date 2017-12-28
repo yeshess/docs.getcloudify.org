@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Deployment Creation Workflow
+
+
+
+##  Deployment Creation Workflow
+
+
 category: Manager Architecture
 draft: false
 abstract: Describes the flow of creating a deployment for a Blueprint

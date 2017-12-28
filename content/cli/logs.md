@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: logs
+
+
+
+##  logs
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -13,24 +18,24 @@ You can use the command to download, backup and purge Cloudify Manager service l
 
 To use the command you must have the credentials (user and key) set in the local context and must run `cfy use -t MANAGEMENT_IP` prior to running the command.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### backup
+#### backup
 
-#### Usage 
+##### Usage 
 `cfy logs backup [OPTIONS]`
 
 Create a backup of all logs under a single archive and save it on Cloudify Manager under /var/log.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy logs backup
@@ -42,20 +47,20 @@ Backing up manager logs to /var/log/cloudify-manager-logs_20170330T122201_10.239
 ...
 {{< /gsHighlight >}}
 
-### download
+#### download
 
-#### Usage 
+##### Usage 
 `cfy logs download [OPTIONS]`
 
 Download an archive containing all of the Cloudify Manager service logs.
 
-#### Optional flags
+##### Optional flags
 
 * `-o, --output-path TEXT` - 
 						The local path to which to save the download.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy logs download
@@ -68,9 +73,9 @@ Removing archive from manager...
 ...
 {{< /gsHighlight >}}
 
-### purge
+#### purge
 
-#### Usage 
+##### Usage 
 `cfy logs purge [OPTIONS]`
 
 Purge all log files on Cloudify Manager.
@@ -81,7 +86,7 @@ This enables you to take extreme measures to clean up data from Cloudify Manager
 
 The `-f, --force` flag is mandatory as a safety measure.
 
-#### Optional flags
+##### Optional flags
 
 * `--backup-first` - 	Creates a backup before purging.
 
@@ -92,7 +97,7 @@ Log files in Cloudify Manager are rotated. `cfy purge` is a safety measure in ca
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy logs purge -f

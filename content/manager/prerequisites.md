@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Prerequisites
+
+
+
+##  Prerequisites
+
+
 category: Manager Intro
 draft: true
 weight: 250
@@ -15,20 +20,20 @@ manager_blueprints_openstack_link: manager-blueprints-openstack.html
 
 A Cloudify Manager has a set of prerequisites, related to both infrastructure and operating system.
 
-# Manager Environment
+## Manager Environment
 
-## Host Machine
+### Host Machine
 
-### Minimal Requirements
+#### Minimal Requirements
 
 Cloudify Manager must run on a 64-bit machine and requires at the very least 2 vCPUs, 4GB RAM and 5GB of free disk space. These are the minimal requirements for a Cloudify Manager to run, and are only sufficient for demos and development. You need to provision larger machines to actually utilize the Manager's capabilites.
 
 
-#### Bootstrap Validations
+##### Bootstrap Validations
 
 During the bootstrap process, validations occur to verify minimum requirements. [Click here]({{< relref "manager/bootstrapping.md" >}}#bootstrap-validations) for more information on bootstrap validations.
 
-### Recommended Requirements
+#### Recommended Requirements
 
 The recommended requirements vary, based on the following:
 
@@ -38,7 +43,7 @@ The recommended requirements vary, based on the following:
 
 As a general recommendation for the average system, one Cloudify Manager requires at least 8GB of RAM and 4 vCPUs. Disk space requirements vary according to the volume of logs, events and metrics sent. You can configure log index rotation before bootstrapping.
 
-### Network
+#### Network
 
 Cloudify Manager listens on the following ports:
 
@@ -63,12 +68,12 @@ Cloudify Manager listens on the following ports:
 
 All ports are TCP unless noted otherwise.
 
-# OS Distributions
+## OS Distributions
 
-## Management Server
+### Management Server
 
 Cloudify can be bootstrapped on either CentOS 7.x or RHEL 7.x.
 
-# What's Next
+## What's Next
 
 Next, you must [bootstrap]({{< relref "manager/bootstrapping.md" >}}) a Cloudify Manager on the IaaS provider of your choice.

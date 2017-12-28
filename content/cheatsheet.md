@@ -1,13 +1,18 @@
 ---
 layout: bt_wiki
-title: Cheat Sheet
+
+
+
+##  Cheat Sheet
+
+
 category: internal
 draft: true
 weight:  700
 parent:  none
 ---
 
-# Text Formatting
+## Text Formatting
 
 {{% table %}}
 | **Description** | **Syntax** | **Output** |
@@ -17,7 +22,7 @@ parent:  none
 | Inline code | \`\`\`print "hello world!"\`\`\` | ```print "hello world!"``` |
 {{% /table %}}
 
-## Tags
+### Tags
 
 You can add decorative tags:
 
@@ -31,14 +36,14 @@ You can add decorative tags:
 
 {{< tag >}}POODLE{{< /tag >}}
 
-# Code Blocks
+## Code Blocks
 
 To add code blocks of a specific language, e.g. python, type this:
 
 ~~~md
 ```python
 
-# this is python code
+## this is python code
 
 def hello_world():
 
@@ -50,13 +55,13 @@ def hello_world():
 Output:
 
 ```python
-# this is python code
+## this is python code
 
 def hello_world():
   print "Hello World!"
 ```
 
-# Links
+## Links
 
 {{% table %}}
 | **Description** | **Syntax** | **Output** |
@@ -66,14 +71,14 @@ def hello_world():
 | Link to an anchor in page | ```[Text Formatting\](#text-formatting)```, where 'text-formatting' is the anchored DOM element id | [Text Formatting](#text-formatting) |
 {{% /table %}}
 
-## Link to latest
+### Link to latest
 To create a link that will always point to the latest version of the docs, use `/latest/`:
 ```md
 [I'm a link](/latest/intro/what-is-cloudify)
 ```
 Will redirect to `http://docs.getcloudify.org/<LATEST_VERSION_NUMBER>/intro/what-is-cloudify
 
-# Tables
+## Tables
 
 **Syntax**:
 
@@ -96,7 +101,7 @@ Will redirect to `http://docs.getcloudify.org/<LATEST_VERSION_NUMBER>/intro/what
 {{% /table %}}
 
 
-# Images
+## Images
 
 To add an image, copy it to a path of your choice within ```/static/images/```
 
@@ -108,9 +113,9 @@ You can then refer to the image path, relative to ```/static/images/```:
 | ```![Jon Lovitz]({{</* img "example/jonlovitz.jpg" */>}})```<br>where image is stored at /static/images/example/jonlovitz.jpg | ![Jon Lovitz]({{< img "example/jonlovitz.jpg" >}}) |
 {{% /table %}}
 
-# Panels
+## Panels
 
-## Tip
+### Tip
 
 **Syntax**:
 
@@ -120,7 +125,7 @@ You can then refer to the image path, relative to ```/static/images/```:
 
 {{% gsTip title="A friendly tip!" %}}If you're drunk, go home{{% /gsTip %}}
 
-## Info
+### Info
 
 **Syntax**:
 
@@ -130,7 +135,7 @@ You can then refer to the image path, relative to ```/static/images/```:
 
 {{% gsInfo title="FYI" %}}Unicorns are real{{% /gsInfo %}}
 
-## Note
+### Note
 
 **Syntax**:
 
@@ -140,7 +145,7 @@ You can then refer to the image path, relative to ```/static/images/```:
 
 {{% gsNote title="Here's a note" %}}Please remember to flush{{% /gsNote %}}
 
-## Warning
+### Warning
 
 **Syntax**:
 
@@ -150,7 +155,7 @@ You can then refer to the image path, relative to ```/static/images/```:
 
 {{% gsWarning title="ACHTUNG" %}}The gorilla bites!{{% /gsWarning %}}
 
-# Page Fields
+## Page Fields
 
 You can add custom fields to the page metadata and use these fields within the page.
 
@@ -159,7 +164,12 @@ You can add custom fields to the page metadata and use these fields within the p
 In page metadata (Front Matter):
 ```yaml
 ---
-title: my page
+
+
+
+##  my page
+
+
 
 favorite_food: icecream
 ---

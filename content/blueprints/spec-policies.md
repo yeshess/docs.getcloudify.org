@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Policies
+
+
+
+##  Policies
+
+
 category: Blueprints
 draft: false
 weight: 1200
@@ -17,7 +22,7 @@ Do not confuse the top-level `policies` section described here with policies tha
 The only supported policy type is the built-in `cloudify.policies.scaling`.
 {{% /gsNote %}}
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 policies:
@@ -29,7 +34,7 @@ policies:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
@@ -37,7 +42,7 @@ type        | yes      | string      | The policy type.
 properties  | no       | dict        | The specific policy properties. The properties schema is defined by the policy type.
 targets     | yes      | list        | A list of group names. The policy is applied on the groups specified in this list.
 
-## `cloudify.policies.scaling` Policy Schema
+### `cloudify.policies.scaling` Policy Schema
 
 Keyname           | Required | Type     | Default   | Description
 -----------       | -------- | ----     | ---       | -----------
@@ -49,7 +54,7 @@ max_instances     | no       | integer  | UNBOUNDED | The maximum number of perm
 `UNBOUNDED` may be used literally as the value for `max_instances`. Internally, it is stored as `-1`, which may also be used.
 {{% /gsNote %}}
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 node_templates:

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Built-in Workflows
+
+
+
+##  Built-in Workflows
+
+
 category: Workflows
 draft: false
 abstract: Description and details on Cloudify's built-in Workflows
@@ -12,14 +17,14 @@ default_workflows_source_link: https://github.com/cloudify-cosmo/cloudify-plugin
 {{% gsSummary %}}{{% /gsSummary %}}
 
 
-# Overview
+## Overview
 
 Cloudify comes with a number of built-in workflows - currently these are the workflows for application *install*, *uninstall*, *scale* and *heal*, as well as a generic workflow for executing operations called *execute_operation*.
 
 Built-in workflows are declared and mapped in the blueprint in [`types.yaml`]({{< relref "blueprints/built-in-types.md" >}}), which is usually imported either directly or indirectly via other imports.
 
 {{< gsHighlight  yaml  >}}
-# snippet from types.yaml
+## snippet from types.yaml
 workflows:
     install: default_workflows.cloudify.plugins.workflows.install
     uninstall: default_workflows.cloudify.plugins.workflows.uninstall
@@ -45,7 +50,7 @@ The implementations for these workflows can be found at [`cloudify-plugins-commo
 Built-in workflows are not special in any way - they use the same API and framework as any custom workflow is able to use, and one may replace them with different workflows with the same names.
 
 
-# The Install Workflow
+## The Install Workflow
 
 **Workflow name:** *install*
 
@@ -73,7 +78,7 @@ For each node, for each node instance (in parallel):
    by the node template relationships)
 </sub>
 
-# The Uninstall Workflow
+## The Uninstall Workflow
 
 **Workflow name:** *uninstall*
 
@@ -98,7 +103,7 @@ For each node, for each node instance (in parallel):
    by the node template relationships)
 </sub>
 
-# The Execute Operation Workflow
+## The Execute Operation Workflow
 
 **Workflow name**: *execute_operation*
 
@@ -144,7 +149,7 @@ For each of the remaining node instances:
 1. Note that the dependency may be indirect, e.g. in a case where instance A is dependent on instance B, which is in turn dependent on instance C, and only B was filtered out, instance A's operation execution will still only happen after instance C's operation execution.
 </sub>
 
-# The Heal Workflow
+## The Heal Workflow
 
 **Workflow name:** *heal*
 
@@ -230,7 +235,7 @@ This sub-graph determines the operations that will be executed during the workfl
 * The following relationships will be re-established: `war_1` **connected to** `database_1` and `webserver_host_1` **connected to** `floating_ip_1`.
 {{% /gsNote %}}
 
-# The Scale Workflow
+## The Scale Workflow
 
 **Workflow name:** *scale*
 
@@ -276,7 +281,7 @@ Detailed description of the terms *graph* and *sub-graph* that are used in this 
 {{% /gsNote %}}
 
 
-# The Install New Agents Workflow
+## The Install New Agents Workflow
 
 **Workflow name:** *install_new_agents*
 

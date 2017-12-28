@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: plugins
+
+
+
+##  plugins
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -15,18 +20,18 @@ A Cloudify plugin is an archive created by [wagon](http://github.com/cloudify-co
 
 See [plugins]({{< relref "plugins/overview.md" >}}) for more information.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### upload
+#### upload
 
-#### Usage 
+##### Usage 
 `cfy plugins upload [OPTIONS] PLUGIN_PATH`
 
 Upload a plugin to Cloudify Manager.
@@ -37,7 +42,7 @@ Upload a plugin to Cloudify Manager.
 Wagon (via the `--format` flag) enables you to create archives in both `tar.gz` and `zip` formats. Cloudify only supports wagon in the `tar.gz` format.
 {{% /gsNote %}}
 
-#### Optional flags
+##### Optional flags
 
 * `--private-resource` -  If set to `True`, the uploaded resource is only accessible by its creator. Otherwise, the resource
                           is accessible by all users that belong to the same tenant. (default: False)
@@ -46,7 +51,7 @@ Wagon (via the `--format` flag) enables you to create archives in both `tar.gz` 
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins upload cloudify_aws_plugin-1.4.4-py27-none-linux_x86_64-centos-Core.wgn
@@ -62,16 +67,16 @@ Plugin uploaded. The plugin's id is e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74
 {{< /gsHighlight >}}
 
 
-### download
+#### download
 
-#### Usage 
+##### Usage 
 `cfy plugins download [OPTIONS] PLUGIN_ID`
 
 Download a plugin from Cloudify Manager.
 
 `PLUGIN_ID` is the ID of the plugin to download.
 
-#### Optional flags
+##### Optional flags
 
 * `-o, --output-path TEXT` -	
 						The local path for the download.
@@ -79,7 +84,7 @@ Download a plugin from Cloudify Manager.
 						
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins download e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74
@@ -92,23 +97,23 @@ Plugin downloaded as e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74.tar.gz
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy plugins delete [OPTIONS] PLUGIN_ID`
 
 Delete a plugin from Cloudify Manager.
 
 `PLUGIN_ID` is the ID of the plugin to be deleted.
 
-#### Optional flags
+##### Optional flags
 
 *  `-f, --force` -    	Delete the plugin, even if there are deployments that are currently using it.
 * `-t, --tenant-name TEXT` - The name of the tenant of the plugin. If unspecified, the current tenant is used.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins delete e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74
@@ -120,15 +125,15 @@ Plugin deleted
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy plugins list [OPTIONS]`
 
 List all available plugins on Cloudify Manager.
 You can use this command to retrieve the IDs of the plugins you want to download or delete.
 
-#### Optional flags
+##### Optional flags
 
 * `--sort-by TEXT` - Key for sorting the list.
 * `--descending` -  Sort list in descending order. [default: False]
@@ -139,7 +144,7 @@ You can use this command to retrieve the IDs of the plugins you want to download
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins list
@@ -157,9 +162,9 @@ Plugins:
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 `cfy plugins get [OPTIONS] PLUGIN_ID`
 
 Retrieve information for a specific plugin.
@@ -167,13 +172,13 @@ Retrieve information for a specific plugin.
 
 `PLUGIN_ID` is the ID of the plugin for which to retrieve information.
 
-#### Optional flags
+##### Optional flags
 
 * `-t, --tenant-name TEXT` - The name of the tenant of the plugin. If unspecified, the current tenant is used.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins get e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74
@@ -191,9 +196,9 @@ Plugin:
 ...
 {{< /gsHighlight >}}
 
-### validate
+#### validate
 
-#### Usage 
+##### Usage 
 `cfy plugins validate [OPTIONS] PLUGIN_PATH`
 
 Validate a plugin.
@@ -205,7 +210,7 @@ format.
 `PLUGIN_PATH` is the path to wagon archive to validate.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins validate cloudify_aws_plugin-1.4.4-py27-none-linux_x86_64-centos-Core.wgn
@@ -218,9 +223,9 @@ Plugin validated successfully
 {{< /gsHighlight >}}
 
 
-### set-global
+#### set-global
 
-#### Usage
+##### Usage
 `cfy plugins set-global [OPTIONS] PLUGIN_ID`
 
 Set the plugin's availability to global
@@ -228,7 +233,7 @@ Set the plugin's availability to global
 `PLUGIN_ID` - The id of the plugin to set global.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy plugins set-global e90b1a09-6b56-4a92-b9cd-5fc4ef32ab74

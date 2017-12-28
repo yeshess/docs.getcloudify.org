@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Inputs
+
+
+
+##  Inputs
+
+
 category: Blueprints
 draft: false
 weight: 300
@@ -17,7 +22,7 @@ Beginning with [definitions version]({{< relref "blueprints/spec-versioning.md" 
 Also note that you can pass multiple `-i`  flags in the CLI, to pass multiple input structures or to pass wildcard-based paths to input files (e.g. `... -i *.yaml`) and directories containing input files (e.g. `... -i my_inputs_file_dir/`)
 {{% /gsNote %}}
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 inputs:
@@ -28,7 +33,7 @@ inputs:
     ...
 {{< /gsHighlight >}}
 
-# Schema
+## Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
@@ -36,7 +41,7 @@ description | no       | string      | An optional description for the input.
 type        | no       | string      | The required data type of the input. Not specifying a data type means the type can be anything, including a list, an array or a dictionary. Valid types: `string`, `integer`, `boolean`.
 default     | no       | \<any\>     | An optional default value for the input.
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 

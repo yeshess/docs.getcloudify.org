@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Utilities Plugin
+
+
+
+##  Utilities Plugin
+
+
 category: Plugins
 draft: false
 weight: 100
@@ -10,24 +15,24 @@ weight: 100
 The Utilities plugin contains several utilities for extending the use of Cloudify.
 
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python versions:
   * 2.7.x
 * Pip 9.0.1
 
 
-# Compatibility
+## Compatibility
 
 * Tested with Cloudify Premium 4.0.1 and Community Version 17.3.31
 
 
-# Release History
+## Release History
 
 See [releases](https://github.com/cloudify-incubator/cloudify-utilities-plugin/releases).
 
 
-# Features
+## Features
 
 - [Deployment Proxy](https://github.com/cloudify-incubator/cloudify-utilities-plugin/blob/master/cloudify_deployment_proxy/README.md)
 - [SSH Key](https://github.com/cloudify-incubator/cloudify-utilities-plugin/blob/master/cloudify_ssh_key/README.md)
@@ -35,7 +40,7 @@ See [releases](https://github.com/cloudify-incubator/cloudify-utilities-plugin/r
 - [Terminal](https://github.com/cloudify-incubator/cloudify-utilities-plugin/blob/master/cloudify_terminal/README.md)
 
 
-# Examples
+## Examples
 
 
 Deployment Proxy:

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Creating Custom Workflows
+
+
+
+##  Creating Custom Workflows
+
+
 category: Workflows
 draft: false
 abstract: A guide to authoring Cloudify Workflows
@@ -16,7 +21,7 @@ This section is aimed at advanced users. Before reading it, make sure you have a
 {{% /gsNote %}}
 
 
-# Introduction to Implementing Workflows
+## Introduction to Implementing Workflows
 
 Workflows implementation shares several similarities with plugins implementation:
 
@@ -47,13 +52,13 @@ There are two approaches to implementing workflows:
 * ***Standard workflows*** - workflows which simply use the [APIs](#apis) to execute and manage tasks.
 * ***Graph-based workflows*** - workflows which use the APIs on top of the Graph framework, a framework which offers a simplified process of scheduling and creating dependencies among tasks, as well as built-in support for some of the common aspects of workflows (e.g. [cancellation support](#cancellation-support)).
 
-# APIs
+## APIs
 
 The `ctx` object used by workflow methods is of type `CloudifyWorkflowContext`. It offers access to context data and various services. Additionally, any node, node instance, relationship or relationship instance objects returned by the context object (or from objects returned by the context object) will be wrapped in types which offer additional context data and services.
 
 For full API reference, refer to the documentation over at [cloudify-plugins-common.readthedocs.org](http://cloudify-plugins-common.readthedocs.org/en/3.3/workflows.html).
 
-# Blueprint Mapping
+## Blueprint Mapping
 
 As is the case with plugins, it's the workflow author's responsilibity to write a yaml file (named `plugin.yaml` by convention) which will contain both the workflow mapping as well as the workflow's plugin declaration.
 
@@ -106,7 +111,7 @@ It's currently impossible to override a workflow mapping in the blueprint.
 {{% /gsNote %}}
 
 
-# Cancellation Support
+## Cancellation Support
 
 A workflow should have support for graceful (AKA *Standard*) cancellation. It is up to the workflow author to decide the semantics of *graceful* in this regard (and document them properly) - One workflow may merely stop the execution, while another may perform a rollback, and so on.
 
@@ -146,7 +151,7 @@ Neither *standard workflows* nor *graph-based workflows* have any control over f
 
 
 
-# Step by Step Tutorial
+## Step by Step Tutorial
 
 In this tutorial we will create from scratch a custom graph-based workflow whose purpose is to execute plugin operations.
 
@@ -165,11 +170,11 @@ The tutorial will offer some guidance and reference about the following:
 * Workflow parameters
 
 
-## Requirements
+### Requirements
 
 Similarly to plugins, workflows require the [cloudify-plugins-common](https://github.com/cloudify-cosmo/cloudify-plugins-common) package to be able to use the Cloudify workflows API and framework.
 
-## Implementing the Workflow
+### Implementing the Workflow
 
 We'll be implementing the workflow one step at a time, where in each step we'll have a valid, working workflow, but with more features than the one in the previous step.
 
@@ -389,7 +394,7 @@ Step explanation:
 We could continue improving our workflow and extending its features, but in the scope of this tutorial, this last version of the workflow will be the one we'll be using throughout the remaining tutorial sections.
 
 
-## Blueprint Mappings
+### Blueprint Mappings
 The workflow plugin declaration will look like this:
 {{< gsHighlight  yaml  >}}
 plugins:
@@ -429,16 +434,16 @@ The workflow has four parameters declared:
 * The optional `operation_kwargs` parameter, which defaults to an empty dictionary.
 * The optional `is_node_operation` parameter, which defaults to `true`.
 
-## Packaging the Workflow
+### Packaging the Workflow
 
 Since workflows are joined to the blueprint the same way plugins do, they are also packaged the same way. Refer to the [Plugin creation guide]({{< relref "plugins/creating-your-own-plugin.md" >}}) for more information.
 
 
-# Advanced Usage
+## Advanced Usage
 
 What follows are code snippets showing some advanced API that is exposed by the workflow framework.
 
-## Task Handlers
+### Task Handlers
 Task handlers are callbacks you set on tasks. They get called when a task fails or succeeds.
 
 {{< gsHighlight python >}}
@@ -477,7 +482,7 @@ def use_task_handlers(**kwargs):
     return graph.execute()
 {{< /gsHighlight >}}
 
-## Deployment Modification
+### Deployment Modification
 
 Deployment modification changes the data model to add or remove node instances, and returns the modified node instances for the workflow to operate on them. The [built-in scale workflow]({{< relref "workflows/built-in-workflows.md" >}}#the-scale-workflow) makes use of this API to scale a node instance up or down.
 
@@ -543,7 +548,7 @@ def use_modify(**kwargs):
         modification.finish()
 {{< /gsHighlight >}}
 
-## Subgraphs (Experimental)
+### Subgraphs (Experimental)
 
 Subgraphs provide means for easier modeling of complex workflows, by grouping certain operations into their own subgraphs and creating dependencies between different subgraphs.
 Subgraphs expose the Task and Graph API's, i.e. they have methods on them to create dependencies between
@@ -591,7 +596,7 @@ def use_subgraphs(**kwargs):
     return graph.execute()
 {{< /gsHighlight >}}
 
-## Contained Subgraph
+### Contained Subgraph
 Get all node instances that are contained in a node instance. The [built-in heal workflow]({{< relref "workflows/built-in-workflows.md" >}}#the-heal-workflow)
 makes use of this API to calculate all node instances that belong to a `cloudify.nodes.Compute` node that should be healed.
 {{< gsHighlight python >}}

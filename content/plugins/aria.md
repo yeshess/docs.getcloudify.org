@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: ARIA Plugin
+
+
+
+##  ARIA Plugin
+
+
 category: Plugins
 draft: false
 weight: 100
@@ -10,19 +15,19 @@ weight: 100
 The ARIA plugin enables to use TOCSA-based service templates for deploying services and applications.
 
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python version 2.7.x
 
 
-# Compatibility
+## Compatibility
 
 This version of Cloudify is only compatible with ARIA Plugin version 1.0. 
 
 The ARIA plugin uses ARIA version 0.1.1.
 
 
-# Terminology
+## Terminology
 
 * **Service-Template** - A TOSCA equivalent to Cloudify's blueprint concept. 
 For additional info please refer to the TOSCA [spec](http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/os/TOSCA-Simple-Profile-YAML-v1.0-os.html#_Toc471725224).  
@@ -34,11 +39,11 @@ service template (and any of its artifacts) and the meta data. For additional
  info please refer to the TOSCA [spec](http://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.0/os/TOSCA-Simple-Profile-YAML-v1.0-os.html#_Toc471725246).
 
 
-# Types
+## Types
 
 This section describes the [node type]({{< relref "blueprints/spec-node-types.md" >}}) definitions. There is one node type, representing an ARIA service.
 
-## cloudify.aria.nodes.Service
+### cloudify.aria.nodes.Service
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -84,7 +89,7 @@ Then the `cloudify.aria.nodes.Service` node containing the CSAR with the above s
   * `cloudify.interfaces.lifecycle.delete` Deletes the service and the service template.
 
 
-# Examples
+## Examples
 
 In this section we will run the ARIA hello-world example (which is written in 
 TOSCA) via Cloudify, using the Cloudify ARIA Plugin.

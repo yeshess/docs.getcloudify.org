@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Cloudify Architecture
+
+
+
+##  Cloudify Architecture
+
+
 category: Intro
 draft: true
 weight: 400
@@ -10,7 +15,7 @@ weight: 400
 Cloudify is an open source cloud orchestration framework. Cloudify enables you to model applications and services and automate their entire life cycle, including deployment on any cloud or data center environment, monitoring all aspects of a deployed application, detecting issues and failure, manually or automatically remediating such issues, and performing ongoing maintenance tasks.
 
 
-# Application Orchestration
+## Application Orchestration
 
 Your application in its entirety (infrastructure, middleware, application code, scripts, tool configuration, metrics, and logs) aree described in a blueprint. Written in a human-readable YAML format, a blueprint enables high granularity in the configuration of your application.
 
@@ -18,7 +23,7 @@ You can define the complete lifecycle of each part of your application in a blue
 
 Cloudify launches the compute instances, and configures network, storage and security, to provide the necessary infrastructure resources to your application. Cloudify then executes scripts (remotely via SSH, or locally on the host), or invokes configuration management tools to configure your servers and deploy your middleware and code.
 
-# Application Maintenance
+## Application Maintenance
 
 The Cloudify custom workflows make it simple to change your application’s structure.
 
@@ -27,7 +32,7 @@ Cloudify provides metrics and log collection capabilities, to stream data to the
 Data aggregation and visualization within Cloudify enables you to execute the different workflows, so that either you or Cloudify itself can make smart, actionable decisions based on business/application KPIs. Those decisions can either manually or automatically trigger workflows such as scaling or healing on the tactical front, or as application behavior analysis on the strategic front.
 
 
-# Pluggability
+## Pluggability
 
 A plugin is an abstraction within which a tool is installed, configured and executed. Cloudify plugins complete the framework. Cloudify-specific plugins can run scripts, CM tools, metrics and log aggregators, or any other tool.
 
@@ -35,12 +40,12 @@ For example, the Cloudify [Script plugin]({{< relref "plugins/script.md" >}}) en
 
 Plugins are written in Python, meaning that writing them is straightforward. You can write and deploy your own plugins and import them in your blueprints.
 
-# Standardization
+## Standardization
 
 Cloudify's DSL (Domain Specific Language) is based on [TOSCA](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca) (Topology and Orchestration Specification for Cloud Applications) - an emerging standard led by Oasis.
 
 
-# Open Source Tools
+## Open Source Tools
 
 Cloudify comprises several open-source tools, and our Python code, which enables easy composition.
 

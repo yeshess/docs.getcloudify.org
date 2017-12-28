@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Uploading a Blueprint
+
+
+
+##  Uploading a Blueprint
+
+
 category: Manager Intro
 draft: false
 weight: 400
@@ -10,7 +15,7 @@ Before Cloudify Manager can deploy your blueprint, you must upload it. You can u
 
 Either use a blueprint that you have written or download an [example blueprint](https://github.com/cloudify-cosmo/cloudify-nodecellar-example) to upload.
 
-## Uploading via the CLI
+### Uploading via the CLI
 
 From the Cloudify command-line interface, you can upload your blueprint to Cloudify Manager. You must specify a path to a blueprint file. Cloudify compresses the folder and its contents.
 
@@ -23,7 +28,7 @@ $ cfy blueprints upload -b BLUEPRINT_ID -p BLUEPRINT_FILE_LOCATION
 {{< /gsHighlight >}}
 
 
-## Uploading a Blueprint via the Cloudify Web Interface
+### Uploading a Blueprint via the Cloudify Web Interface
 
 If you are a Premium version user, you can upload a pre-packaged blueprint archive, such as *.tar, *.tar.gz, *.tar.bz, *.zip., using the Cloudify Manager UI.
 
@@ -38,7 +43,7 @@ If you are a Premium version user, you can upload a pre-packaged blueprint archi
 5. Click **Upload** to upload the upload the blueprint package.
 
 
-## Uploading a Blueprint via the Command Line
+### Uploading a Blueprint via the Command Line
 
 The following scenario describes how to use the CLI to upload the Nodecellar blueprint.
 
@@ -97,6 +102,6 @@ In this case, the following nodes exist:
   ![Nodecellar Blueprint]({{< img "manager/nodecellar_openstack_topology.png" >}})
 
 
-# What's Next
+## What's Next
 
 You can now [deploy]({{< relref "manager/create-deployment.md" >}}) your blueprint.

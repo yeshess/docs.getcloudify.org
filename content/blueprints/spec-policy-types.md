@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Policy Types
+
+
+
+##  Policy Types
+
+
 category: Blueprints
 draft: false
 weight: 1400
@@ -9,7 +14,7 @@ weight: 1400
 
 `policies` enable you to analyze a stream of events that correspond to a group of nodes (and their instances).
 
-# Declaration
+## Declaration
 
 The `policy_types` section is a hash in which each item in the hash represents an policy type.
 
@@ -23,7 +28,7 @@ policy_types:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
@@ -33,7 +38,7 @@ properties  | no       | dict        | Optional properties schema for the policy
 
 <br>
 
-# Examples
+## Examples
 
 {{< gsHighlight  yaml >}}
 policy_types:
@@ -62,7 +67,7 @@ policy_types:
 
 {{< /gsHighlight >}}
 
-# Usage
+## Usage
 
 This section describes how to define a policy type. To _use_ policy types,
 see the [Groups]({{< relref "blueprints/spec-groups.md" >}}) specification.

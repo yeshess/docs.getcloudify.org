@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Creating Custom Widgets
+
+
+
+##  Creating Custom Widgets
+
+
 category: Web Interface
 draft: false
 weight: 175
@@ -14,7 +19,7 @@ Widgets can be written using two different methods.
 
 * **Pure Vanilla Java Script** which enables attachment of an HTML template file. The callbacks for this method are described later in this topic.
 
-## Widget File Structure
+### Widget File Structure
 
 A widget comprises a number of files, as described below.
 
@@ -47,11 +52,11 @@ Using this method, the file system will look as follows:
       widget.css
 ```
 
-## Defining the Widget
+### Defining the Widget
 
 Each `widget.js` file must have a call to the `Stage.defineWidget` global function. 
 
-### Example 
+#### Example 
 The following code demonstrates how easy it is to create a simple widget. 
 You can copy this code and put it in a `widget.js` file to produce a fully working widget (refer to the previous paragraph for file structure guidelines).
 
@@ -77,7 +82,7 @@ Stage.defineWidget({
 });
 ```
 
-### Widget settings 
+#### Widget settings 
 As seen in the example above, there is a number of configuration fields that you can provide when designing a widget. 
 
 The `Stage.defineWidget` function receives a settings object with the options described in the following table.
@@ -104,14 +109,14 @@ Option                 | Type    | Default | Description
 * `Stage.GenericConfig.SORT_COLUMN_CONFIG(string)` - Column name to sort by
 * `Stage.GenericConfig.SORT_ASCENDING_CONFIG(boolean)` - Change sorting order (true=ascending)
 
-#### fetchUrl
+##### fetchUrl
 There are two primary ways of pulling data from remote sources: `fetchUrl` and `fetchData()`.
 
 `fetchUrl` is an object member and may be defined either as a string or an object with multiple string properties (*property:URL*) where each property represents a separate URL to query.
 A single URL's results will be available directly in the *data* object.
 In case `fetchUrl` is defined with multiple URLs, the results will be accessible by property name of this URL (i.e. *data.nodes*).
 
-##### Single URL example
+###### Single URL example
 ```javascript
 fetchUrl:  'localhost:50123/public/nodes'
 // ...
@@ -121,7 +126,7 @@ render: function(widget,data,error,toolbox) {
 }
 ```
 
-##### Mulitple URL example
+###### Mulitple URL example
 ```javascript
 fetchUrl: {
     nodes: '[manager]/nodes?_include=id,deployment_id,blueprint_id,type,type_hierarchy,number_of_instances,host_id,relationships,created_by[params:blueprint_id,deployment_id,gridParams]',
@@ -149,7 +154,7 @@ fetchUrl: '[manager]/executions?is_system_workflow=false[params]'
       This mode is **exclusive** - parameters not specified explicitly will be skipped.
       When using selective param picking (`[params:param_name]`) you can use a pre-defined `gridParams` tag to include all pagination parameters (`_size`, `_offset`, `_sort`) instead of specifying explicitly  each of the three.
 
-##### fetchUrl - Inclusive params 
+###### fetchUrl - Inclusive params 
 
 The following example illustrates *fetchUrl* with both tokens along with resulting URL:
 
@@ -180,7 +185,7 @@ endpoint name   | nodes?                                  | Remaining part of th
 generic params  | &_sort=-column_name&_size=5&_offset=0   | Parameters that were implicitly added to request. These parameters are inferred from the GenericConfig objects in initialConfiguration and are responsible for pagination of the results. It is possible to omit them by explicitly specifying param names to be used like so `[params:my-param]`. Alternatively, gridParams (sort, size, offset) can be simply removed from `initialConfiguration`.
 custom params   | &sampleFuncParam=dummy                  | Custom parameters can be defined in `fetchParams()` function. Each custom parameter must be returned as a property of an Object returned by `fetchParams()` function.
 
-##### fetchUrl - Exclusive params 
+###### fetchUrl - Exclusive params 
 
 The same URL, this time with explicit param names (and the `gridParams` tag):
 
@@ -205,13 +210,13 @@ fetchParams: function(widget, toolbox) {
 **Result URL:** http://localhost:3000/sp/?su=/api/v3.1/nodes?&sampleFuncParam=dummy&_sort=-column_name&_size=5&_offset=0
 
 
-### Widget Functions
+#### Widget Functions
 The following functions are available for widgets.
 
-#### init()
+##### init()
 Called when the widget definition is loaded, which occurs after the system is loaded. Can be used to define certain elements, for example classes and objects that will be used in the widget definition.
 
-#### render(widget, data, error, toolbox)
+##### render(widget, data, error, toolbox)
 Called each time that the widget needs to draw itself. This might occur when the page is loaded, widget data is changed, context data is changed, widget data is fetched, and so on. `render` parameters are:   
 * The [widget object]({{< relref "manager_webui/custom-widgets.md#widget-object" >}}) itself
 * The fetched data, either using `fetchUrl` or `fetchData`. The data is `null` if `fetchData` or `fetchUrl` is not specified. The data will also pass `null` to the `render` method until data is fetched. If you are expecting data, you can render a "loading" indicator.
@@ -243,7 +248,7 @@ render: function(widget,data,error,toolbox) {
 }
 ```
 
-##### Using ready components in render()
+###### Using ready components in render()
 Although using plain HTML tags gives you extreme flexibility, usually it is much quicker to design your widget with the use of Cloudify UI ready-made components.
 These components were designed with UI uniformity and ease-of-use in mind, and as are very easy to learn and use.
 The following example illustrates how to use a `KeyIndicator` component:
@@ -266,7 +271,7 @@ Similarly, you can import multiple components in the same line, ie:
 
 There is a number of components ready for use in the `Stage.Basic` library. See [Basic components reference documentation]({{< relref "manager_webui/custom-widgets-ref/index.html" >}}) for details.
 
-##### Accessing data in render()
+###### Accessing data in render()
 There can be several independent data sources for your widget. Two most commonly used are the `configuration` and `data` objects.
 The following example illustrates how to access both of them:
 
@@ -314,12 +319,12 @@ To reset it to it's default value, the widget must be removed and re-added to th
 
 Moreover, please remember to remove and re-add the widget to the dashboard if changing the `initialConfiguration` field. It is only loaded for newly 'mounted' widgets.
 
-#### postRender(el, widget, data, toolbox)
+##### postRender(el, widget, data, toolbox)
 **Non-React widgets only.**
 PostRender is called immediately after the widget has been made visible in the UI. 
 This function has access to the same objects as the `render` function with one addition - the `el` object containing a reference to the widget's container (parent) object.
 
-#### fetchData(widget, toolbox)
+##### fetchData(widget, toolbox)
 An alternative to using `fetchUrl` is the `fetchData()` function. It provides greater flexibility when you need to pre-process your results or chain them into nested Promises (ie. Pull a list of URLs and resolve each of those URLs).
 The return value for fetchData() is expected to be a promise. As such if you would like to return a primitive value you would need to wrap it in a promise:
 
@@ -359,7 +364,7 @@ render(widget,data,error, toolbox) {
 
 **Note**: `fetchUrl` and `fetchData()` are mutually exclusive, that is if you define fetchUrl in your widget, then `fetchData()` definition will be ignored.
 
-#### fetchParams(widget, toolbox)
+##### fetchParams(widget, toolbox)
 `fetchParams()` function delivers parameters to `fetchData()` function which can be applied with `[params]` wildcard.
 
 Example:
@@ -372,7 +377,7 @@ fetchParams: function(widget, toolbox) {
 ```
  
 
-### Widget Object
+#### Widget Object
 
 The `widget` object has the following attributes:
 
@@ -386,13 +391,13 @@ Attribute   | Description
 `y`         | The _y_ location of the widget on the page
 `definition`| The widget definition object as it was passed to `defineWidget` method. All widget definitions are contained in the widget definition object. The only additional field that the widget can access is `template`, which is fetched from the HTML and added to the widget definition.
 
-### Toolbox Object
+#### Toolbox Object
 
 The `toolbox` object provides the widget with tools to communicate with the application and other widgets. It also provides generic tools that the widget might require.
 
 The toolbox provides access to the following tools:
 
-#### getEventBus() 
+##### getEventBus() 
 Used to register (listen to) and trigger events. The event bus is used to enable a widget to broadcast an event, usually a change that it made that will affect others. For example, if a blueprints widget creates a new deployment, other widgets need to be aware that the the deployment list has changed. The listening widgets then call a `refresh`. `Event bus` supports the following methods:   
 * `on (event, callback, context)`
 * `trigger (event)`
@@ -416,7 +421,7 @@ _deleteDeployment() {
 } 
 ```
 
-#### getManager()
+##### getManager()
 
 Returns manager object. Used to read current manager's properties. Available calls:
 ```javascript
@@ -428,7 +433,7 @@ getSelectedTenant()
 doGetFull(url, params, parseResponse, fullData, size)
 ```
 
-#### getExternal() 
+##### getExternal() 
 Used to access the connected Cloudify Manager. The Manager provides access to the Manager REST API. The URL is the service URL, without the `/api/vX.X`   
 ```javascript
 doGet(url,params)
@@ -459,29 +464,29 @@ doUpload(blueprintName, blueprintFileName, file) {
 
 Please note that it is recommended to use `fetchData()` instead of `doGet(URL, params)` since `fetchData()` not only utilizes `doGet()` but also gives easy access to helper params.
 
-#### getInternal()
+##### getInternal()
 Same as `getExternal()` but on a secured connection. All headers are appended with an 'Authentication-Token'.
 
-#### getNewManager(ip)
+##### getNewManager(ip)
 Returns a manager object connected on the specified IP. May be needed in order to join a different manager (eg. for cluster joining).
 
-#### getContext() 
+##### getContext() 
 A widget context gives access to the application context. Using the context we can pass arguments between widgets, for example when a blueprint is selected, set the context to the selected blueprint, and all the widgets that can filter by blueprint can read this value and filter accordingly.
 
 The context supports these methods:
 * setValue(key,value)
 * getValue(key) - returns value
 
-#### getConfig()
+##### getConfig()
 Returns global widget configuration as defined in conf/widgets.json.
 
-#### refresh()
+##### refresh()
 If we did some actions in the widget that will require fetching the data again (for example we added a record) we can ask the app to refresh only this widget by calling refresh().
 
-#### loading(boolean)
+##### loading(boolean)
 Will show/hide a loading spinner in widget header. **Not allowed in render() and postRender()** methods as it changes store's state leading to render() and postRender() re-run.
   
-#### drillDown(widget,defaultTemplate,drilldownContext)
+##### drillDown(widget,defaultTemplate,drilldownContext)
 Drilling down to a page requires passing the drilldown page template name. Templates will be described in the next section. When a widget is on a page, and drilldown action done (through link click event to a button for example), if it's the first time we access this drilldown page, the app will create a new page based on the passed template. Once this page is created the user can edit it like any other page. All next accesses to this page will use this page.
 Also you can pass a 'drilldownContext' to the drilldown page. This context will be saved on the URL and will be available through the app context. This value will be saved upon refresh, so if a user drilldown to a page, and then refreshes the page, the context will be saved (for example - selected deployment in drilldown deployment page)
 
@@ -542,7 +547,7 @@ The 'deployment' template looks like this:
 }
 ```
 
-#### Drilldown page templates
+##### Drilldown page templates
 Drill down page templates are defined in the '/templates' library.
 
 The library looks like this:
@@ -589,7 +594,7 @@ For example:
 }
 ```
 
-### Additional libraries that are available to a widget
+#### Additional libraries that are available to a widget
 **moment** - date/time parsing utility. [Moment documentation](http://momentjs.com/docs/)
 
 for example:
@@ -626,7 +631,7 @@ _.each(items, (item)=>{
 });
 ```
 
-### Widget template
+#### Widget template
 
 The widget template is an html file written with [lodash template engine](https://lodash.com/docs/4.15.0#template).
  

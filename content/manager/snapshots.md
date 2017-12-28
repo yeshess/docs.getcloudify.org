@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Snapshots
+
+
+
+##  Snapshots
+
+
 category: Manager
 draft: false
 weight: 1300
@@ -25,6 +30,6 @@ If you attempt to restore a snapshot to a Cloudify Manager that is not clean, th
 During any snapshot restore process where it is possible to do so, the old manager should be kept online throughout the process. [See upgrade docs for more details]({{< relref "installation/upgrade_4-0-0.md" >}}).
 {{% /gsNote %}}
 
-## Using the Web UI
+### Using the Web UI
 Snapshot management is performed via the [System Resources]({{< relref "manager_webui/plugins-snapshots-page.md" >}}) page in the Web interface. You must have `admin` credentials to create and restore snapshots.
 

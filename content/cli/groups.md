@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: groups
+
+
+
+##  groups
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,7 +16,7 @@ The `cfy groups` command is used to view information on the different groups in 
 
 You can use the command to list all groups.
 
-#### Optional Flags
+##### Optional Flags
 
 These will work on each command:
 
@@ -20,19 +25,19 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy groups list [OPTIONS]`
 
 Lists all groups for a deployment.
 
 `DEPLOYMENT_ID` is the ID of the deployment for which to list groups.
 
-#### Required flags
+##### Required flags
 
 * `-d, --deployment-id TEXT` - 
 						The ID of the deployment for which to list groups.
@@ -40,7 +45,7 @@ Lists all groups for a deployment.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy groups list -d hello_world

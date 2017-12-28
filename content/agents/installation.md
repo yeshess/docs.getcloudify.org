@@ -1,6 +1,11 @@
 ---
 
-title: Installation
+
+
+
+##  Installation
+
+
 category: Agents
 draft: false
 weight: 120
@@ -10,7 +15,7 @@ sc_link: https://technet.microsoft.com/en-us/library/bb490995.aspx
 
 ---
 
-## Installation script
+### Installation script
 
 The same installation script is used in all of the installation methods.
 This is either a `bash` script on Linux or a `powershell` script on Windows.
@@ -20,7 +25,7 @@ The script downloads the agent package from the manager (over port 53333),
 extracts it on the agent host, creates a daemon and starts it.
 
 
-## Installation methods
+### Installation methods
 
 There are several methods by which the installation script is distributed
 to the agent host and executed.
@@ -101,7 +106,7 @@ This includes Docker, Chef and Puppet plugins, among others. To work around this
     * It will not be possible to install a [Diamond monitoring agent](http://diamond.readthedocs.org/) using the [Diamond plugin]({{< relref "plugins/diamond.md" >}}) because this plugin requires an agent to run. However, you can install your own monitoring agent using a cloud-init / the Fabric plugin.
 
 
-### Specifying the Installation Method
+#### Specifying the Installation Method
 To specify the installation method that will be used, set the `install_method` property in the compute node `agent_config` property. For example:
 
 ```yaml

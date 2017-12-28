@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: profiles
+
+
+
+##  profiles
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -13,24 +18,24 @@ Each profile can have its own credentials for managers and Cloudify various envi
 
 See [profiles]({{< relref "profiles/overview.md" >}}) for more information.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy profiles list [OPTIONS]`
 
 List all profiles.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles list
@@ -48,15 +53,15 @@ Profiles:
 ...
 {{< /gsHighlight >}}
 
-### show-current
+#### show-current
 
-#### Usage 
+##### Usage 
 `cfy profiles show-current [OPTIONS]`
 
 Displays your current active profile and its properties.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles show-current
@@ -73,9 +78,9 @@ Active profile:
 {{< /gsHighlight >}}
 
 
-### export
+#### export
 
-#### Usage 
+##### Usage 
 `cfy profiles export [OPTIONS]`
 
 Export all profiles to a file
@@ -88,13 +93,13 @@ If you include the SSH keys of your profiles in the archive, after the profiles 
 If `-o / --output-path` is omitted, the archive's name will be `cfy-
 profiles.tar.gz`.
 
-#### Optional flags
+##### Optional flags
 
 *  `--include-keys` - 	Include SSH key files in the archive.
 *  `-o, --output-path TEXT` - The local path for the download.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles export
@@ -107,9 +112,9 @@ You can import the profiles by running `cfy profiles import PROFILES_ARCHIVE`
 ...
 {{< /gsHighlight >}}
 
-### import
+#### import
 
-#### Usage 
+##### Usage 
 `cfy profiles import [OPTIONS] ARCHIVE_PATH`
 
 Import profiles from a profiles archive.
@@ -121,13 +126,13 @@ overwritten (any other profiles will be left intact).
 
 `ARCHIVE_PATH` is the path to the profiles archive to import.
 
-#### Optional flags
+##### Optional flags
 
 * `--include-keys`  WARNING: Imports exported keys to their original locations.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles import cfy-profiles.tar.gz
@@ -140,9 +145,9 @@ You can list profiles using `cfy profiles list`
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy profiles delete [OPTIONS] PROFILE_NAME`
 
 Delete a profile.
@@ -150,7 +155,7 @@ Delete a profile.
 `PROFILE_NAME` is the IP of the Cloudify Manager the profile manages.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles delete 10.239.2.241
@@ -162,9 +167,9 @@ Profile deleted
 ...
 {{< /gsHighlight >}}
 
-### use
+#### use
 
-#### Usage 
+##### Usage 
 `cfy profiles use [OPTIONS] MANAGER_IP`
 
 Control a specific Cloudify Manager.
@@ -174,7 +179,7 @@ Control a specific Cloudify Manager.
 Additional CLI commands are added after a Cloudify Manager is used.<br> 
 To stop using Cloudify Manager, you can run `cfy init -r`.
 
-#### Optional flags
+##### Optional flags
 
 *  `--profile-name TEXT` -  Name of the profile to use.
 *  `-s, --ssh-user TEXT` -  The SSH user on the host machine with which you
@@ -193,7 +198,7 @@ To stop using Cloudify Manager, you can run `cfy init -r`.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 cfy profiles use 10.239.2.241 -t default_tenant -u admin -p admin
@@ -209,15 +214,15 @@ Using manager 10.239.2.241 with port 80
 ...
 {{< /gsHighlight >}}
 
-### purge-incomplete
+#### purge-incomplete
 
-#### Usage 
+##### Usage 
 ` cfy profiles purge-incomplete [OPTIONS]`
 
 Purge all profiles for which the bootstrap state is incomplete.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles purge-incomplete
@@ -229,15 +234,15 @@ Purge complete
 ...
 {{< /gsHighlight >}}
 
-### set
+#### set
 
-#### Usage 
+##### Usage 
 `cfy profiles set [OPTIONS]`
 
 Set the profile name, manager username and/or password and/or tenant in
   the *current* profile
 
-#### Optional flags
+##### Optional flags
 
 *  `--profile-name TEXT` -  Name of the profile to use.
 *  `-u, --manager-username TEXT` - Manager username used to run commands on the
@@ -250,7 +255,7 @@ Set the profile name, manager username and/or password and/or tenant in
                                  correct (default:False)
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles set -u admin
@@ -264,15 +269,15 @@ Settings saved successfully
 ...
 {{< /gsHighlight >}}
 
-### unset
+#### unset
 
-#### Usage 
+##### Usage 
 `cfy profiles unset [OPTIONS]`
 
 Clear the manager username and/or password and/or tenant from the
   *current* profile.
 
-#### Optional flags
+##### Optional flags
 
 *  `-u, --manager-username` - Manager username used to run commands on the
                                  manager.
@@ -284,7 +289,7 @@ Clear the manager username and/or password and/or tenant from the
                                  correct. (default:False)
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy profiles unset -u

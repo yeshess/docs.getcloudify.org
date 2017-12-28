@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Metrics Visualization
+
+
+
+##  Metrics Visualization
+
+
 category: Web Interface
 draft: true
 abstract: Cloudify Grafana-Based Metrics Visualization
@@ -30,7 +35,7 @@ You can customize the dashboard according to your preferences, and save it as a 
 
 ![The monitoring]({{< img "ui/ui_monitoring.jpg" >}})
 
-### Default Dashboard
+#### Default Dashboard
 
 The default dashboard is a set of graphs that Cloudify initializes if another dashboard does not exist.
 The default metrics provide a good base from which you can customize your dashboard.<br>
@@ -43,12 +48,12 @@ The default dashboard includes the following metrics:
 * Network IO - RX
 * Network IO - TX
 
-## Configuring your Blueprint for Metrics Collection and Shipping
+### Configuring your Blueprint for Metrics Collection and Shipping
 
 The default dashboard only displays metrics when the blueprint is configured to ship metrics that correspond with the default dashboard's configured view. To see an example of an already configured blueprint, go to [cloudify-nodecellar-example]({{< field "cloudify_nodecellar_example" >}}).
 
 
-## Example - Customizing your Dashboard
+### Example - Customizing your Dashboard
 
 To begin customizing your graph, click on the panel's title, then click **Edit** to open edit mode.
 
@@ -66,7 +71,7 @@ To begin customizing your graph, click on the panel's title, then click **Edit**
 * On the **Display Styles** tab, you can change the colors and styles of the panel.  
   ![The monitoring panel edit mode of styles]({{< img "ui/ui-monitoring-edit-styles.jpg" >}})
 
-# Features Guide
+## Features Guide
 The [Grafana]({{< field "grafana" >}}) guide can help you get started and acquainted with the monitoring interface. Following are links to the key sections of the guide.
 
 * [Getting started]({{< field "grafana_getting_started" >}})
@@ -78,7 +83,7 @@ The [Grafana]({{< field "grafana" >}}) guide can help you get started and acquai
 * [Playlist]({{< field "grafana_playlist" >}})
 * [Export and Import]({{< field "grafana_export_and_import" >}})
 
-## Tips and Shortcuts from the [Grafana]({{< field "grafana" >}}) Documentation
+### Tips and Shortcuts from the [Grafana]({{< field "grafana" >}}) Documentation
 Use the following tips and shortcuts to simplify configuring or editing the metrics display.<br>
 * Click the graph's title and in the dropdown menu quickly change the span or duplicate the panel.
 * Press **Ctrl+S** to save the current dashboard.

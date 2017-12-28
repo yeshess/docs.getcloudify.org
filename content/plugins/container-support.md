@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: A Guide To Cloudify Container Support For Kubernetes And Docker
+
+
+
+##  A Guide To Cloudify Container Support For Kubernetes And Docker
+
+
 category: Plugins
 draft: false
 weight: 1450
@@ -10,7 +15,7 @@ weight: 1450
 Cloudify supports integrations with Docker and Docker-based container managers, such as Kubernetes. When orchestrating container orchestrators, Cloudify focuses on the infrastructure layer, managing lifecycle events between the container and the non-container worlds.
 
 
-## Infrastructure Orchestration
+### Infrastructure Orchestration
 
 
 Cloudify can be used to deploy, heal, scale, and tear down container clusters.
@@ -21,7 +26,7 @@ Cloudify can orchestrate bare metal, virtual platforms, such as Libvirt and Vsph
 ![diagram of infrastructure orchestration]({{< img "plugins/infrastructure-orch.png" >}})
 
 
-### Cloudify Kubernetes Provider
+#### Cloudify Kubernetes Provider
 
 
 Kubernetes manages IaaS-resource provisioning via Cloud Providers. The [Cloudify Kubernetes Provider](https://github.com/cloudify-incubator/cloudify-kubernetes-provider) enables Kubernetes to use Cloudify as the Iaas. This enables a single cluster to span a number of topologies. For example a Kubernetes cluster may contain Nodes any number of various cabilities, including multiple clouds.
@@ -98,7 +103,7 @@ Note that the cluster blueprint IaaS examples cover Vsphere, GCP, Azure, Opensta
 If these commands were successful, you can retreve your master IP by executing `cfy secrets get kubernetes_master_ip`.
 
 
-## Service Orchestration
+### Service Orchestration
 
 
 Independently from the orchestration of infrastructure, Cloudify provides the ability to orchestrate heterogenous services across platforms. By leveraging the strength of TOSCA modeling, Cloudify can manage the instantiation and configuration of service chains, regardless of the target platform. 
@@ -106,7 +111,7 @@ Independently from the orchestration of infrastructure, Cloudify provides the ab
 ![diagram of services orchestration]({{< img "plugins/services-orch.png" >}})
 
 
-### Cloudify Kubernetes Plugin
+#### Cloudify Kubernetes Plugin
 
 
 The Cloudify Kubernetes Plugin enables you to interact with the Kubernetes API through blueprints.

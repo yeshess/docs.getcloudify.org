@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Outputs
+
+
+
+##  Outputs
+
+
 category: Blueprints
 draft: false
 weight: 600
@@ -13,7 +18,7 @@ weight: 600
 Beginning with [definitions version]({{< relref "blueprints/spec-versioning.md" >}}) `cloudify_dsl_1_3`, you can import `outputs` multiple times.
 {{% /gsNote %}}
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 outputs:
@@ -23,7 +28,7 @@ outputs:
     ...
 {{< /gsHighlight >}}
 
-# Schema
+## Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
@@ -32,7 +37,7 @@ value       | yes      | \<any\>     | The output value. May be anything from a 
 
 <br>
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 tosca_definitions_version: cloudify_dsl_1_2
@@ -56,7 +61,7 @@ outputs:
             port: { get_property: [webserver, port] }
 {{< /gsHighlight >}}
 
-# Reading Outputs
+## Reading Outputs
 You can view the outputs either by using the [CLI]({{< relref "cli/reference.html" >}})
 {{< gsHighlight  bash  >}}
 cfy deployments outputs -d DEPLOYMENT_ID

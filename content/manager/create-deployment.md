@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Creating a Deployment
+
+
+
+##  Creating a Deployment
+
+
 category: Manager Intro
 draft: false
 weight: 500
@@ -13,7 +18,7 @@ In order for Cloudify to deploy your application, it reads the uploaded blueprin
 Creating a deployment does not actually create any resources, it simply generates a "physical" representation of your application from a "logical" (blueprint) representation and stores it in the database. Technically, it is a virtual environment on Cloudify Manager.
 
 
-## Creating a Deployment via the CLI
+### Creating a Deployment via the CLI
 
 To create a deployment using the Cloudify CLI execute:
 
@@ -22,7 +27,7 @@ cfy deployments create -b <BLUEPRINT_NAME> <DEPLOYMENT_NAME> --inputs </path/to/
 {{< /gsHighlight >}}
 
 
-## Creating a Deployment via the Cloudify Web UI
+### Creating a Deployment via the Cloudify Web UI
 
 1. On the Blueprints widget, select the required blueprint and click **Deploy**.   <br/>
    ![Create deployment button]({{< img "manager/ui-create-deployment.png" >}})
@@ -41,7 +46,7 @@ For information about deployment states, see the [Deployments Page]({{< relref "
 After initialization is complete, you can start using the deployment and executing workflows.
 
 
-#### Example: Creating a Deployment
+##### Example: Creating a Deployment
 
 This example shows how a deployment can be created for a blueprint, using the command line. For more information about creating deployments using the command line, [click here]({{< relref "cli/deployments.md" >}}).
 
@@ -210,6 +215,6 @@ If you open the Deployments page in the Web UI, you can see that all nodes are i
 ![Nodecellar Deployment]({{< img "manager/nodecellar_deployment.png" >}})
 
 
-# What's Next
+## What's Next
 
 After creating a deployment, you can [execute it]({{< relref "manager/execute-workflow.md" >}}).

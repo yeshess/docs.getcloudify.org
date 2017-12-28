@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Node Templates
+
+
+
+##  Node Templates
+
+
 category: Blueprints
 draft: false
 weight: 400
@@ -15,7 +20,7 @@ weight: 400
 Beginning with [definitions version]({{< relref "blueprints/spec-versioning.md" >}}) `cloudify_dsl_1_3`, you can import `node_templates` multiple times.
 {{% /gsNote %}}
 
-# Declaration
+## Declaration
 
 The `node_templates` section in the DSL is a dictionary in which each key is a node template.
 
@@ -42,7 +47,7 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 
 
 Keyname       | Required | Type          | Description
@@ -57,7 +62,7 @@ capabilities  | no       | dict          | Used for specifying the node template
 <br/>
 
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 node_types:
@@ -108,11 +113,11 @@ node_templates:
 
 
 
-# capabilities.scalable Configuration
+## capabilities.scalable Configuration
 
 The `capabilities.scalable.properties` key is used for configuring the deployment characteristics of the node template.
 
-## capabilities.scalable.properties Schema
+### capabilities.scalable.properties Schema
 
 Keyname           | Required | Type     | Default   | Description
 -----------       | -------- | ----     | ---       | -----------
@@ -124,7 +129,7 @@ max_instances     | no       | integer  | UNBOUNDED | The maximum number of perm
 `UNBOUNDED` may be used literally as the value for `max_instances`. Internally, it is stored as `-1`, which may also be used.
 {{% /gsNote %}}
 
-## Example:
+### Example:
 
 {{< gsHighlight  yaml >}}
 node_templates:

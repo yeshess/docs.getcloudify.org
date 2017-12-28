@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview
+
+
+
+##  Overview
+
+
 category: Workflows
 draft: false
 weight: 1
@@ -13,7 +18,7 @@ Workflows are deployment-specific. Each deployment has its own set of workflows,
 
 Controlling workflows (i.e. executing, cancelling, etc.) is achieved using REST calls to the management server. In this guide, the examples use Cloudify CLI commands, which in turn call the REST API calls.
 
-# Executing Workflows
+## Executing Workflows
 
 Workflows are executed directly. You executing workflows from the CLI as follows:<br>
 `cfy executions start -w my_workflow -d my_deployment`
@@ -31,6 +36,6 @@ It is recommended that you have only one *running execution* per deployment at a
 {{% /gsNote %}}
 
 
-# Writing a Custom Workflow
+## Writing a Custom Workflow
 
 If you are an advanced user, you might want to create custom workflows. For more information, see [Creating Custom Workflows]({{< relref "workflows/creating-your-own-workflow.md" >}}).

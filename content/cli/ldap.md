@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: ldap
+
+
+
+##  ldap
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -10,23 +15,23 @@ weight: 105
 The `cfy ldap` command is used to set LDAP authentication to enable you to integrate your LDAP users and groups with Cloudify.
 
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### set
+#### set
 
-#### Usage 
+##### Usage 
 `cfy LDAP set [OPTIONS]`
 
 Set Cloudify Manager to use the LDAP authenticator.
 
-#### Required flags
+##### Required flags
 
   `-s, --ldap-server TEXT` - The LDAP server address against which to authenticate.
                               
@@ -40,7 +45,7 @@ Set Cloudify Manager to use the LDAP authenticator.
 
 
 
-#### Optional flags
+##### Optional flags
 
 
  
@@ -50,7 +55,7 @@ Set Cloudify Manager to use the LDAP authenticator.
  
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy ldap set -s [LDAP SERVER ADDRESS] -u [LDAP ADMIN USERNAME] -p [LDAP ADMIN PASSWORD] -d [DOMAIN NAME]

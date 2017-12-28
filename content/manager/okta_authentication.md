@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Okta Authentication
+
+
+
+##  Okta Authentication
+
+
 category: Manager
 draft: false
 weight: 1500
@@ -12,10 +17,10 @@ Cloudify enables integration with your local Okta system to authenticate users. 
 To enable Okta integration, the openssl package on Cloudify Manager needs to be of version 1.0.2. If you are running a Cloudify image this is already the case, however if you are bootstrapping make sure to update the openssl package prior to the Okta configuration.
 {{% /gsTip %}}
 
-## Configuring Cloudify in Okta 
+### Configuring Cloudify in Okta 
 To configure Okta authentication in Cloudify, first add Cloudify as an application in your okta system. The instructions below refer to okta’s classic UI - other views may differ in configuration parameters.
 
-### Adding Cloudify as an Okta Application
+#### Adding Cloudify as an Okta Application
 1. Open the admin dashboard in okta
 2. From the top menu, choose “Applications”
 3. Choose “Add Application”
@@ -46,10 +51,10 @@ To configure Okta authentication in Cloudify, first add Cloudify as an applicati
     
     ![Create App]({{< img "okta/okta4.png" >}})
 
-### Additional Configuration
+#### Additional Configuration
 In Assignments, assign the new Cloudify app created to the relevant users or groups.
 
-## Configuring Okta in Cloudify
+### Configuring Okta in Cloudify
 To complete the okta authentication configuration, Okta needs to be configured in the Cloudify manager. 
 To do so SSH into the Cloudify manager VM and follow these steps:
 

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Deleting a Deployment
+
+
+
+##  Deleting a Deployment
+
+
 category: Manager Intro
 draft: false
 weight: 700
@@ -14,6 +19,6 @@ To remove the information related to a deployment on the Manager, run the follow
 cfy deployments delete nodecellar
 {{< /gsHighlight >}}
 
-# What's Next
+## What's Next
 
 You can now [delete the application's blueprint]({{< relref "manager/delete-blueprint.md" >}}) if it is no longer required.

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Advanced Blueprint Example
+
+
+
+##  Advanced Blueprint Example
+
+
 category: Blueprints
 draft: false
 weight: 1200
@@ -31,13 +36,13 @@ The topology looks like this:
 
 ![nodecllar app]({{< img "manager/nodecellar_singlehost_topology.png" >}})
 
-## Cloudify YAML DSL
+### Cloudify YAML DSL
 
 Cloudify's Domain Specific Language (DSL) is written in YAML. If you are not familiar with yaml you may want to read the [YAML Documentation](http://www.yaml.org/start.html) first.
 
-# Step by Step Walk-through
+## Step by Step Walk-through
 
-## Step 1: Creating the Blueprint
+### Step 1: Creating the Blueprint
 
 First lets create a folder with the name `nodecellar` and create a blueprint.yaml file within it. This file is the blueprint file.
 Lets also give our blueprint a version:
@@ -48,7 +53,7 @@ tosca_definitions_version: cloudify_dsl_1_2
 
 To learn more about blueprint versioning, refer to [Versions]({{< relref "blueprints/spec-versioning.md" >}}).
 
-## Step 2: Adding imports
+### Step 2: Adding imports
 
 The `imports` section is usually the first statement in our blueprint.
 It defines references to external YAML files that may hold definitions of various constructs:
@@ -72,7 +77,7 @@ imports:
   - {{< field "types_yaml_link" >}}
 {{< /gsHighlight >}}
 
-## Step 3: Adding blueprint inputs
+### Step 3: Adding blueprint inputs
 
 The `inputs` section is where you define which blueprint parameters will be configurable without the need to edit the blueprint file. <br>
 To learn more about `inputs`, please refer to [Inputs Specification]({{< relref "blueprints/spec-inputs.md" >}}).
@@ -126,7 +131,7 @@ inputs:
       SSH-ing into agent machines will be done with this key.
 {{< /gsHighlight >}}
 
-## Step 4: Adding node_types
+### Step 4: Adding node_types
 
 Next up is adding the application specific types. We will have 3 new types: <br>
 
@@ -166,7 +171,7 @@ This means that every node template who's type is `nodecellar.nodes.MongoDatabas
 `install` workflow. The node properties are accessible in the bash scripts via the *ctx* utility. For example, to retrieve the *port* property you can do:
 
 {{< gsHighlight  bash >}}
-#!/bin/bash -e
+##!/bin/bash -e
 ...
 PORT=$(ctx node properties port)
 ...
@@ -271,7 +276,7 @@ This means that you can place `node_types` in a different file, and have various
 To learn more about this, have a look at the full blown [Nodecellar example]({{< field "nodecellar_url" >}})
 {{% /gsTip %}}
 
-## Step 5: Adding relationships
+### Step 5: Adding relationships
 
 The `relationships` section is where (as the name suggests) we define relationships to be later used by `node_templates`.
 In this application we can think of 2 relationships, both of which are related to the `nodecellar.nodes.NodecellarApplicationModule` type: <br>
@@ -405,7 +410,7 @@ relationships:
 {{< /gsHighlight >}}
 
 
-## Step 6: Adding node_templates
+### Step 6: Adding node_templates
 
 So far, we have mainly defined *types*, be it `node_types` or `relationship` types. Types themselves do not constitute a valid blueprint,
 they are meant to be used by `node_templates`, which are basically just occurrences of specific `node_types`. <br>
@@ -720,7 +725,7 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-## Step 7: Adding outputs
+### Step 7: Adding outputs
 
 The `outputs` part of the blueprint is optional, but it is useful because `outputs` allow the blueprint to expose application characteristics via the [REST API]({{< relref "apis/rest-service.html" >}}) or the [CLI]({{< relref "cli/reference.html" >}}). <br>
 In this blueprint we will use `outputs` to expose the application url endpoint, like so:
@@ -753,7 +758,7 @@ cfy deployments outputs -d <deployment_id>
      Value: {u'ip_address': u'192.168.40.156', u'port': 8080}
 {{< /gsHighlight >}}
 
-# Final Result
+## Final Result
 
 Lets take a look at our full blueprint:
 

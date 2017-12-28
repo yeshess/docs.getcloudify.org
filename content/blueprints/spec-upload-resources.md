@@ -1,7 +1,12 @@
 ---
 layout: bt_wiki
 uid: workflows section
-title: Upload Resources
+
+
+
+##  Upload Resources
+
+
 category: Blueprints
 draft: false
 weight: 1900
@@ -10,7 +15,7 @@ weight: 1900
 
 Cloudify provides you with a simple way to upload resources to Cloudify Manager.
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 upload_resources:
@@ -24,7 +29,7 @@ upload_resources:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 Keyname	            |       Required	|   Type	    | Description
 --------------------|-------------------|---------------|-------------------------
 plugin_resources    | no	            |   list	    | A list of [wgn](https://github.com/cloudify-cosmo/wagon) plugins (URLs or local paths) to be uploaded to the Manager. For more information about plugins, [click here]({{< relref "plugins/using-plugins.md" >}}).
@@ -34,13 +39,13 @@ destination_path    | yes	            |   string	    | A relative destination pa
 parameters          | no                |   dict        | Describes the different parameters for the upload of resources.
 fetch_timeout       | no                |   int         | The maximum idle time (in seconds) allowed while fetching any resource. Note that the timeout refers to an idle connection, not the entire download process. 
 
-## Plugin Resources
+### Plugin Resources
 The `plugin_resources` section uses the Plugins API to upload any plugin path specified. Every resource is a string representing either a local path or a URL.
 {{% gsNote title="Note" %}}
 All plugins uploaded to the Manager blueprint must be in [wgn](https://github.com/cloudify-cosmo/wagon) format.
 {{% /gsNote %}}
 
-## DSL Resources
+### DSL Resources
 The `dsl_resources` section enables you to upload any resource required for parsing blueprints. Every resource comprises a source_path and destination_path. 
 The source path is either a local path or a URL. The destination path is relative to the home directory of the file server.
 
@@ -49,7 +54,7 @@ The value passed to `--task-retries` and `--task-retry-interval` in the CLI boot
 {{% /gsNote %}}
 
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 upload_resources:

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: DSL Definitions
+
+
+
+##  DSL Definitions
+
+
 category: Blueprints
 draft: false
 weight: 1300
@@ -9,20 +14,20 @@ weight: 1300
 
 You can use the `dsl_definitions` section to define arbitrary data structures that can then be reused in different parts of the blueprint using [YAML anchors and aliases](https://gist.github.com/ddlsmurf/1590434).
 
-# Supported Definitions
+## Supported Definitions
 
 To use `dsl_definitions`, the [definitions version]({{< relref "blueprints/spec-versioning.md" >}}) must be `cloudify_dsl_1_2` or higher.
 
-# Usage
+## Usage
 
 The YAML 1.2 specification enables the definition of aliases which allow for authoring a block of YAML once and indicating it as an "anchor", which is then referenced elsewhere in the same document as an "alias". Effectively, YAML parsers treat this as a "macro" and copy the anchor block's code to wherever it is referenced. Use of this feature is especially helpful when authoring blueprints in which similar definitions and property settings might be repeated multiple times.
 
 For example, an application that has a Web server and database (i.e., a two-tier application) can be described using two compute nodes, one to host the web server and the other to host the database. The author might want both compute nodes to be instantiated with similar properties such as image, flavor, and so on. To accomplish this, the author would describe the reusable properties using a named anchor in the `dsl_definitions` section of the blueprint and reference the anchor name as an alias in any compute node templates in which the properties need to be reused.
 
 
-# Examples
+## Examples
 
-## Example 1
+### Example 1
 
 The structure of the `dsl_definitions` can be a `dict`.
 
@@ -46,7 +51,7 @@ node_templates:
 
 {{< /gsHighlight >}}
 
-## Example 2
+### Example 2
 
 The structure of the `dsl_definitions` can also be a `list`.
 
@@ -73,7 +78,7 @@ node_templates:
 
 {{< /gsHighlight >}}
 
-## Example 3
+### Example 3
 
 You can use aliases to reference nested anchors.
 
@@ -110,7 +115,7 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-## Example 4
+### Example 4
 
 You can use aliases to merge properties using the `<<` key.
 

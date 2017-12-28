@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: uninstall
+
+
+
+##  uninstall
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -10,7 +15,7 @@ weight: 230
 The `cfy uninstall` command is used to uninstall an application using Cloudify Manager, without having to manually go through the process of executing a workflow, deleting a deployment and deleting a blueprint.
 
 
-#### Usage
+##### Usage
 `cfy uninstall [OPTIONS] DEPLOYMENT_ID`
 
 Uninstall an application via Cloudify Manager.
@@ -20,7 +25,7 @@ the blueprint (if there is only one deployment for that blueprint).
 
 `DEPLOYMENT_ID` is the ID of the deployment to uninstall.
 
-#### Optional flags
+##### Optional flags
 
 *  `-w, --workflow-id TEXT` - 
                         The workflow to execute [default: uninstall]
@@ -44,7 +49,7 @@ the blueprint (if there is only one deployment for that blueprint).
 * `-t, --tenant-name TEXT` -  The name of the tenant of the deployment. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy uninstall cloudify-hello-world-example

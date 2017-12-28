@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Workflow Error Handling
+
+
+
+##  Workflow Error Handling
+
+
 category: Workflows
 draft: false
 abstract: Handling Errors of executed Workflows
@@ -10,7 +15,7 @@ weight: 400
 
 {{% gsSummary %}}{{% /gsSummary %}}
 
-# Task Retries
+## Task Retries
 
 When an error is raised from the workflow itself, the workflow execution will fail - it will end with `failed` status, and should have an error message under its `error` field. There is no built-in retry mechanism for the entire workflow.
 
@@ -33,7 +38,7 @@ If the parameter is not set, it will default to the value of `-1`, which means m
 
 In addition to the `task_retries` parameter, there's also the `retry_interval` parameter, which determines the minimum amount of wait time (in seconds) after a task execution fails before it is retried. It can be set in the very same way `task_retries` and `max_retries` are set. If it isn't set, it will default to the value of `30`.
 
-# Lifecycle Retries (Experimental)
+## Lifecycle Retries (Experimental)
 
 In addition to [task retries](#task-retries), there is a mechanism that allows retrying a group of operations. This mechanism is used by the [built-in]({{< relref "workflows/built-in-workflows.md" >}}) `install`, `scale` and `heal` workflows. By default it is turned off. To enable it, set the `subgraph_retries` parameter in the manager blueprint `manager_configuration` node template under the `cloudify`.`workflows` property to some positive value (or `-1` for *infinite subgraph retries*). The parameter is named `subgraph_retries` because the mechanism is implemented using the subgraphs feature of the workflow framework.
 

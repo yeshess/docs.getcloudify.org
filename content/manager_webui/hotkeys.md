@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Hotkeys
+
+
+
+##  Hotkeys
+
+
 category: Web Interface
 draft: true
 abstract: Overview of the Web UI's hotkeys

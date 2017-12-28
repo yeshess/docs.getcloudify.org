@@ -1,7 +1,12 @@
 ---
 
 layout: bt_wiki
-title: Extending Cloudify
+
+
+
+##  Extending Cloudify
+
+
 category: Tutorials
 draft: true
 abstract: "Explains how to develop extensions to Cloudify: Plugins, Policies, Workflows"
@@ -11,7 +16,7 @@ weight: 500
 
 {{% gsSummary %}}{{% /gsSummary %}}
 
-# adding custom types
+## adding custom types
 Custom `node` & `relationship` types are needed in one of the following cases:
 * User wats to add a new implementation (meaning the new type will use a new plugin)
 * User wants to refine an existing type and use it with many type implementations instead of overriding a property in any type implementation (less error prone)
@@ -58,17 +63,17 @@ cloudify.openstack.nodes.Server:
 
 You can always contribute types to the community by submitting a pull request.
 
-# Adding custom interfaces
+## Adding custom interfaces
 You can add custom interfaces with additional hooks in order to create a new automation process. In order to use this interface, you will need a workflow that will invoke the operations and plugin(s) that will implement the operations.
 you can add an interface in custom type by adding a new entry to the `interfaces` map
 
-# Developing Plugins
+## Developing Plugins
 
-## Overview
+### Overview
 
 Plugins are Cloudify integration with different tools. Whenever you need a new integration, you will need to add a plugin that will implement the lifecycle interface, the relationship.lifecycle interface or other existing or custom interfaces. 
 
-## Project Dependencies & Structure
+### Project Dependencies & Structure
 
 1. Get the plugin project template
 [Download the project template](https://github.com/cloudify-cosmo/cloudify-plugin-template/archive/develop.zip)
@@ -119,7 +124,7 @@ cd [path_to_project]
 pip install .
 {{< /gsHighlight >}}
 
-## Coding The Plugin
+### Coding The Plugin
 In this part of the tutorial we will code a plugin that loads python scripts and executes them.
 
 1. Adding Operations:
@@ -162,7 +167,7 @@ The `ctx` argument is an instance of `CloudifyContext`. This class exposes sever
 * `operation` - The node operation name which is mapped to this task invocation.
         For example: cloudify.interfaces.lifecycle.start
         
-### Getting properties
+#### Getting properties
 Use the `properties` to get access to node:
 
 {{< gsHighlight  python  >}}
@@ -171,7 +176,7 @@ if 'scripts' in ctx.node.properties:
         
 {{< /gsHighlight >}}
 
-### Reporting Runtime Properties
+#### Reporting Runtime Properties
 Use the context as a map to write runtime properties.
 In this example a property of ip is added to a host node.
 
@@ -179,7 +184,7 @@ In this example a property of ip is added to a host node.
 ctx.instance.runtime_properties['ip'] = manager_network_ip
 {{< /gsHighlight >}}
 
-### Getting access to files
+#### Getting access to files
 In case your blueprint included files that you need to access during plugin runtime use the following method:
 
 {{< gsHighlight  python  >}}
@@ -187,11 +192,11 @@ sh = ctx.get_resource(scripts[operation_simple_name])
         
 {{< /gsHighlight >}}
 
-### Asynchronous Operations
+#### Asynchronous Operations
 In many cases, an operation is expected to do some work which takes time. In order to free the worker which executes the operation to handle other operations in the meantime, one can specify that the operation should be retried after some time and continue from the point where the asyncronous activity is over. An example for this behavior is usually relevant in `IaaS` plugins where it may take a resource some time to be available after a request for its creation has been made.
 
 
-## Using Your Plugin
+### Using Your Plugin
 In order to use your plugin you need to decalre it with the types. Note that the plugin name refers to the module name and not to the project name
 
 {{< gsHighlight  YAML  >}}
@@ -211,16 +216,16 @@ Note that there are two types of plugins:
 
 
 
-# Developing Agent Installer Plugin
+## Developing Agent Installer Plugin
 
 
 <!--# Integrating External Monitoring Systems
-## Nagios
-## Statsd / Collectd 
-## Ganglia
-## Logstash
+### Nagios
+### Statsd / Collectd 
+### Ganglia
+### Logstash
 
-# Developing Custom Policies-->
+## Developing Custom Policies-->
 
-# Developing Custom Workflows
+## Developing Custom Workflows
 

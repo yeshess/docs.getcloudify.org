@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Multiple Instances (Scaling)
+
+
+
+##  Multiple Instances (Scaling)
+
+
 category: Blueprints
 draft: false
 weight: 1600
@@ -17,7 +22,7 @@ There are two ways of specifying this configuration in an application blueprint.
 These concepts are described in the following explanations and examples, including the difference between these two methods,
 and how the number of instances for different nodes may be changed during runtime.
 
-## Node Templates `scalable` Configuration
+### Node Templates `scalable` Configuration
 To specify the initial number of instances a node template will have, the node template `capabilities.scalable` properties must be configured.
 
 For example, to configure a VM node template so that it will be deployed with fivew initial instances, the following configuration can be used:
@@ -34,7 +39,7 @@ node_templates:
 
 See [Node Templates]({{< relref "blueprints/spec-node-templates.md" >}}#capabilities-scalable-configuration) for additional details.
 
-## Scaling Policy and Scaling Groups Configuration
+### Scaling Policy and Scaling Groups Configuration
 To specify the initial number of instances a *group* of node templates will have as a single unit, use scaling policies and groups.
 
 For example, to configure a scaling group for a VM and an IP, the following configuration can be used:
@@ -62,7 +67,7 @@ When deployed, five `vm` node instances and five `ip` node instances will be cre
 
 See [Policies]({{< relref "blueprints/spec-policies.md" >}}) for additional details.
 
-### Combining Node Template `scalable` With Scaling Groups
+#### Combining Node Template `scalable` With Scaling Groups
 
 A node template can have have its `scalable` capability configured and can also be included in a scaling group. For example:
 
@@ -97,7 +102,7 @@ When deployed, 15 (`3 * 5`) `vm` node instances are created.
 additional details.
 {{% /gsNote %}}
 
-## `connected_to/depends_on` Relationship Semantics
+### `connected_to/depends_on` Relationship Semantics
 This section describes how `connected_to/depends_on` relationships behave between node instances that belong to the same scaling group instance.
 
 Generally, when two node templates are related via a `connected_to/depends_on` relationship, relationship instances exist from *all* node instances of the source node to *all* node instances of the target node. For more information, see  [the `all_to_all` example]({{< relref "blueprints/spec-relationships.md" >}}#multi-instance-cloudify-relationships-connected-to-semantics).
@@ -152,9 +157,9 @@ If the `vm` node was to have a `connected_to` relationship to the `ip` node, the
 
 <br/>
 
-## `contained_in` Relationship Semantics
+### `contained_in` Relationship Semantics
 
-### Implicit Scaling Group Membership
+#### Implicit Scaling Group Membership
 
 If node `A` is `contained_in` node `B` and node `B` is part of scaling group `S`, then node `A` is also implicitly included in `S`.
 
@@ -184,7 +189,7 @@ policies:
     targets: [vm_grop]
 {{< /gsHighlight >}}
 
-### Scaling groups and `contained_in` Semantics.
+#### Scaling groups and `contained_in` Semantics.
 The semantics for `contained_in` relationships are described in detail [here]({{< relref "blueprints/spec-relationships.md" >}}#the-cloudify-relationships-contained-in-relationship-type).
 
 Building on those semantics, the following example describes how a scaling group fits in.
@@ -233,7 +238,7 @@ Each `vm` node instance has two `db` and two `app` node instances contained in i
 
 This shows that scaling groups can be "contained in" node templates when their members are `contained_in` some other node templates.
 
-## Scale Workflow
+### Scale Workflow
 To change the number of node instances during run-time (i.e. after the deployment is installed), use the `scale` workflow.
 
 See [Scale Workflow]({{< relref "workflows/built-in-workflows.md" >}}#the-scale-workflow) for additional details.

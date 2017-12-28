@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Installing the Cloudify Command Line Interface
+
+
+
+##  Installing the Cloudify Command Line Interface
+
+
 category: Installation
 draft: false
 weight: 200
@@ -12,7 +17,7 @@ You install the CLI by downloading and installing a Cloudify package. Cloudify p
 This installation method does not require an active internet connection during
 the installation process.
 
-## Linux
+### Linux
 
 1. [Download the installer](http://cloudify.co/downloads/get_cloudify.html) that is appropriate to your operating system and installation preference, either user interface or terminal-based.
 2. Select one of the following installation options:   
@@ -37,7 +42,7 @@ the installation process.
 
     replacing `<_pkg.deb_>` with the path of the installation file you downloaded.
 
-## Mac
+### Mac
 
 1. [Download the installer](http://cloudify.co/downloads/get_cloudify.html) appropriate to your Mac environment.
 2. Select one of the following installation options:  
@@ -48,7 +53,7 @@ the installation process.
      
      replacing `<_/path/to/pkg.pkg_>` with the path of the installation file you downloaded.
      
-## Windows
+### Windows
 
 The Windows installer is a single executable that installs the following:
 
@@ -66,7 +71,7 @@ The Python setup wizard, will prompt you to select whether to install pip. Regar
 {{% /gsNote %}}
 
 
-##### Install on Windows
+###### Install on Windows
 
 1. [Download the installer](http://cloudify.co/downloads/get_cloudify.html) appropriate to your Windows environment.
 2. Run the installer, following the prompts in the installation.

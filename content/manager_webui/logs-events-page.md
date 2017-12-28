@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Logs and Events Page
+
+
+
+##  Logs and Events Page
+
+
 category: Web Interface
 draft: true
 weight: 140
@@ -13,7 +18,7 @@ The `Logs & Events` page displays a list of 50 rows of events, which is aggregat
 ![logs & events page]({{< img "ui/eventsPage/eventsPage.png" >}})
 
 
-## Filtering Data
+### Filtering Data
 You can filter the logs and events in the table by:  
 * Blueprint
 * Deployment
@@ -37,17 +42,17 @@ If you are unsure if your timestamp is valid, look for this <i class="fa fa-cale
 **To filter by free text**<br>
 You can free type text in the **Message Text** field. The displayed data automatically changes to match the filter.<br/>
 
-### Clearing Filters
+#### Clearing Filters
 Click `Clear Filters` to clear all the filters and reset the table to the default display.
 
-### Sorting the Table
+#### Sorting the Table
 You can sort items in the table in ascending or descending order, or random order (`none`) by clicking a column title.
 
-# Pagination
+## Pagination
 Each page displays 50 logs & events items. Use the pagination bar to scroll through the pages.
 ![pagination]({{< img "ui/eventsPage/pagination.png" >}})<br>
 
-# Viewing Additional Details about a Log/Event
+## Viewing Additional Details about a Log/Event
 By default, the table does not display all available log/event information. To display all of the information, click on the row.<br>
 An event example:
 ![event example]({{< img "ui/eventsPage/event.png" >}})<br>
@@ -59,13 +64,13 @@ A log example:
 Some fields are event-specific or log-specific. For example, `Logger` and `Log Level` fields are specific to logs, whereas the `Event Type` field is specific to events.
 {{% /gsNote %}}
 
-# Adjusting the Table View
+## Adjusting the Table View
 By default, all columns in the logs and events table are displayed. You can select the columns to display and hide.<br>
 Click the <i class="fa fa-cog"></i> icon, and select or clear the columns from the dropdown menu that you want to display or hide.<br>
 ![choose columns]({{< img "ui/eventsPage/columnsOrganizer.png" >}})<br>
 
 
-# Persistent Memory
+## Persistent Memory
 The changes that you make to a table's view by filtering, sorting and paging through it, are automatically saved as part of the page's URL.<br>
 For each unique set of table adjustments, a unique URL is created to match it. When you load the page, those preferences are automatically loaded from the page's URL, adjusting the table's view to the preferences you created. This functionality enables you to refresh or bookmark the page, or send the page's URL as a link to a colleague, without having to reset your preferences when reloading the page.
 

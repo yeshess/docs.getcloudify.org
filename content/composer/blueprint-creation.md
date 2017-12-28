@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Creating Blueprints
+
+
+
+##  Creating Blueprints
+
+
 category: Docs
 draft: false
 weight: 400
@@ -13,7 +18,7 @@ It is recommended that you watch the following video, which provides an overview
 [![Cloudify Composer Overview Video](https://img.youtube.com/vi/Ywatch?v=c6RWafVzA44&t=53s/0.jpg)](https://www.youtube.com/watch?v=c6RWafVzA44&t=53s)
 {{% /gsNote %}}
 
-## Managing the Blueprint Canvas
+### Managing the Blueprint Canvas
 
 You add and move node types on the canvas using drag and drop actions. The buttons on the top right of the canvas assist you in creating and viewing the topology.
 
@@ -24,7 +29,7 @@ You add and move node types on the canvas using drag and drop actions. The butto
 ![drag to select mode]({{< img "composer/drag-to-select.png" >}})    Enables you to **switch to drag to select** mode.<br><br>
 ![create node group]({{< img "composer/create-node-group.png" >}})    Enables you to **group** the nodes that you selected.
 
-## Using and Managing Stencils
+### Using and Managing Stencils
 
 Cloudify Composer includes built-in node types, but you can also import your own.
 
@@ -34,20 +39,20 @@ Cloudify Composer includes built-in node types, but you can also import your own
 The imported node type is saved in the list of imports on the **Import** tab, and appears in your Stencils catalog.
 Each type is displayed with an icon that is derived from its parent type.<br/>
 
-## Adding Nodes to a Blueprint
+### Adding Nodes to a Blueprint
 
 * Select the node type that you require to add to the blueprint and drag it from the Stencil catalog to the canvas. <br/>
 Cloudify Composer only allows you to perform valid actions.
 
 
-## Editing a Node
+### Editing a Node
 
 1. Double-click the node to display its properties. You also see properties for node-affected relationships.
 2. Clicking in the relevant properties field to make your changes.
 3. Press **Enter** to apply your changes.   
    To exit without applying your changes, press **Esc**.
   
-### Node Properties
+#### Node Properties
 The node property panel includes the following components:  
 
 - **Node Name** - The name must be unique. 
@@ -57,14 +62,14 @@ The node property panel includes the following components:
 - **Interfaces** - The interface properties are dependent on the node type. They enable you to specify the implementation for every stage of the node lifecycle. You can reference external plugin implementation for the interface, and also define the list of inputs.
 - **Relationships** - Relationships are only displayed for nodes that are connected to other nodes. 
 
-## Node Relationships
+### Node Relationships
 
 To define a relationships between nodes, where the connector icon is displayed, draw a connecting line from the edge of one node type to the edge of another. Note that the connector icons show either relationships in or relationships out of a node type.<br/>
 You can pull the relationship line so that it is displayed in the topology according to your preferences.
 
 Double-click a relationship to display its properties for editing and configuring the relationship parameters.
 
-## Network Types
+### Network Types
 
  - **Adding Virtual IP<br>**
 To define IP components, drag the relevant icon to the topology canvas then select the node to which you want to add the IP. 
@@ -93,7 +98,7 @@ To remove a security group associated with a node, click the node from which you
   3. Click on the X button next to its name to remove the group.<br/><br/>
 You can also delete a security group from the canvas by selecting it and clicking Delete in the properties panel. It is removed from all nodes on which it was configured.
 
-## Source Tab
+### Source Tab
 
 Source tab provides a representation of the generated TOSCA code behind the application modeling.
 

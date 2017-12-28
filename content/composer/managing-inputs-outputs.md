@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Managing Inputs and Outputs
+
+
+
+##  Managing Inputs and Outputs
+
+
 category: Docs
 draft: false
 weight: 500
@@ -12,7 +17,7 @@ _Outputs_ provide a method to expose global aspects of a blueprint's deployment.
 
 ![Inputs and Outputs Tab]({{< img "composer/inputs-outputs.png" >}})<br>
 
-### Adding an Input
+#### Adding an Input
 
 1. On the **Inputs & Outputs** tab, enter a name and description for your input.
 2. (Optional) Specify an input value in the **Default** field.   
@@ -22,7 +27,7 @@ _Outputs_ provide a method to expose global aspects of a blueprint's deployment.
 
 For more information about inputs, [click here]({{< relref "blueprints/spec-inputs.md" >}}).
 
-### Adding an Output
+#### Adding an Output
 
 You must specify an output value in order for the deployment to pass validation.
 

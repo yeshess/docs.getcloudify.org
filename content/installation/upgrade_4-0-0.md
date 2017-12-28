@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Upgrading Cloudify Manager
+
+
+
+##  Upgrading Cloudify Manager
+
+
 category: Installation
 draft: false
 weight: 350
@@ -28,7 +33,7 @@ The key elements of upgrading a Cloudify Manager are:
 Cloudify Manager snapshots do not include cluster information. If you restore the snapshot of a Cloudify Manager that was the active Manager in a cluster, to recreate a cluster you must create new Cloudify Managers (of the same version) and [join]({{< relref "cli/clusters.md" >}}) them to the restored Cloudify Manager. For more information, [click here]({{< relref "manager/high-availability-clusters.md#upgrading-clusters" >}}).
 {{% /gsNote %}}
 
-#### Procedure
+##### Procedure
 
 1. To keep your existing data, run the following commands to take a snapshot of the existing Manager and download it.
       ```cfy snapshots create my_snapshot```<br>
@@ -80,7 +85,7 @@ a new Manager (version 4.0.0, or higher). You can bootstrap on the same VM, if y
 9. If you have running agents, make sure that you have applied `patch-1`, then run `cfy agents install`.
 
 
-#### Upgrading into the new roles system
+##### Upgrading into the new roles system
 
 While upgrading an older version of cloudify to 4.2 (or higher) version, there are some RBAC matters to consider.
 

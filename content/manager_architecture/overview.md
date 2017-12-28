@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview
+
+
+
+##  Overview
+
+
 category: Manager
 draft: false
 weight: 1
@@ -14,7 +19,7 @@ Cloudify Manager comprises the following main parts:
 * [Agents _optional_](#cloudify-agents) 
 * [Web Interface](#cloudify-web-interface) (for Premium version users)
 
-# Cloudify Manager
+## Cloudify Manager
 
 Cloudify Manager consists of the Cloudify code and a set of open-source applications. For an indepth expalanation of these applications, [click here]({{< relref "manager_architecture/components.md" >}}).
 
@@ -31,7 +36,7 @@ You can also communicate with Cloudify Manager using the command-line interface,
 
 All requests are served via a proxy.
 
-# Cloudify Agents
+## Cloudify Agents
 
 Cloudify agents are entities for executing tasks on application hosts. They listen to task queues and execute tasks when required.
 
@@ -45,6 +50,6 @@ Note that Cloudify can run in "agentless" mode, which means that agents can use 
 
 For more information about agents, [click here]({{< relref "agents/overview.md" >}}).
 
-# Cloudify Web Interface
+## Cloudify Web Interface
 
 Cloudify Premium version features a Web interface. The interface provides most of the features the CLI, and other features. The Cloudify Web interface is deployed alongside Cloudify Manager.

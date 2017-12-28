@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Imports
+
+
+
+##  Imports
+
+
 category: Blueprints
 draft: false
 weight: 200
@@ -14,7 +19,7 @@ types_yaml_link: http://www.getcloudify.org/spec/cloudify/3.3/types.yaml
 Beginning with [definitions version]({{< relref "blueprints/spec-versioning.md" >}}) `cloudify_dsl_1_3`, you can also import `inputs`, `node_templates` and `outputs` multiple times.
 {{% /gsNote %}}
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 imports:
@@ -23,7 +28,7 @@ imports:
 {{< /gsHighlight >}}
 
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 

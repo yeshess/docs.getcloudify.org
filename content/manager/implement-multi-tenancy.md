@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Configuring Multi-Tenancy
+
+
+
+##  Configuring Multi-Tenancy
+
+
 category: Manager
 draft: false
 weight: 600
@@ -15,7 +20,7 @@ Multi-tenancy is implemented when you install Cloudify Manager.
 For Cloudify Community Edition users, a single tenant with a single user is created during installation. When you log into Cloudify Manager, the built-in credentials are used.
 {{% /gsNote %}}
 
-## Multi-Tenancy for Premium Users
+### Multi-Tenancy for Premium Users
 
 There are two options for using the multi-tenancy function in Cloudify Manager, as a standalone function that is not connected to an existing user managment system (LDAP/AD) or as a function that is integrated with the LDAP/AD user definitions. You must select one option only. If you already have LDAP/AD running in your organization, you probably want to use that, to streamline the process. If you do not use the LDAP/AD option, you must define each user individually.
 
@@ -23,7 +28,7 @@ In the following diagram note that there are three tenants in Cloudify Manager. 
  
 ![Multi-tenancy Options]({{< img "manager/multi-tenancy-options.png" >}})
 
-### Basic Process for Adding Tenants, User Groups and Individual Users
+#### Basic Process for Adding Tenants, User Groups and Individual Users
 
 This section describes a basic process for adding a tenant, then adding one or more users to it. It is relevant only to Premium users. Click here for information about [managing users]({{< relref "cli/users.md" >}}) and here for information about [managing user groups]({{< relref "cli/usergroups.md" >}}).
 
@@ -41,7 +46,7 @@ Commands are executed in the context of a tenant, however it is possible to exec
   * Specify a password and role for users that you add manually.  
     Users who are added from LDAP/AD retain their LDAP/AD password. You might still want to assign them a role.
 
-#### Implement Multi-tenancy Process
+##### Implement Multi-tenancy Process
 
 Use this process to create tenants and add existing users and user groups. Additional information about these steps is provided after the procedure.
 
@@ -53,14 +58,14 @@ Use this process to create tenants and add existing users and user groups. Addit
 4. To remove a user or user group from a tenant, run `tenants remove-user [_user name_]` or `tenants remove-user-group [_group name_]` as required.  
    Removing a user or group does not delete it, it just removes that instance of the user or group from the specific tenant. If a user is part of a group that remains on the tenant, they will not be removed from the tenant.
 
-#### Managing Tenants
+##### Managing Tenants
 
 Tenants can be added or deleted by an `admin` user. Users and user groups can also be added. The users can then add or delete resources on that tenant.
 
 When a user runs the `list` command on a tenant, they see all the tenants to which they are assigned - both through individual assignment and through membership of an assigned group.
 
 
-##### Deleting Tenants
+###### Deleting Tenants
 
 You must ensure that any tenant that you want to delete is empty, meaning that it does not contain any resources or users.
 
@@ -69,13 +74,13 @@ The default tenant that is created during the Cloudify Manager installation/boot
 An `admin` user can execute commands on tenants other than the one which they are currently managing. Users with the `user` role can also manage resources on other tenants to which they have access while they are logged in to another tenant.
 
 
-### Integrating Multi-Tenancy with LDAP/AD
+#### Integrating Multi-Tenancy with LDAP/AD
 
 To connect Cloudify Manager with LDAP/AD, you must know the the URL of the service and have sufficient credentials to perform searches and so on. 
 
 You configure Cloudify with the LDAP configuration during the bootstrap process, in the `manager-input` section. You can also use the API to configure an LDAP connection after Cloudify Manager is installed, using the `cfy ldap set` command, as long as the manager is _clean_, meaning that no tenants, groups, users or resources exist in it.
 
-#### Managing Users in the Multi-Tenancy Environment
+##### Managing Users in the Multi-Tenancy Environment
 
 There are a number of actions related to user access to tenants that an **`admin`** user can perform. For more information, see [User Management]({{< relref "manager/user-management.md" >}})
 

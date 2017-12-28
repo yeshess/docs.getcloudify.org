@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: use
+
+
+
+##  use
+
+
 category: Docs
 draft: true
 abstract: Cloudify's Command-Line Interface
@@ -15,7 +20,7 @@ Many of the commands in `cfy` (e.g. `cfy blueprints`, `cfy agents`) are used to 
 After bootstrapping a Manager, the user and SSH key provided to use it are saved on the machine which performed the bootstrap process. The SSH key is used to perform SSH-related commands (e.g. `cfy logs`, `cfy ssh`). Running `cfy use` to control another Manager removes those settings and do NOT set the user and SSH key to the Manager on which you ran `cfy use`.
 {{% /gsNote %}}
 
-#### Usage 
+##### Usage 
 `cfy use [OPTIONS] MANAGER_IP`
 
 Control a specific instance of Cloudify Manager
@@ -25,7 +30,7 @@ Control a specific instance of Cloudify Manager
 Additional CLI commands are added after a Manager is used. To stop
 using a Manager, run `cfy init -r`.
 
-#### Optional flags
+##### Optional flags
 
 *  `--alias TEXT` -		An alias to assign to the profile. This enables
                         you to use `cfy use PROFILE_ALIAS` on top of
@@ -45,7 +50,7 @@ using a Manager, run `cfy init -r`.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy use -u centos -k ~/.ssh/new-cfy-manager-kp.pem 52.51.21.53

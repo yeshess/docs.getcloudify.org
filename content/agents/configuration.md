@@ -1,6 +1,11 @@
 ---
 
-title: Configuration
+
+
+
+##  Configuration
+
+
 category: Agents
 draft: false
 weight: 150
@@ -10,13 +15,13 @@ sc_link: https://technet.microsoft.com/en-us/library/bb490995.aspx
 
 ---
 
-## Configuration Locations
+### Configuration Locations
 
 Agent configuration consists of several locations that all adhere to the same schema. The schema is based on the [`cloudify.datatypes.AgentConfig` datatype](#configuration-properties), which is defined in the standard `types.yaml`.
 
 The order in which each property is resolved is as follows:
 
-### 1. Operation Inputs
+#### 1. Operation Inputs
 If a property has been provided as part of the operation inputs in `agent_config` (or the depcrecated `cloudify_agent`), it is used. For example:
 
 {{< gsHighlight  yaml  >}}
@@ -34,11 +39,11 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-### 2. Node Instance Runtime Property
+#### 2. Node Instance Runtime Property
 If the agent to be installed is a host agent (and not a central deployment agent), and the property is provided as part of the `cloudify_agent` node instance runtime property, it is used.
 
 
-### 3. Node Property
+#### 3. Node Property
 If the agent to be installed is a host agent (and not a central deployment agent), and the property has been provided as part of the `agent_config` (or the deprecated `cloudify_agent`) node property, it is used. For example:
 
 {{< gsHighlight  yaml  >}}
@@ -53,7 +58,7 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-### 4. Bootstrap Context
+#### 4. Bootstrap Context
 If the property has been provided during bootstrap as part of the `cloudify_agent` in the Manager blueprint, it is used. For example, consider the following excerpt
 from a Manager blueprint:
 
@@ -75,7 +80,7 @@ node_templates:
 
 Yu can use this section to specify a global agent configuration that will apply to all installed agents. This is the only way to set deployment agents configuration.
 
-# Configuration Properties
+## Configuration Properties
 
 Name                 | Type        | Description
 ------------         | ----------- | -----------
@@ -91,7 +96,7 @@ Name                 | Type        | Description
 `env`                | dictionary  | Optional environment variables with which the agent will be started.
 `extra`              | dictionary  | Optional additional low-level configuration details.
 
-## Extra configuration properties (that go under the `extra` property)
+### Extra configuration properties (that go under the `extra` property)
 
 Name                | Type        | Description
 -------------       | ----        | -----------
@@ -103,18 +108,18 @@ Name                | Type        | Description
 `fabric_env`        | dictionary  | For Linux-based agents, configure fabric that is used to SSH into the remote host.
 
 
-## Process Management
+### Process Management
 
 Additional configuration can be supplied to the service manager that will be used to manage the installed agent by using the `process_management` property.
 
-### Linux init.d Process Management
+#### Linux init.d Process Management
 
 Name                    | Type    | Description
 -------------           | ----    | -----------
 `start_on_boot`         | boolean | Specifies whether the agent service should be restarted after a system reboot. By default, the value is `true`.
 
 
-### Windows NSSM Process Management
+#### Windows NSSM Process Management
 
 Name                    | Type    | Description
 -------------           | ----    | -----------
@@ -123,7 +128,7 @@ Name                    | Type    | Description
 `failure_restart_delay` | integer | Specifies delay time (in milliseconds) for the restart action. By default, the value is 5000. See [*sc failure*]({{< field "sc_link" >}}#E02B0AA)
 
 
-## Linux Agent Package Resolution
+### Linux Agent Package Resolution
 
 In most cases, the agent package that will be used to install the agent is automatically resolved and does not require manual configuration. However, a mechanism exists that enables the implicit resolution to be overwritten. Following is a short description of the implicit resolution mechanism and details about how to override the implicit resolution with hard-coded values.
 
@@ -133,6 +138,6 @@ After making the call, the package name that is downloaded from the management f
 
 If `distro`, `distro_codename`, or `package_url` are provided explicitly in the [extra agent configuration](#extra-configuration-properties-that-go-under-the-extra-property), they will be used instead of the implicit mechanism.
 
-# What's Next
+## What's Next
 
 For a more-technical explanation about agents, and how to create one, see the [Agent-Packager tool]({{< relref "agents/packager.md" >}}).

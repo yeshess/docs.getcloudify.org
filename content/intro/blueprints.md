@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Blueprint Structure
+
+
+
+##  Blueprint Structure
+
+
 category: Intro
 draft: true
 weight: 400
@@ -144,6 +149,6 @@ outputs:
                       ':', { get_property: [http_web_server, port] }] }
 {{< /gsHighlight >}}
 
-# What's Next
+## What's Next
 
 If you want to learn more about blueprints, you can head off to the [blueprints]({{< relref "blueprints/overview.md" >}}) section.

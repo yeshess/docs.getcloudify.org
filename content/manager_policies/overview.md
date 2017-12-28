@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview
+
+
+
+##  Overview
+
+
 category: Manager
 draft: false
 abstract: "A guide to Cloudify Policies"
@@ -16,7 +21,7 @@ diamond_package_ref: https://github.com/BrightcoveOS/Diamond
 {{% gsSummary %}}{{% /gsSummary %}}
 
 
-# Overview
+## Overview
 
 Policies provide a way of analyzing a stream of events that correspond to a group of nodes (and their instances).
 The analysis process occurs in real time and enables actions to be triggered, based on its outcome.
@@ -34,7 +39,7 @@ The workflow might increase the number of node instances, for example, to handle
 
 The logic fo the policies is written in [Clojure](http://clojure.org/) using Riemann's API. Cloudify adds a thin API layer on top of these APIs.
 
-# Using Policies
+## Using Policies
 
 Policies are configured in the `groups` section of a Blueprint, as shown in the following example.
 
@@ -89,15 +94,15 @@ groups:
 
 {{< /gsHighlight >}}
 
-# Built-in Policies
+## Built-in Policies
 
 Cloudify includes a number of built-in policies that are declared in [`types.yaml`]({{< field "types_yaml_link" >}}), which is usually imported either directly or indirectly via other imports. See [Built-in Policies]({{< relref "manager_policies/built-in-policies.md" >}}) for more information.
 
-# Writing a Custom Policy
+## Writing a Custom Policy
 
 If you are an advanced user, you might want to create custom policies. For more information, see [policies authoring guide]({{< relref "manager_policies/creating-policies.md" >}}).
 
-# Auto Healing
+## Auto Healing
 
 Auto healing is the process of automatically identifying when a certain component of your system is failing and fixing the system state without any user intervention. Cloudify includes built-in support for auto healing different components.
 
@@ -110,7 +115,7 @@ There are several items that must be configured for auto healing to work. The pr
 * Configuring monitoring on the compute nodes that will be subject to auto healing
 * Configuring the `groups` section with appropriate policy types and triggers
 
-## Monitoring
+### Monitoring
 
 You must add monitoring to the compute nodes that require auto healing to be enabled.
 
@@ -135,11 +140,11 @@ node_templates:
 
 The `ExampleCollector` generates a single metric that constantly has the value `42`. This collector is used as a "heartbeat" collector, together with the `host_failure` policy described below.
 
-## [Workflow]({{< relref "blueprints/spec-workflows.md" >}}) Configuration
+### [Workflow]({{< relref "blueprints/spec-workflows.md" >}}) Configuration
 
 The `heal` workflow executes a sequence of tasks that is similar to calling the `uninstall` workflow, followed by the `install` workflow. The main difference is that the `heal` workflow operates on the subset of node instances that are contained within the failing node instance's compute, and on the relationships these node instances have with other node instances. The workflow reinstalls the entire compute that contains the failing node and handles all appropriate relationships between the node instances inside the compute and the other node instances.
 
-## [Groups]({{< relref "blueprints/spec-groups.md" >}}) Configuration
+### [Groups]({{< relref "blueprints/spec-groups.md" >}}) Configuration
 
 After monitoring is configured, groups must be configured. The following example contains a number of inline comments. It is recommended that you read them, to ensure that you have a good understanding of the process.
 

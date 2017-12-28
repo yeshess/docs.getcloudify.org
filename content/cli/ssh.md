@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: ssh
+
+
+
+##  ssh
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,7 +16,7 @@ The `cfy ssh` command is used to connect to a Cloudify manager via SSH.
 
 You can use the command to create a new terminal session, run a command, or connect to a shared tmux-based session.
 
-#### Usage 
+##### Usage 
 `cfy ssh [OPTIONS]`
 
 Connects to a running manager via SSH.
@@ -30,7 +35,7 @@ the session.
 Passing a `command` simply executes it on Cloudify Manager, whereas omitting
 a command connects to an interactive shell.
 
-#### Optional flags
+##### Optional flags
 
 * `-c, --command TEXT` - 
 						Execute a command on the manager over SSH
@@ -40,7 +45,7 @@ a command connects to an interactive shell.
 						List available SSH tmux sessions
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy ssh

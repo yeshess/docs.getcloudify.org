@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Writing Your Own Plugin
+
+
+
+##  Writing Your Own Plugin
+
+
 category: Plugins
 draft: false
 weight: 10000
@@ -22,7 +27,7 @@ mock_ctx_link: http://cloudify-plugins-common.readthedocs.org/en/latest/mocks.ht
 To illustrate how to write a plugin, this topic demonstrates how to create a plugin that is used to start a simple HTTP Web server using Python.
 
 
-## Creating A Plugin Project
+### Creating A Plugin Project
 
 Cloudify plugin projects are standard Python projects.
 
@@ -34,7 +39,7 @@ Each Cloudify plugin requires `cloudify-plugins-common` as a dependency, because
 You can use the [Plugin Template]({{< field "template_link" >}}) to setup the repository for your plugin.
 {{% /gsTip %}}
 
-## Setting up the setup.py File for the Plugin
+### Setting up the setup.py File for the Plugin
 
 For example:
 
@@ -52,7 +57,7 @@ setup(
 
 
 
-## Writing Plugin Operations
+### Writing Plugin Operations
 
 Plugin operations are standard Python methods that are decorated with Cloudify's `operation` decorator, so that Cloudify can identify them as plugin operations.
 
@@ -65,14 +70,14 @@ The start & stop operations are placed in a `tasks.py` module in the `python_web
 In the following example, the Cloudify logger, which is accessible using the `ctx.logger` object, is used.
 
 
-### python_webserver/tasks.py
+#### python_webserver/tasks.py
 {{< gsHighlight  python >}}
 import os
 
-# import the ctx object
+## import the ctx object
 from cloudify import ctx
 
-# import the operation decorator
+## import the operation decorator
 from cloudify.decorators import operation
 
 @operation
@@ -90,8 +95,8 @@ def start(**kwargs):
     os.system(command)
 
 
-# multiple operations that can be referred to afterwards
-# in the blueprint are defined
+## multiple operations that can be referred to afterwards
+## in the blueprint are defined
 @operation
 def stop(**kwargs):
     try:
@@ -104,7 +109,7 @@ def stop(**kwargs):
 {{< /gsHighlight >}}
 
 
-## Retrieving Node Properties
+### Retrieving Node Properties
 
 During the previous step, an HTTP webserver, which is now listening on port 8000, was started.
 If the port was specified in the blueprint, to use that port, the `ctx` object that represents the context of the invocation exposes the node's properties, if the plugin's operation was invoked in the context of a node.
@@ -135,7 +140,7 @@ def start(**kwargs):
     os.system(command)
 {{< /gsHighlight >}}
 
-## Updating & Retrieving Runtime Properties
+### Updating & Retrieving Runtime Properties
 
 Runtime properties are properties that are set during runtime and are relevant to node instances.
 In the example, instead of having the Webserver root set to `/tmp` a temporary folder is created and its path is stored as a runtime property so that the stop operation reads it when stopping the Webserver.
@@ -192,11 +197,11 @@ ctx.instance.runtime_properties['prop1'] = 'This should be updated immediately!'
 ctx.instance.update()
 {{< /gsHighlight >}}
 
-## Asynchronous Operations
+### Asynchronous Operations
 
 In many situations, such as creating resources in a Cloud environment, an operation might be waiting for an asynchronous activity to end (for example, waitng for a VM to start). Instead of implementing a wait-for mechanism in the operation that will wait until the asynchronous activity is over (which blocks the user who executed the operation from executing other operations in the meantime), operations can request to be retried after a specific time and to check whether the asynchronous activity is finished.
 
-### Requesting A Retry
+#### Requesting A Retry
 
 {{< gsHighlight  python >}}
 from cloudify import ctx
@@ -231,7 +236,7 @@ def start(**kwargs):
 {{% /gsTip %}}
 
 
-## Handling Errors
+### Handling Errors
 
 The Cloudify workflows framework distinguishes between two types of error:
 
@@ -250,7 +255,7 @@ import time
 
 from cloudify import ctx
 from cloudify.decorators import operation
-# import the NonRecoverableError class
+## import the NonRecoverableError class
 from cloudify.exceptions import NonRecoverableError
 
 
@@ -286,7 +291,7 @@ def start(**kwargs):
     verify_server_is_up(webserver_port)
 {{< /gsHighlight >}}
 
-### Error Details
+#### Error Details
 
 When an operation fails due to an exception being generated (intentionally or unintentionally), the exception details are stored in the
 task_failed/task_reschduled events.
@@ -321,7 +326,7 @@ def verify_server_is_up(port):
 {{< /gsHighlight >}}
 
 
-## Plugin Metadata
+### Plugin Metadata
 
 Several attributes under `ctx.plugin` can be used to access details about the plugin involved in the current operation.
 
@@ -336,7 +341,7 @@ Several attributes under `ctx.plugin` can be used to access details about the pl
   so should not be considered persistent, but rather a convenient workspace).
 
 
-## Testing Your Plugin
+### Testing Your Plugin
 
 In most cases, the recommendation is to test your plugin's logic using local workflows, and only then run them as part of a Cloudify deployment. We have supplied you with a nice and tidy
 decorator to do just that. The cloudify-plugins-common's test_utils package enables you to do that. It is intuitive to use, but an example is provided below:
@@ -358,7 +363,7 @@ def test_my_task(self, cfy_local):
     pass
 {{< /gsHighlight >}}
 
-#### Workflow Test Arguments
+##### Workflow Test Arguments
 
 - `blueprint_path` - A path to the blueprint to run, this blueprint file is copied to a temporary
  test directory. **This is the only mandatory input.**
@@ -379,7 +384,7 @@ plugin.yaml of the current file should be implemented as if both the blueprint a
 The decorator sets up the environment for the test, and injects the environment as the first argument to the function.
 For example, if it is called `cfy_local`. You could run executions via `cfy_local.execute('install')`, or access storage via `cfy_local.storage`.
 
-#### Passing Inputs
+##### Passing Inputs
 Passing inputs is not confined to static inputs:
 
 - You might want to pass a function name to the inputs argument, the function would be called and the returned value would
@@ -414,18 +419,18 @@ Passing inputs is not confined to static inputs:
                     pass
             {{< /gsHighlight >}}
 
-#### Context Manager
+##### Context Manager
 
 The decorator functionality also exists as a context manager. However, the following features will not work:
 
 - Copy_plugin_yaml or passing any relative path in resources_to_copy.
 - Passing a path to a function.
 
-### Unit Testing
+#### Unit Testing
 
 To unit test a specific function that needs a `ctx` object, you can use [`cloudify.mocks.MockCloudifyContext`]({{< field "mock_ctx_link" >}}) which is provided by `cloudify-plugins-common`.
 
-#### Example: Using `MockCloudifyContext`
+##### Example: Using `MockCloudifyContext`
 
 Assuming the plugin code is located in `my_plugin.py`:
 
@@ -463,19 +468,19 @@ finally:
 
 Now that the plugin is created, you need to incorporate it in your blueprint. For more information, see the [Plugins]({{< relref "blueprints/spec-plugins.md" >}}) specification.
 
-## Supplementary Information
+### Supplementary Information
 
-### The Context Object
+#### The Context Object
 
 The `ctx` context object contains contextual parameters that are mirrored from the blueprint, alongside additional functionality:
 
-#### Properties Context Objects
+##### Properties Context Objects
 
 * `ctx.instance.id` - The unique ID of the node's instance.
 * `ctx.node.properties` - The properties of the node as declared under the `properties` dictionary.
 * `ctx.instance.runtime_properties` - The properties that are assigned to a **node's instance** at runtime. These properties are either populated by the plugin itself (for instance, an automatically generated port that the plugin exposes when it's run), or are generated prior to the invocation of the plugin (for instance, the ip of the machine the plugin is running on).
 
-#### Utility Context Objects
+##### Utility Context Objects
 
 * `ctx.logger` - A Cloudify-specific logging mechanism to send logs back to the Cloudify Manager environment.
 * `ctx.download_resource` - Downloads a specified resource.
@@ -497,7 +502,7 @@ The `ctx` context object contains contextual parameters that are mirrored from t
    See example at ctx.download_resource_and_render.
 * `ctx.instance.update` - Updates the node's runtime properties. This is automatically called each time an operation ends, meaning that it is only useful in the context of a single operation.
 
-### Cloud Plugins
+#### Cloud Plugins
 
 The lifecycle `start` operation should store the following runtime properties for the `Compute` node instance:
 

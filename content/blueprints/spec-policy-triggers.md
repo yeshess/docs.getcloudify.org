@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Policy Triggers
+
+
+
+##  Policy Triggers
+
+
 category: Blueprints
 draft: false
 weight: 1500
@@ -11,7 +16,7 @@ execute_workflow_trigger_link: https://github.com/cloudify-cosmo/cloudify-manage
 
 `policy_triggers` specify the implementation of actions that are invoked by policies, and declare the properties that define a trigger's behavior.
 
-# Declaration
+## Declaration
 
 The `policy_triggers` section is a hash in which each item in the hash represents an policy trigger.
 
@@ -25,7 +30,7 @@ policy_triggers:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 
 Keyname     | Required | Type        | Description
 ----------- | -------- | ----        | -----------
@@ -35,7 +40,7 @@ parameters  | no       | dict        | Optional parameters schema for the policy
 
 <br>
 
-# Example
+## Example
 
 {{< gsHighlight  yaml >}}
 policy_triggers:
@@ -56,13 +61,13 @@ policy_triggers:
 {{< /gsHighlight >}}
 
 
-# Built-in Policy Triggers
+## Built-in Policy Triggers
 
 The following policy triggers are defined in [types.yaml]({{< field "types_yaml_link" >}}).
 
-## cloudify.policies.triggers.execute_workflow
+### cloudify.policies.triggers.execute_workflow
 
-### Parameters:
+#### Parameters:
 
 * `workflow` Workflow name to execute.
 * `workflow_parameters` Workflow parameters. (Optional, default: `{}`)
@@ -73,6 +78,6 @@ The following policy triggers are defined in [types.yaml]({{< field "types_yaml_
 
 You can find the implementation for this trigger on [github]({{< field "execute_workflow_trigger_link" >}}). It builds the HTTP request to the Manager REST service and makes the actual REST call using the `clj-http` clojure library.
 
-# Usage
+## Usage
 This section describes how to define a policy trigger. To _use_ policy triggers with policies,
 see the [Groups]({{< relref "blueprints/spec-groups.md" >}}) specification.

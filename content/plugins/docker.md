@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Docker Plugin
+
+
+
+##  Docker Plugin
+
+
 category: Plugins
 draft: false
 abstract: "Docker plugin description and configuration"
@@ -12,7 +17,7 @@ plugin_version: 1.2
 ---
 
 
-# Plugin Requirements:
+## Plugin Requirements:
 
 * Python versions:
   * 2.7.x
@@ -22,13 +27,13 @@ plugin_version: 1.2
   * As part of the Docker installation, make sure that the user agent (such as Ubuntu), is added to the docker group.
 {{% /gsNote %}}
 
-# Compatibility
+## Compatibility
 
 The Docker plugin uses Docker-Py version 1.2.3.
 
-# Types
+## Types
 
-## cloudify.docker.Container
+### cloudify.docker.Container
 
 **Derived From:** cloudify.nodes.Root
 
@@ -90,9 +95,9 @@ The Docker plugin uses Docker-Py version 1.2.3.
 {{< /gsHighlight >}}
 
 
-# Blueprints
+## Blueprints
 
-## An example node specification
+### An example node specification
 
 {{< gsHighlight  yaml  >}}
 
@@ -122,15 +127,15 @@ The Docker plugin uses Docker-Py version 1.2.3.
 
 {{< /gsHighlight >}}
 
-## Container Properties
+### Container Properties
 
 The properties are: `name`, `image`.
 
-### name:
+#### name:
 
 The `name` property is the name of the container.
 
-### image:
+#### image:
 
 The `image` property is a dictionary. It must have the `repository` key or the `src` key, or both. It may additionally have the `tag` key.
 
@@ -159,11 +164,11 @@ Following is an example of importing from an URL.
 
 {{< /gsHighlight >}}
 
-### Defining Parameters
+#### Defining Parameters
 
 Because this plugin is based on the Docker-Py python library, you can pass the parameters as inputs to the supported functions.
 
-## Create
+### Create
 
 Maps to the `create_container` function. You can add any of the parameters available to the `create_container` function in Docker-Py
 
@@ -182,7 +187,7 @@ Maps to the `create_container` function. You can add any of the parameters avail
 
 {{< /gsHighlight >}}
 
-## Start
+### Start
 
 Maps to the start function. You can add any of the parameters available to the start function in Docker-Py.
 
@@ -198,7 +203,7 @@ Maps to the start function. You can add any of the parameters available to the s
 
 {{< /gsHighlight >}}
 
-## Stop
+### Stop
 
 Maps to the stop function. You can add any of the parameters available to the stop function in Docker-Py.
 
@@ -212,7 +217,7 @@ Maps to the stop function. You can add any of the parameters available to the st
 
 {{< /gsHighlight >}}
 
-## remove_container
+### remove_container
 
 Maps to the `remove_container` function. You can add any of the parameters available to the `remove_container` function in Docker-Py.
 
@@ -232,13 +237,13 @@ Many of the options exposed in the Docker-Py Python Docker API are available thr
 For additional descriptions of parameters, see the [docker command line documentation](https://docs.docker.com/reference/commandline/cli/).
 
 
-## Using the Plugin
+### Using the Plugin
 
 The plugin is designed to follow the Docker Py Docker Python API library, not the Docker CLI. Because of this, it differs from the Docker CLI in certain respects. For example, `docker run` is split into `create` and `start`.
 
 Following are the operations that this plugin currently supports.
 
-### Create Task
+#### Create Task
 
 * Creates a container that can be started.
 
@@ -247,7 +252,7 @@ Following are the operations that this plugin currently supports.
 * This operation adds the `container_id` to the instance `runtime_properties`.
 
 
-### Start Task
+#### Start Task
 
 * This starts the container.
 
@@ -270,15 +275,15 @@ Following are the operations that this plugin currently supports.
 {{< /gsHighlight >}}
 
 
-### Stop Task
+#### Stop Task
 
 * Stops the container.
 
 
-### Delete Task
+#### Delete Task
 
 * Deletes the container and its `runtime_properties`.
 
-# Complete Example
+## Complete Example
 
 For a complete working example, refer to the [cloudify-nodecellar-docker-example](https://github.com/cloudify-cosmo/cloudify-nodecellar-docker-example).

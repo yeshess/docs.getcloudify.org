@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: rollback
+
+
+
+##  rollback
+
+
 category: Docs
 draft: true
 abstract: Cloudify's Command-Line Interface
@@ -14,14 +19,14 @@ You can only rollback to the version of Cloudify installed before the last `cfy 
 {{% /gsNote %}}
 
 
-#### Usage 
+##### Usage 
 `cfy rollback [OPTIONS] BLUEPRINT_PATH`
 
 Rollback Cloudify Manager to its previous version
 
 `BLUEPRINT_PATH` is the path of the Manager blueprint to use for rollback.
 
-#### Optional flags
+##### Optional flags
 
 *  `-i, --inputs TEXT` - 
 						Inputs for the deployment (Can be provided

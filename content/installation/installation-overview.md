@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview of Cloudify Installation
+
+
+
+##  Overview of Cloudify Installation
+
+
 category: Installation
 draft: false
 weight: 100
@@ -14,6 +19,6 @@ A Cloudify Manager is a compute host on which the Cloudify Management service ru
 3. After Cloudify Manager is installed, you need to perform some configuration tasks. These include [uploading plugins]({{< relref "plugins/using-plugins.md" >}}) and [configuring secrets]({{< relref "manager/using-secrets.md" >}}).
 
 
-### Uninstalling Cloudify
+#### Uninstalling Cloudify
 
 Instructions for uninstalling the Cloudify CLI from Windows are [located here]({{< relref "installation/uninstall-cloudify-cli.md" >}}).

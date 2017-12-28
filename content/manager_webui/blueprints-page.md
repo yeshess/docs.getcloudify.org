@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Local Blueprints Page
+
+
+
+##  Local Blueprints Page
+
+
 category: Web Interface
 draft: false
 abstract: Blueprint Page Reference
@@ -18,7 +23,7 @@ You can sort items in the table in ascending or descending order by clicking a c
 {{% /gsTip %}}
  
 
-### Uploading a Blueprint
+#### Uploading a Blueprint
 1. Click the **Upload** button in the Blueprints List widget to upload a blueprint.
 2. In the Upload Blueprint dialog, select the local blueprint archive or specify the URL of the remote archive in which the blueprint is located. 
 3. Enter the `Blueprint name` and `Blueprint filename`.   
@@ -29,7 +34,7 @@ You can sort items in the table in ascending or descending order by clicking a c
 
 ![different icons]({{<img "ui/blueprintsPage/icon-options.png">}})
 
-### Deploying a Blueprint
+#### Deploying a Blueprint
 1. Click the deploy icon adjacent to the name of the blueprint that you want to deploy.   
    If you have used the drill-down option on a specfic blueprint, click **Deploy Blueprint**.
    ![deploy dialog]({{<img "ui/blueprintsPage/deploy.png">}})<br>
@@ -38,11 +43,11 @@ You can sort items in the table in ascending or descending order by clicking a c
    The names of the default input values appear in the inputs fields. You can leave these defaults or specify a new input.   
 4. Click **Deploy** to deploy the blueprint.
 
-### Deleting a Blueprint
+#### Deleting a Blueprint
 
 *  Click the delete icon adjacent to a blueprint entry to delete it.
 
-## Additional Information about Blueprints
+### Additional Information about Blueprints
 
 When you click the name of a blueprint in the Blueprints List table, a blueprint-specific page opens. The page displays four widgets with details about the selected blueprint:
 
@@ -51,7 +56,7 @@ When you click the name of a blueprint in the Blueprints List table, a blueprint
 * Inputs and Outputs
 * Source
 
-### Topology
+#### Topology
 
 The **Topology** widget displays an application’s graph of nodes and their relationships, which describes the lifecycle events or other operations that each node and relationship exposes for use in workflows.
 
@@ -65,7 +70,7 @@ The number of node instances is marked in a bullet beside the node's type icon.<
 
 You can click the name of a node to display additional details about it.<br>
 
-### Deployments
+#### Deployments
 
 The **Deployment** widget displays information about when this specific blueprint was created, and so on.  In addition the current status of the nodes are displayed.
 
@@ -78,7 +83,7 @@ The **Deployment** widget displays information about when this specific blueprin
 
 If you click the name of a deployment, it drills down to the Nodes widget, which provides additonal data about the deployment (see below for details about this widget) and displays buttons that enable you to update or delete the deployment, and to execute a workflow.
 
-#### Nodes
+##### Nodes
 The **Nodes** widget displays a list of the nodes related to the blueprint topology.
 
 ![Blueprint's nodes]({{<img "ui/blueprintsPage/nodes.png">}})
@@ -87,12 +92,12 @@ The type, containing node, connection, number of instances, and groups of which 
 
 If you click the name of a node, it's instance is displayed.
 
-### Blueprint Inputs and Outputs
+#### Blueprint Inputs and Outputs
 The **Blueprint Inputs** and **Blueprints Outputs** widgets display the values for these elements. If you hover over the outputs value, the code for the output appears. 
 
 ![Blueprint source code]({{<img "ui/blueprintsPage/source.png">}})
 
-### Blueprint Sources
+#### Blueprint Sources
 The **Blueprint sources** widget displays all the sources in the Blueprint package.
 
 ![Sources widget]({{<img "ui/blueprintsPage/sources-widget.png">}})

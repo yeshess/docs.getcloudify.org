@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: AWS Plugin
+
+
+
+##  AWS Plugin
+
+
 category: Plugins
 draft: false
 weight: 100
@@ -15,13 +20,13 @@ Some services and resources vary in availability between regions and accounts.
 
 For information about the library, [click here](http://boto.readthedocs.org/en/latest/index.html).
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python version 2.7.x
 * AWS account
 
 
-# Compatibility
+## Compatibility
 
 {{% gsWarning %}}
 This version of Cloudify is only compatible with AWS Plugin version 1.3, and later.
@@ -40,11 +45,11 @@ This version of Boto EC2 Connection supports (AWS) APIVersion = '2014-10-01'.
 This version of Boto ELB Connecton supports (AWS) APIVersion = '2012-06-01'.
 {{% /gsNote %}}
 
-# AWS Plugin Configuration
+## AWS Plugin Configuration
 
 The AWS plugin requires credentials and endpoint setup information in order to authenticate and interact with AWS.
 
-### Providing Credentials as Secrets
+#### Providing Credentials as Secrets
 
  It is recommended that you store your credentials as [secrets]({{< relref "manager/using-secrets.md" >}}). You can do this using the [CLI]({{< relref "cli/secrets.md" >}}).
  Secrets can then be accessed inside your blueprints, as follows:
@@ -65,7 +70,7 @@ The AWS plugin requires credentials and endpoint setup information in order to a
  
  (see [Common Properties](#common-properties) for more info on the `aws_config` dictionary)
 
-### Providing Credentials as Environment Variables that are not Stored as Secrets
+#### Providing Credentials as Environment Variables that are not Stored as Secrets
 
 If you do not use secret storage, you must provide the following credentials as environment variables:
 {{< gsHighlight  yaml  >}}
@@ -80,7 +85,7 @@ If you do not use secret storage, you must provide the following credentials as 
 
       
 
-# Terminology
+## Terminology
 
 * **VPC** - Virtual Private Cloud. For more information about VPCs, see [AWS Documentation](https://aws.amazon.com/documentation/vpc/).
 * **EC2-Classic** - The original release of Amazon EC2. On this platform, instances run in a single, flat network that is shared with other customers.
@@ -88,11 +93,11 @@ If you do not use secret storage, you must provide the following credentials as 
 * **`availability_zone`** - One of many discrete locations within a region, such as `us-west-1b`.  When specifying an `availability_zone`, you must specify a zone that is in the region to which you are connecting.
 
 
-# Types
+## Types
 
 This section describes the [node type]({{< relref "blueprints/spec-node-types.md" >}}) definitions. Nodes describe resources in your Cloud infrastructure. For more information, see [node type]({{< relref "blueprints/spec-node-types.md" >}}).
 
-### Common Properties
+#### Common Properties
 
 All Cloud resource nodes have common properties:
 
@@ -120,7 +125,7 @@ Each time that you manage a resource with Cloudify, one or more clients are crea
 See the `cloudify.datatypes.aws.Config` data type definition in the plugin.yaml for the plugin. Note that `availability_zone` and `region` are not synonymous, and that `availability_zone` is not part of the AWS configuration.
 
 
-## cloudify.aws.nodes.Instance
+### cloudify.aws.nodes.Instance
 
 **Derived From:** [cloudify.nodes.Compute]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -185,7 +190,7 @@ The following additional `runtime_properties` are available on node instances of
 **Additional**
 To use the instance in a VPC, you must connect the instance to a subnet using the `cloudify.aws.relationships.instance_contained_in_subnet` relationship.
 
-## cloudify.aws.nodes.WindowsInstance
+### cloudify.aws.nodes.WindowsInstance
 
 **Derived From:** [cloudify.aws.nodes.Instance](#cloudify-aws-nodes-instance)
 
@@ -194,7 +199,7 @@ Use this type when working with a Windows server. It has the same properties and
 The default value for the `use_password` property is overridden for this type, and is set to `true`.
 In this case, the password of the Windows server is retrieved, decrypted and located under the `password` runtime property of this node instance.
 
-## cloudify.aws.nodes.KeyPair
+### cloudify.aws.nodes.KeyPair
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -216,7 +221,7 @@ In this case, the password of the Windows server is retrieved, decrypted and loc
 See the common [Runtime Properties](#runtime-properties) section.
 
 
-## cloudify.aws.nodes.SecurityGroup
+### cloudify.aws.nodes.SecurityGroup
 
 **Derived From:** [cloudify.nodes.SecurityGroup]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -245,7 +250,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that, to create a security group in a VPC, you must connect the security group to the VPC using the `cloudify.aws.relationships.security_group_contained_in_vpc` relationship.
 
 
-## cloudify.aws.nodes.Volume
+### cloudify.aws.nodes.Volume
 
 **Derived From:** [cloudify.nodes.Volume]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -270,7 +275,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the volume in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.ElasticIP
+### cloudify.aws.nodes.ElasticIP
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -291,7 +296,7 @@ See the [Runtime Properties](#runtime-properties) section.
 Note that the actual IP is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.ElasticLoadBalancer
+### cloudify.aws.nodes.ElasticLoadBalancer
 
 **Derived From:** [cloudify.aws.nodes.ElasticLoadBalancer]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -319,7 +324,7 @@ See the [Runtime Properties](#runtime-properties) section.
 Note that the ID of the load balancer in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.VPC
+### cloudify.aws.nodes.VPC
 
 **Derived From:** [cloudify.nodes.Network]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -344,7 +349,7 @@ Note that the ID of the VPC in AWS is available via the `aws_resource_id` runtim
 When a VPC is created, it receives several default attachments. Cloudify assigns a runtime property for the original DHCP options set, called `default_dhcp_options_id`. Note that this is not necessarily the current DHCP options set.
 
 
-## cloudify.aws.nodes.Subnet
+### cloudify.aws.nodes.Subnet
 
 **Derived From:** [cloudify.nodes.Subnet]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -366,14 +371,14 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the subnet in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.Gateway
+### cloudify.aws.nodes.Gateway
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
 Note that this is a base type for InternetGateway, VPNGateway and CustomerGateway.
 Not to be used directly.
 
-## cloudify.aws.nodes.InternetGateway
+### cloudify.aws.nodes.InternetGateway
 
 **Derived From:** [cloudify.aws.nodes.Gateway](#cloudify-aws-nodes-gateway)
 
@@ -394,7 +399,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the internet gateway in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.VPNGateway
+### cloudify.aws.nodes.VPNGateway
 
 **Derived From:** [cloudify.aws.nodes.Gateway](#cloudify-aws-nodes-gateway)
 
@@ -415,7 +420,7 @@ See the common [Runtime Properties section](#runtime-properties) section.
 Note that the ID of the VPN gateway in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.CustomerGateway
+### cloudify.aws.nodes.CustomerGateway
 
 **Derived From:** [cloudify.aws.nodes.Gateway](#cloudify-aws-nodes-gateway)
 
@@ -438,7 +443,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the customer gateway in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.ACL
+### cloudify.aws.nodes.ACL
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -459,7 +464,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of `network_acl` in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.DHCPOptions
+### cloudify.aws.nodes.DHCPOptions
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -484,7 +489,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the DHCP option set in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.RouteTable
+### cloudify.aws.nodes.RouteTable
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -501,7 +506,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the `route_table` in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.Interface
+### cloudify.aws.nodes.Interface
 
 **Derived From:** [cloudify.nodes.Port]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -518,7 +523,7 @@ See the common [Runtime Properties](#runtime-properties) section.
 Note that the ID of the `network_interface` in AWS is available via the `aws_resource_id` runtime-property.
 
 
-## cloudify.aws.nodes.SecurityGroupRule
+### cloudify.aws.nodes.SecurityGroupRule
 
 **Derived From:** [cloudify.nodes.Root]({{< relref "blueprints/built-in-types.md" >}})
 
@@ -527,7 +532,7 @@ Note that the ID of the `network_interface` in AWS is available via the `aws_res
   * `rule` A list of security group rule properties. See `cloudify.datatypes.aws.SecurityGroupRule` in the plugin.yaml data definitions section for its structure.
 
 
-## cloudify.aws.nodes.SecurityGroupRule.Multi
+### cloudify.aws.nodes.SecurityGroupRule.Multi
 
 **Derived From:** [cloudify.aws.nodes.SecurityGroupRule](#cloudify-aws-nodes-securitygrouprule)
 
@@ -542,7 +547,7 @@ Note that, to create a security group circular dependency, you must connect the 
 and to the security group it depends on using the `cloudify.aws.relationships.rule_depends_on_security_group`.
 
 
-# Relationships
+## Relationships
 
 See the [relationships]({{< relref "blueprints/spec-relationships.md" >}}) section.
 
@@ -589,10 +594,10 @@ The following plugin relationship operations are defined in the AWS plugin:
 * `cloudify.aws.relationships.rule_contained_in_security_group` Represents which SecurityGroupRule is contained in which SecurityGroup.
 
 
-# Types Common Behaviors
+## Types Common Behaviors
 
 
-## Validations
+### Validations
 
 All types provide the same base functionality for the `cloudify.interfaces.validation.creation` interface operation:
 
@@ -602,7 +607,7 @@ All types provide the same base functionality for the `cloudify.interfaces.valid
 
 
 
-## Runtime Properties
+### Runtime Properties
 
 See the [runtime properties](http://cloudify-plugins-common.readthedocs.org/en/3.3/context.html?highlight=runtime#cloudify.context.NodeInstanceContext.runtime_properties) section.
 
@@ -611,12 +616,12 @@ Node instances of any of the types defined in this plugin are set with the follo
   * `aws_resource_id` AWS ID of the resource.
 
 
-## Default Resource Naming Convention
+### Default Resource Naming Convention
 
 If `use_external_resource` is set to `true` in the blueprint, the `resource_id` must be that resource's ID in AWS, unless the resource type is a key pair, in which case the value is the key's name.
 
 
-# Using Existing Resources
+## Using Existing Resources
 
 You can use existing resources on AWS, regardless of whether they have been created by a different Cloudify deployment or outside of Cloudify.
 
@@ -636,12 +641,12 @@ The following behaviors are unique:
  * `cloudify.aws.relationships.route_table_of_source_vpc_connected_to_target_peer_vpc` Runs regardless of whether the source or target node is external.
 
 
-# Account Information
+## Account Information
 
 The plugin requires access to your `aws_access_key_id` and `aws_secret_access_key` in order to operate. Read about your [AWS Boto configuration](http://boto.readthedocs.org/en/latest/boto_config_tut.html) here.
 
 
-# Tips
+## Tips
 
 * It is highly recommended that you ensure that AWS names are unique. Many operations will fail if you have existing resources with identical names.
 * When packaging blueprints for use with a Manager, the Manager adds the following configurations, which you can  override in your blueprint:

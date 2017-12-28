@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Creating Policies
+
+
+
+##  Creating Policies
+
+
 category: Policies
 draft: false
 abstract: "A guide to authoring Cloudify policy types"
@@ -15,7 +20,7 @@ This section is aimed at advanced users. At the very least make sure you underst
 {{% /gsNote %}}
 
 
-# Policy Types Blueprint Definition
+## Policy Types Blueprint Definition
 Policy types are specified in the blueprint along with a reference to their implementation and properties that configure instances of them.
 
 An example (followed by an explanation):
@@ -51,7 +56,7 @@ Policy types are defined under the `policy_types` section of the blueprint.
         Trigger workflow only if the last workflow had been triggered earlier than `interval-between-workflows` seconds ago.
         If the specified value is less than 0, workflows can run concurrently. (default: `300`)
 
-# Policy Type Implementation
+## Policy Type Implementation
 The implementation of policy types is written in [Clojure](http://clojure.org/) and more specifically using [Riemann's](http://riemann.io/) API with a thin layer provided by Cloudify.
 
 An example: `my_policy/my_policy_type.clj`

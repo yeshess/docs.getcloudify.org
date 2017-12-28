@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Broker Security (RabbitMQ)
+
+
+
+##  Broker Security (RabbitMQ)
+
+
 category: Manager
 draft: false
 weight: 1000
@@ -9,17 +14,17 @@ weight: 1000
 
 Cloudify uses RabbitMQ as its broker, and supports configurable security.
 
-# Authentication
+## Authentication
 
 When bootstrapping, the Cloudify Manager must be provided with credentials for RabbitMQ. These will use default values if not overridden in the inputs.
 
-## Username
+### Username
 
 It is suggested that you change the username to something other than the default. It is recommended that you use only upper and lower case letters and numbers for the username.
 
 The username can be set using the `rabbitmq_username` input to the manager blueprint.
 
-## Password
+### Password
 
 It is recommended that you set the password to something strong that is known only to those who are authorized.
 
@@ -27,13 +32,13 @@ It is recommended that the password is comprised of only ASCII characters, exclu
 
 The password should be set using the `rabbitmq_password` input to the manager blueprint.
 
-## With external broker
+### With external broker
 
 If you are using an external broker you must have correctly configured the user on the external RabbitMQ broker. This user must have full permissions on the root (`/`) vhost.
 
 No changes of configuration of the external broker will be performed during the bootstrap.
 
-# Network Encryption
+## Network Encryption
 
 Communications with the broker can be secured (with some exceptions, see below) using SSL/TLS.
 
@@ -41,7 +46,7 @@ A certificate from a certificate authority is not required, as the provided publ
 
 Currently you will likely need to create the manager with a specified IP in order to appropriately create the certificate- see instructions for generating the certificate, below.
 
-## Generating a certificate
+### Generating a certificate
 
 If you wish to generate a self-signed certificate, you can do so using the following command (assuming a manager IP of 192.0.2.10, command tested on Ubuntu Linux 14.04):
 
@@ -56,7 +61,7 @@ Note also that:
 * The signed public certificate will be in `public.crt`.
 * The private key will be in `private.key`.
 
-## Using a certificate to secure broker communications
+### Using a certificate to secure broker communications
 
 Once you have public and private certificates you will need to provide the following inputs to the manager blueprint:
 
@@ -83,7 +88,7 @@ Cloudify agent for Windows is packed with Python 2.7.9 but will not install it i
 {{% /gsNote %}}
 
 
-## Using an External Broker
+### Using an External Broker
 
 If you are using an external broker, you must have correctly configured the SSL/TLS on port 5671 on the broker with the appropriate private key. It must also listen on the standard unsecured port (5672).
 
@@ -93,7 +98,7 @@ Do not provide the `rabbitmq_cert_private` input if you are using an external br
 
 No changes to the configuration of the external broker are performed during the bootstrap process.
 
-## RabbitMQ SSL and TLS Exceptions
+### RabbitMQ SSL and TLS Exceptions
 
 Several components are not currently secured via SSL (though password authentication will still apply). These components are only used internally to the Manager.
 

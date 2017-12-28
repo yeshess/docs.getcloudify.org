@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: tenants
+
+
+
+##  tenants
+
+
 category: Docs
 draft: false
 weight: 225
@@ -9,7 +14,7 @@ weight: 225
 The `cfy tenants` command is used to create and manage tenants on Cloudify Manager.<br>
 You can run commands on a tenant other than the one that you are logged into by specifying the name of the tenant to which the command applies. For example, `cfy tenants add-user USERNAME -t TENANT_NAME` can be used to add a user to a different tenant.
 
-#### Requirements
+##### Requirements
 
 * To use the command you must have Cloudify `sys_admin` credentials.<br>
 * Tenant names must conform to the following requirements:  
@@ -20,19 +25,19 @@ You can run commands on a tenant other than the one that you are logged into by 
   * Value must begin with a letter
   * Cannot be empty
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 Each of the tenants related commands are detailed below in alphabetical order.
 
-### add-user
+#### add-user
 
-#### Usage
+##### Usage
 `cfy tenants add-user [OPTIONS] USERNAME`
 
 Add an individual user to a tenant. <br>
@@ -40,7 +45,7 @@ If your system is integrated with LDAP/AD, ensure that the username matches that
 
 `USERNAME` is the name of the user to add to the tenant.
 
-#### Required flag
+##### Required flag
 * `-t, --tenant-name TEXT` - The name of the tenant.
 * `-r, --role TEXT` - The name of the role.
 
@@ -53,7 +58,7 @@ Valid tenant roles are:
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants add-user my-user -t my-tenant -r user
@@ -64,9 +69,9 @@ User `my-user` added successfully to tenant `my-tenant`
 ...
 {{< /gsHighlight >}}
 
-### add-user-group
+#### add-user-group
 
-#### Usage
+##### Usage
 `cfy tenants add-user-group [OPTIONS] USER_GROUP_NAME`
 
 Add a user group to a tenant. <br>
@@ -74,7 +79,7 @@ Add a user group to a tenant. <br>
 
 If your system is integrated with LDAP/AD, ensure that the group name matches that specified in LDAP.<br>
 
-#### Required flags
+##### Required flags
 
 * `-t, --tenant-name TEXT` - The name of the tenant.
 * `-r, --role TEXT` - The name of the role.
@@ -88,7 +93,7 @@ Valid tenant roles are:
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants add-user-group my-user-group -t my-tenant -r user
@@ -99,20 +104,20 @@ User group `my-user-group` added successfully to tenant `my-tenant`
 ...
 {{< /gsHighlight >}}
 
-### create
+#### create
 
-#### Usage
+##### Usage
 `cfy tenants create [OPTIONS] TENANT_NAME`
 
 Add a tenant to Cloudify Manager.<br>
  `TENANT_NAME` is the name of the new tenant
 
 The tenant name must be unique in Cloudify Manager.
-#### Required flag
+##### Required flag
 * ` -t, --tenant-name TEXT` - The name of the tenant.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants create my-tenant
@@ -123,16 +128,16 @@ Tenant `my-tenant` created
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage
+##### Usage
 ` cfy tenants delete [OPTIONS] TENANT_NAME`
 
 Delete a tenant from Cloudify Manager.
  `TENANT_NAME` is the name of the tenant
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants delete my-tenant
@@ -144,15 +149,15 @@ Tenant removed
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage
+##### Usage
 ` cfy tenants get [OPTIONS] TENANT_NAME`<br>
 
 View information for a specific tenant, including its users. <br>
  `TENANT_NAME` is the name of the tenant
 
-#### Optional flag
+##### Optional flag
   
 * `--get-data` - When set to `True`, displays the full list of connected
                  resources (users/tenants/user-groups), for each listed
@@ -161,7 +166,7 @@ View information for a specific tenant, including its users. <br>
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants get my-tenant
@@ -179,15 +184,15 @@ Requested tenant info:
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage
+##### Usage
 `cfy tenants list [OPTIONS]`<br>
 
 Provides a list of all tenants in this instance of Cloudify Manager. <br>
 By default, when you generate the list of tenants, only the number of linked resources is displayed. You can retrieve full details with the use of a `--get-data` flag.
 
-#### Optional flags
+##### Optional flags
 
 * `--sort-by TEXT` - Key for sorting the list.
 * `--descending` - Sort list in descending order. [default: False]
@@ -198,7 +203,7 @@ By default, when you generate the list of tenants, only the number of linked res
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants list
@@ -217,9 +222,9 @@ Tenants:
 ...
 {{< /gsHighlight >}}
 
-### remove-user
+#### remove-user
 
-#### Usage
+##### Usage
 `cfy tenants remove-user [OPTIONS] USERNAME`<br>
 
 Remove an individual user from a tenant.<br>
@@ -229,13 +234,13 @@ Remove an individual user from a tenant.<br>
 if the user is part of one or more user groups that are assigned to the tenant, you need to remove the user from each group, in order for them to be prevented from accessing the tenant.
 {{% /gsNote %}}
 
-#### Required flags
+##### Required flags
 
 *  `-t, --tenant-name TEXT` - The name of the tenant.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants remove-user my-user -t my-tenant
@@ -246,21 +251,21 @@ User `my-user` removed successfully from tenant `my-tenant`
 ...
 {{< /gsHighlight >}}
 
-### remove-user-group
+#### remove-user-group
 
-#### Usage
+##### Usage
 `cfy tenants remove-user-group [OPTIONS] USER_GROUP_NAME`<br>
 
 Remove a user group from a tenant.<br>
  `USER_GROUP_NAME` is the name of the user group to remove from the tenant.
 
-#### Required flags
+##### Required flags
 
 *  `-t, --tenant-name TEXT` - The name of the tenant.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants remove-user-group my-user-group -t my-tenant
@@ -271,21 +276,21 @@ User group `my-user-group` removed successfully from tenant `my-tenant`
 ...
 {{< /gsHighlight >}}
 
-### update-user
+#### update-user
 
-#### Usage
+##### Usage
 `cfy tenants update-user [OPTIONS] USERNAME`
 
 Update the user role in a tenant.
 
 `USERNAME` is the name of the user for which the role needs to be updated.
 
-#### Required flags
+##### Required flags
 
 * `-t, --tenant-name TEXT` - The name of the tenant.
 * `-r, --role TEXT` - The name of the role.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants update-user my-user -t my-tenant -r viewer
@@ -293,21 +298,21 @@ User `my-user` updated successfully in tenant `my-tenant`
 {{< /gsHighlight >}}
 
 
-### update-user-group
+#### update-user-group
 
-#### Usage
+##### Usage
 `cfy tenants update-user-group [OPTIONS] USERNAME`
 
 Update the user role in a tenant.
 
 `USERNAME` is the name of the user for which the role needs to be updated.
 
-#### Required flags
+##### Required flags
 
 * `-t, --tenant-name TEXT` - The name of the tenant.
 * `-r, --role TEXT` - The name of the role.
 
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy tenants update-user-group my-user-group -t my-tenant -r viewer

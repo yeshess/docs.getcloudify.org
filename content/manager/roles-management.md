@@ -1,18 +1,23 @@
 ---
 layout: bt_wiki
-title: Managing Roles
+
+
+
+##  Managing Roles
+
+
 category: Manager
 draft: false
 weight: 1400
 ---
 
-## What are Cloudify roles?
+### What are Cloudify roles?
 
 The Cloudify roles provide sets of permissions, and define the access a user has in the context of tenants.
 Each user can get a role in a few ways – specifically assigned (per tenant),
 assigned to group (per tenant) or system level role when the user is created.
 
-## System-wide roles and tenant-roles
+### System-wide roles and tenant-roles
 
 System-wide roles are roles that define the access to all the tenants in the system,
 typically allowed to do system wide operations.
@@ -20,7 +25,7 @@ Tenant roles are roles that define the access in the context of a specific tenan
 User can have one system-wide role, but multiple roles per tenant.
 When a user or a group assigned to a tenant, it must assigned with a specific role.
 
-## Differences between the roles
+### Differences between the roles
 
 System wide roles:
 

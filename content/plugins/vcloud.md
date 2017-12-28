@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: vCloud Plugin
+
+
+
+##  vCloud Plugin
+
+
 category: Plugins
 draft: false
 abstract: Cloudify vCloud plugin description and configuration
@@ -11,11 +16,11 @@ weight: 400
 The vCloud plugin enables you to use a vCloud-based infrastructure for deploying services and applications.
 
 
-# Plugin Requirements
+## Plugin Requirements
 
 * Python version 2.7.x
 
-# vCloud Configuration
+## vCloud Configuration
 
 The vCloud plugin requires credentials in order to authenticate and interact with vCloud.
 
@@ -62,22 +67,22 @@ The vCloud Manager blueprint stores the vCloud configuration used for the bootst
 {{% /gsTip %}}
 
 
-# Misc
+## Misc
 
-## vApp template
+### vApp template
 The template requires a VM with root disk with OS, SSH server and VMware Tools installed.
 
 The template must not have any networks connected.
 
 
-# Types
+## Types
 
 {{% gsTip title="Tip" %}}
 Each type has a `vcloud_config` property. It can be used to pass parameters for authentication. You do not need to override this property and, by default, the authentication uses the same credentials that were used for the Cloudify bootstrap process.
 {{% /gsTip %}}
 
 
-## cloudify.vcloud.nodes.Server
+### cloudify.vcloud.nodes.Server
 
 **Derived From:** cloudify.nodes.Compute
 
@@ -120,7 +125,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `ip` - The private IP address (IP on the internal network) of the server.
 
 
-## cloudify.vcloud.nodes.Network
+### cloudify.vcloud.nodes.Network
 
 **Derived From:** cloudify.nodes.Network
 
@@ -153,7 +158,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `vcloud_network_name` Network name.
 
 
-## cloudify.vcloud.nodes.Port
+### cloudify.vcloud.nodes.Port
 
 **Derived From:** cloudify.nodes.Port
 
@@ -172,7 +177,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.lifecycle.creation_validation` Validates port node parameters.
 
 
-## cloudify.vcloud.nodes.FloatingIP
+### cloudify.vcloud.nodes.FloatingIP
 
 **Derived From:** cloudify.nodes.VirtualIP
 
@@ -192,7 +197,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `public_ip` Public IP address.
 
 
-## cloudify.vcloud.nodes.PublicNAT
+### cloudify.vcloud.nodes.PublicNAT
 
 **Derived From:** cloudify.nodes.VirtualIP
 
@@ -218,7 +223,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `public_ip` - The public IP address.
 
 
-## cloudify.vcloud.nodes.KeyPair
+### cloudify.vcloud.nodes.KeyPair
 
 **Derived From:** cloudify.nodes.Root
 
@@ -237,7 +242,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.lifecycle.creation_validation` Validates key-pair node parameters.
 
 
-## cloudify.vcloud.nodes.SecurityGroup
+### cloudify.vcloud.nodes.SecurityGroup
 
 **Derived From:** cloudify.nodes.SecurityGroup
 
@@ -261,9 +266,9 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.lifecycle.creation_validation` Validates SecurityGroup node parameters.
 
 
-# Relationships
+## Relationships
 
-## cloudify.vcloud.server_connected_to_floating_ip
+### cloudify.vcloud.server_connected_to_floating_ip
 
 **Description:** A relationship for associating the FloatingIP node with the Server node.
 
@@ -272,22 +277,22 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.relationship_lifecycle.establish` - Associates the floating IP with the server.
   * `cloudify.interfaces.relationship_lifecycle.unlink` - Disassociates the floating IP from the server.
 
-## cloudify.vcloud.server_connected_to_port
+### cloudify.vcloud.server_connected_to_port
 
 **Description:** A relationship for connecting the server to a port.
 **Note:** This relationship has no operations associated with it. The server uses this relationship to connect to the port upon server creation.
 
-## cloudify.vcloud.port_connected_to_network
+### cloudify.vcloud.port_connected_to_network
 
 **Description:** A relationship for connecting a port to the network.
 **Note:** This relationship has no operations associated with it.
 
-## cloudify.vcloud.server_connected_to_network
+### cloudify.vcloud.server_connected_to_network
 
 **Description:** A relationship for connecting the server to the network.
 **Note:** This relationship has no operations associated with it. The server uses this relationship to connect to the network upon server creation. It uses DHCP for IP allocation.
 
-## cloudify.vcloud.server_connected_to_public_nat
+### cloudify.vcloud.server_connected_to_public_nat
 
 **Description:** A relationship for associating the PublicNAT and the server.
 
@@ -296,7 +301,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.relationship_lifecycle.establish` - Associates PublicNAT with the server.
   * `cloudify.interfaces.relationship_lifecycle.unlink` - Disassociates PublicNAT from the server.
 
-## cloudify.vcloud.server_connected_to_security_group
+### cloudify.vcloud.server_connected_to_security_group
 **Description:** A relationship for associating a SecurityGroup and server.
 
 **Mapped Operations:**
@@ -304,7 +309,7 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.relationship_lifecycle.establish` - Associates a SecurityGroup with a server.
   * `cloudify.interfaces.relationship_lifecycle.unlink` - Disassociates a SecurityGroup from a server.
 
-## cloudify.vcloud.net_connected_to_public_nat
+### cloudify.vcloud.net_connected_to_public_nat
 **Description:** A relationship for associating a PublicNAT and the network.
 
 **Mapped Operations:**
@@ -313,9 +318,9 @@ Two additional runtime-properties are available on node instances of this type, 
   * `cloudify.interfaces.relationship_lifecycle.unlink` - Disassociates a PublicNAT from the network.
 
 
-# Examples
+## Examples
 
-## Example I: Using Plugin Types
+### Example I: Using Plugin Types
 
 This example demonstrates how to use some of the types of this plugin.
 

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Bootstrap Workflow
+
+
+
+##  Bootstrap Workflow
+
+
 category: Manager Architecture
 draft: false
 abstract: Describes the flow of bootstrapping a Cloudify management environment

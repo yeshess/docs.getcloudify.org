@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Diamond Plugin
+
+
+
+##  Diamond Plugin
+
+
 category: Plugins
 draft: false
 abstract: "Cloudify diamond plugin description and configuration"
@@ -14,14 +19,14 @@ Diamond is a Python daemon that collects system metrics and publishes them to mu
 Additionally, it features an API for implementing custom collectors for gathering metrics from almost any source.
 
 
-# Plugin Requirements:
+## Plugin Requirements:
 
 * Python versions:
   * 2.6.x
   * 2.7.x
 
 
-# Example
+## Example
 
 The following example shows the configuration options of the plugin.
 
@@ -75,7 +80,7 @@ node_templates:
         target: node
 {{< /gsHighlight >}}
 
-# Interfaces
+## Interfaces
 Two interfaces are involved in setting up a monitoring agent on a machine:
 
 * `cloudify.interfaces.monitoring_agent` - The interface that manages installing, starting, stopping, and uninstalling the agent.
@@ -83,7 +88,7 @@ Two interfaces are involved in setting up a monitoring agent on a machine:
 
 The example above shows how the Diamond plugin maps to these interfaces.
 
-# Global config
+## Global config
 The Diamond agent has a number of configuration sections, some of which are global while other are relevant to specific components. It is possible to pass a [global config](https://github.com/BrightcoveOS/Diamond/blob/v3.5/conf/diamond.conf.example) setting via the `install` operation:
 
  
@@ -99,7 +104,7 @@ interfaces:
  
 In the above example we set the [global poll interval](https://github.com/BrightcoveOS/Diamond/blob/v3.5/conf/diamond.conf.example#L176) to 10 seconds (each collector will be polled for data every 10 seconds).
 
-## Handler
+### Handler
 The Handler’s job in Diamond is to output the collected data to different destinations. By default, the Diamond plugin will setup a custom handler which will output the collected metrics to Cloudify’s manager.
 
 It is possible to set an alternative handler in case you want to output data to a different destination:
@@ -125,7 +130,7 @@ In the example above we configured a [handler for Graphite](https://github.com/B
 If you wish to add your own handler but maintain Cloudify’s default handler, see [this](https://github.com/cloudify-cosmo/cloudify-diamond-plugin/blob/1.2/diamond_agent/tasks.py#L38).
 {{% /gsNote %}}
 
-# Collectors Configuration
+## Collectors Configuration
 
 Collectors are Diamond’s data fetchers. Diamond comes with a large number of [built-in collectors](https://github.com/BrightcoveOS/Diamond/wiki/Collectors).
 
@@ -162,7 +167,7 @@ It is also possible to add a collector-specific configuration via the `config` d
 Config values are left with their default values unless explicitly overridden.
 {{% /gsNote %}}
 
-# Custom Collectors & Handlers
+## Custom Collectors & Handlers
 Collectors and handlers are essentially Python modules that implement specific Diamond interfaces.
 
 You can create your own collectors or handlers and configure them in Diamond. The example below shows how to upload a custom collector.

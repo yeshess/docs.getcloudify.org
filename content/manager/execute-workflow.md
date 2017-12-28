@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Executing Workflows
+
+
+
+##  Executing Workflows
+
+
 category: Manager Intro
 draft: false
 weight: 600
@@ -16,7 +21,7 @@ This process is achieved using the [install workflow] ({{< relref "workflows/bui
 You can create workflows for different types of actions such as deploying code, changing the infrastructure state, and even for overriding the default Install Workflow.
 
 
-## Executing a Workflow via the CLI
+### Executing a Workflow via the CLI
 
 To execute a workflow run the following command.
 
@@ -25,7 +30,7 @@ cfy executions start <WORKFLOW_NAME> -d <DEPLOYMENT_NAME>
 {{< /gsHighlight >}}
 
 
-## Executing a Workflow via the Cloudify Web UI
+### Executing a Workflow via the Cloudify Web UI
 
 1. Navigate to and click the relevant deployment on the Deployments widget.   
    ![workflows1]({{< img "manager/nodecellar_openstack_topology.png" >}})
@@ -38,7 +43,7 @@ cfy executions start <WORKFLOW_NAME> -d <DEPLOYMENT_NAME>
    ![workflows3]({{< img "manager/ui-workflows3.png" >}})<br>
    During the time that the progress spinner is displayed, you can cancel the execution by clicking the **X** button.<br>
    
-#### Example: Installing an Application
+##### Example: Installing an Application
 
 This example shows how an `install` workflow can be executed from the Node Cellar deployment:
 
@@ -81,6 +86,6 @@ To uninstall the deployed application, you run a workflow that tears down all th
 Similarly to the `install` workflow, you can track the progress of the uninstall process in the CLI or the Web interface.
 After the workflow is complete, you can verify that the resources have been deleted.
 
-# What's Next
+## What's Next
 
 After an application uninstallation process is complete, you can [delete a deployment]({{< relref "manager/delete-deployment.md" >}}).

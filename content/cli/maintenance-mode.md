@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: maintenance-mode
+
+
+
+##  maintenance-mode
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -15,7 +20,7 @@ Putting the manager in maintenance-mode prevents it from running any executions.
 
 See [maintenance-mode]({{< relref "manager/maintenance-mode.md" >}}) for more information.
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
@@ -23,16 +28,16 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
-### activate
+#### activate
 
-#### Usage 
+##### Usage 
 `cfy maintenance-mode activate [OPTIONS]`
 
 Enter maintenance-mode on Cloudify Manager, rejecting further REST requests.
 
-#### Optional flags
+##### Optional flags
 
 * `--wait` - 			Wait until there are no running executions and
                      	automatically activate maintenance-mode.
@@ -41,7 +46,7 @@ Enter maintenance-mode on Cloudify Manager, rejecting further REST requests.
                      	terminate.) [default: {0}]
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy maintenance-mode activate
@@ -54,15 +59,15 @@ Run 'cfy maintenance-mode status' to check the maintenance mode's status.
 {{< /gsHighlight >}}
 
 
-### deactivate
+#### deactivate
 
-#### Usage 
+##### Usage 
 `cfy maintenance-mode deactivate` 
 
 Deactivate maintenance-mode on the Cloudify Manager, to accept REST requests.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy maintenance-mode deactivate
@@ -75,15 +80,15 @@ Maintenance mode is off.
 {{< /gsHighlight >}}
 
 
-### status
+#### status
 
-#### Usage 
+##### Usage 
 `cfy maintenance-mode status`
 
 Retrieve the current maintenance-mode status.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy maintenance-mode status

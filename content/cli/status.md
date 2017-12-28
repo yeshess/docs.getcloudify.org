@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: status
+
+
+
+##  status
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -12,14 +17,14 @@ The `cfy status` command is used to display the status of a running Cloudify Man
 To use the command you must `cfy use -t MANAGEMENT_IP` first.
 
 
-#### Usage
+##### Usage
 `cfy status`
 
 Show a list of the services running on the manager, whether it is in maintenance-mode, and its REST protocol. 
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy status
@@ -45,7 +50,7 @@ Services:
 
 ...
 
-## in cluster mode
+### in cluster mode
 
 Retrieved manager services status... [ip=10.239.2.162]
 

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: executions
+
+
+
+##  executions
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,7 +16,7 @@ The `cfy executions` command is used to manage workflow executions on Cloudify m
 
 You can use the command to start, cancel and and list executions and to retrieve information about a single execution.
 
-#### Optional Flags
+##### Optional Flags
 
 These will work on each command:
 
@@ -20,18 +25,18 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
-### start
+#### start
 
-#### Usage 
+##### Usage 
 `cfy executions start [OPTIONS] WORKFLOW_ID`
 
 Execute a workflow on a given deployment 
 
 `WORKFLOW_ID` is the ID of the workflow to execute (e.g. `uninstall`)
 
-#### Optional flags
+##### Optional flags
 
 * `-d, --deployment-id TEXT` - 
                         The deployment ID to execute the workflow on
@@ -54,7 +59,7 @@ Execute a workflow on a given deployment
 * ` -t, --tenant-name TEXT`      The name of the tenant on which the execution will be executed. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy executions start install -d cloudify-nodecellar-example
@@ -74,22 +79,22 @@ Finished executing workflow install on deployment cloudify-nodecellar-example
 {{< /gsHighlight >}}
 
 
-### cancel
+#### cancel
 
-#### Usage 
+##### Usage 
 `cfy executions cancel [OPTIONS] EXECUTION_ID`
 
 Cancel a workflow's execution
 
 `EXECUTION_ID` - The ID of the execution to be canceled.
 
-#### Optional flags
+##### Optional flags
 
 * `-f, --force` - Terminate the execution abruptly, rather than request an orderly termination.
 * `-t, --tenant-name TEXT`      The name of the tenant on which the execution is to be canceled. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy executions cancel eba71d2b-2456-4423-acb0-f8fc7324e793
@@ -102,9 +107,9 @@ cfy executions get eba71d2b-2456-4423-acb0-f8fc7324e793
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy executions list [options]`
 
 List executions.
@@ -112,7 +117,7 @@ List executions.
 If `DEPLOYMENT_ID` is provided, lists executions for that deployment.
 Otherwise, lists executions for all deployments.
 
-#### Optional flags
+##### Optional flags
 
 * `-d, --deployment-id TEXT` - 
                         The ID of the deployment for which executions are to be listed.
@@ -123,7 +128,7 @@ Otherwise, lists executions for all deployments.
 * `-t, --tenant-name TEXT`      The name of the tenant on which the executions occurred. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy executions list
@@ -142,21 +147,21 @@ Executions:
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage 
+##### Usage 
 `cfy executions get [OPTIONS] EXECUTION_ID`
 
 Retrieve information for a specific execution.
 
 `EXECUTION_ID` is the execution about which to retrieve information.
 
-#### Optional flags
+##### Optional flags
 
 * `-t, --tenant-name TEXT`      The name of the tenant on which the execution occurred. If unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy executions get f38ad989-d09e-4b68-b041-ac63aeacb9ae

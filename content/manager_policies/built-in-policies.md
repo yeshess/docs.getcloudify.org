@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Built-in Policies
+
+
+
+##  Built-in Policies
+
+
 category: Policies
 draft: false
 abstract: "description and details on the Cloudify built-in policies"
@@ -10,7 +15,7 @@ weight: 100
 {{% gsSummary %}}{{% /gsSummary %}}
 
 
-# Host Failure
+## Host Failure
 
 **Type:** `cloudify.policies.types.host_failure`
 
@@ -34,7 +39,7 @@ This policy's implementation can be found at [github](https://github.com/cloudif
 
 It is based on Riemann's [expired?](http://riemann.io/api/riemann.streams.html#var-expired.3F) function.
 
-# Threshold
+## Threshold
 
 **Type:** `cloudify.policies.types.threshold`
 
@@ -59,7 +64,7 @@ This policy's implementation can be found at [github](https://github.com/cloudif
 
 It is based on Riemann's [stable](http://riemann.io/api/riemann.streams.html#var-stable) function.
 
-# Exponential Weighted Moving Average
+## Exponential Weighted Moving Average
 
 **Type:** `cloudify.policies.types.ewma_stabilized`
 

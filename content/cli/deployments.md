@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: deployments
+
+
+
+##  deployments
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -15,7 +20,7 @@ You can use the command to create, delete, update and list deployments and to sh
 Use of spaces is not supported in file names.
 {{% /gsNote %}}
 
-#### Optional Flags
+##### Optional Flags
 
 These will work on each command:
 
@@ -24,11 +29,11 @@ These will work on each command:
 * `-h, --help` - Show this message and exit.
 
 
-## Commands
+### Commands
 
-### create
+#### create
 
-#### Usage 
+##### Usage 
 `cfy deployments create [OPTIONS] [DEPLOYMENT_ID]`
 
 Create a deployment on the Manager
@@ -36,14 +41,14 @@ Create a deployment on the Manager
 `DEPLOYMENT_ID` -       The ID of the deployment to be created.
 
 
-#### Mandatory flags
+##### Mandatory flags
 
 *  `-b, --blueprint-id TEXT` -   
                         The unique identifier for the blueprint
                         [required]
 
 
-#### Optional flags
+##### Optional flags
 
 *  `-d, --deployment-id=DEPLOYMENT_ID` -
                         A unique ID for the deployment
@@ -52,7 +57,7 @@ Create a deployment on the Manager
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments create -b simple-python-webserver-blueprint
@@ -64,9 +69,9 @@ Deployment created. The deployment's id is simple-python-webserver-blueprint
 ...
 {{< /gsHighlight >}}
 
-### update
+#### update
 
-#### Usage 
+##### Usage 
 `cfy deployments update [OPTIONS] DEPLOYMENT_ID`
 
 Update a specified deployment according to the specified blueprint.
@@ -74,12 +79,12 @@ Update a specified deployment according to the specified blueprint.
 `DEPLOYMENT_ID` -       is the deployment's ID to update.
 
 
-#### Mandatory flags
+##### Mandatory flags
 
 *  `-p, --blueprint-path PATH` - 
                         This is a mandatory flag.
 
-#### Optional flags 
+##### Optional flags 
 
  *  `-i, --inputs TEXT` -
                         Inputs for the deployment (Can be provided as
@@ -108,7 +113,7 @@ Update a specified deployment according to the specified blueprint.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments update simple-python-webserver-blueprint -p simple-python-webserver-blueprint/blueprint.yaml
@@ -123,9 +128,9 @@ Successfully updated deployment cloudify-nodecellar-example. Deployment update i
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy deployments delete [OPTIONS] DEPLOYMENT_ID`
 
 Delete a deployment from Cloudify Manager. 
@@ -137,14 +142,14 @@ Deleting a deployment does not delete the resources of an application. To delete
 
 `DEPLOYMENT_ID` -       The ID of the deployment to delete
 
-#### Optional flags
+##### Optional flags
 
 *  `-f, --force` -      Delete the deployment even if there are existing live nodes for it
 *  `-t, --tenant-name TEXT` - 
                         The name of the tenant of the deployment. If unspecified, the current tenant is
                                  used.
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments delete simple-python-webserver-blueprint
@@ -156,9 +161,9 @@ Deployment deleted
 ...
 {{< /gsHighlight >}}
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy deployments list [OPTIONS]`
 
 List deployments.
@@ -166,7 +171,7 @@ List deployments.
 If `--blueprint-id` is provided, list deployments for that blueprint.
   Otherwise, list deployments for all blueprints.
 
-#### Optional flags
+##### Optional flags
 
 *  `-b, --blueprint-id TEXT` - 
                         The ID of the blueprint for which you want to list deployments.
@@ -184,7 +189,7 @@ If `--blueprint-id` is provided, list deployments for that blueprint.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments list
@@ -202,23 +207,23 @@ Deployments:
 ...
 {{< /gsHighlight >}}
 
-### inputs
+#### inputs
 
-#### Usage 
+##### Usage 
 ` cfy deployments inputs [OPTIONS] DEPLOYMENT_ID`
 
 Retrieve inputs for a specific deployment
 
 `DEPLOYMENT_ID` -       The ID of the deployment for which you want to list inputs.
 
-#### Optional flags
+##### Optional flags
 
 *  `-t, --tenant-name TEXT` -   The name of the tenant for which you want to list inputs. If
                            unspecified, the current tenant is used.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments outputs cloudify-nodecellar-example
@@ -235,9 +240,9 @@ Retrieving inputs for deployment cloudify-nodecellar-example...
 ...
 {{< /gsHighlight >}}
 
-### outputs
+#### outputs
 
-#### Usage 
+##### Usage 
 `cfy deployments outputs [OPTIONS] DEPLOYMENT_ID`
 
 Lists all outputs for a deployment. Note that not every deployment has outputs and it depends on whether or not outputs were defined in the blueprint from which the deployment was created
@@ -245,14 +250,14 @@ Lists all outputs for a deployment. Note that not every deployment has outputs a
 `DEPLOYMENT_ID` -       The ID of the deployment for which you want to list outputs.
 
 
-#### Optional flags
+##### Optional flags
 
 
 *  `-t, --tenant-name TEXT` -   The name of the tenant for which you want to list outputs. If
                            unspecified, the current tenant is used.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy deployments outputs cloudify-nodecellar-example

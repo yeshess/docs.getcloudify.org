@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Working Locally
+
+
+
+##  Working Locally
+
+
 category: Guides
 draft: false
 abstract: Working with Cloudify in Local Mode
@@ -11,7 +16,7 @@ weight: 400
 
 {{% gsNote title="Disclaimer" %}}The functionality of working locally is subject to change in future versions.{{% /gsNote %}}
 
-# Overview
+## Overview
 
 Cloudify supports working in *Local Mode*. When working in Local Mode, you can:
 
@@ -20,7 +25,7 @@ Cloudify supports working in *Local Mode*. When working in Local Mode, you can:
 
 — without using a Cloudify Manager. This feature is especially useful for debugging and troubleshooting.
 
-# How Does This Work?
+## How Does This Work?
 
 Working in Local Mode is done by using the `local` keyword for the `cfy` executable. You can use the `cfy local -h` command to learn about
 the available commands supported in Local Mode.
@@ -41,7 +46,7 @@ Working in Local Mode involves:
 in Local Mode, Cloudify does not support storing multiple blueprints or creating multiple deployments off any blueprint; you always
 work with exactly one deployment.
 
-# Initializing a Local Mode Working Directory
+## Initializing a Local Mode Working Directory
 
 Initializing a Local Mode working directory, involves — at the same step — "uploading" a blueprint along with parameters
 for a deployment. This is because working in Local Mode is always performed against a single deployment of a single blueprint at any
@@ -69,7 +74,7 @@ Example:
 cfy local init -p /tmp/my/blueprint.yaml -i /tmp/my/inputs.yaml
 ```
 
-## Updating a Local Mode Working Directory
+### Updating a Local Mode Working Directory
 
 Once a working directory is initialized, control information regarding the blueprint, and its implicit deployment, is recorded in the working
 directory. If the blueprint changes, or your deployment's inputs change, you need to update the working directory to reflect those changes. This is
@@ -77,7 +82,7 @@ directory. If the blueprint changes, or your deployment's inputs change, you nee
 
 To update, repeat the very same command as for initializing a working directory.
 
-# Executing Workflows
+## Executing Workflows
 
 To execute a workflow, use the `cfy local execute` command:
 
@@ -96,7 +101,7 @@ Example:
 cfy local execute -w install
 ```
 
-# Displaying Node Instances
+## Displaying Node Instances
 
 You can view information about node instances by using the `cfy local instances` command:
 
@@ -107,7 +112,7 @@ cfy local instances [--node-id <node-id>]
 This command returns a JSON document containing information about node instances in the current deployment. If 
 `--node-id` is specified, then only node instances of the given node ID are returned. 
 
-# Displaying Outputs
+## Displaying Outputs
 
 If the blueprints contains an `outputs` section, you can retrieve the outputs' value by using the following command:
 
@@ -117,7 +122,7 @@ cfy local outputs
 
 This command is equivalent to the `cfy deployments outputs` command.
 
-# Cleaning Up
+## Cleaning Up
 
 All data pertaining to Local Mode is recorded in a subdirectory called `local-storage` underneath your working directory. To clean-up,
 either delete your working directory, or alternatively, delete the `local-storage` directory underneath your working directory. 

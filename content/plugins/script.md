@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Script Plugin
+
+
+
+##  Script Plugin
+
+
 category: Plugins
 draft: false
 abstract: "Cloudify script plugin description and configuration"
@@ -22,18 +27,18 @@ You can specify a custom directory to use as temporary storage for executable fi
 {{% /gsNote %}}
 
 
-# Plugin Requirements:
+## Plugin Requirements:
 
 * Python versions:
   * 2.6.x
   * 2.7.x
 
 
-# Usage
+## Usage
 
 Following are usage examples that demonstrate different configuration options.
 
-##  Basic Usage
+###  Basic Usage
 
 `blueprint.yaml`
 {{< gsHighlight  yaml  >}}
@@ -52,7 +57,7 @@ node_templates:
 
 `scripts/start.sh`
 {{< gsHighlight  bash  >}}
-#! /bin/bash -e
+##! /bin/bash -e
 ctx logger info "Hello to this world"
 {{< /gsHighlight >}}
 
@@ -75,7 +80,7 @@ interfaces:
 
 The first line
 {{< gsHighlight  bash  >}}
-#! /bin/bash -e
+##! /bin/bash -e
 {{< /gsHighlight >}}
 
 makes the script run with `bin/bash`. Had the script been written using `ruby`, for example, it would point to `/bin/ruby`.
@@ -98,7 +103,7 @@ within a python plugin operation.
 
 A more detailed description about accessing the operation context is provided later in this topic.
 
-## Process Configuration
+### Process Configuration
 
 The following example demostrates how you can configure the working directory in which the script is executed, pass arguments to the script and update environment variables of the script process.
 
@@ -129,24 +134,24 @@ The recommended way for setting environment variables is by using operation inpu
 
 `scripts/start.sh`
 {{< gsHighlight  bash  >}}
-#! /bin/bash -e
+##! /bin/bash -e
 
-# will log "current working directory is: /tmp/workdir"
+## will log "current working directory is: /tmp/workdir"
 ctx logger info "current working directory is: ${PWD}"
 
-# will log "first arg is: arg1_value"
+## will log "first arg is: arg1_value"
 ctx logger info "first arg is: $1"
 
-# will log "my env variable is: MY_ENV_VARIABLE_VALUE"
+## will log "my env variable is: MY_ENV_VARIABLE_VALUE"
 ctx logger info "my env variable is: ${MY_ENV_VARIABLE}"
 
 {{< /gsHighlight >}}
 
-## Python Scripts
+### Python Scripts
 
 Python scripts receive specific treatment in the Script plugin. If the script path ends with a `.py` extension, it is evaluated within the plugin operation. This provides a simple way to access the full plugin API ,without having to write an entire plugin.
 
-### Example
+#### Example
 
 `blueprint.yaml`
 {{< gsHighlight  yaml  >}}
@@ -171,7 +176,7 @@ ctx.logger.info('Just logging the web server port: {0}'
                 .format(ctx.node.properties['port']))
 {{< /gsHighlight >}}
 
-### Operation Inputs
+#### Operation Inputs
 You can import `ctx_parameters` from `cloudify.state`, to access operation inputs in a Python script.
 
 Assuming a `port` operation input was passed, you can access it as follows:
@@ -186,7 +191,7 @@ ctx.logger.info('The port operation input is : {0}'
 
 
 
-### Eval Python
+#### Eval Python
 
 To evaluate a script as Python that does not have a `.py` extension, you can explicity specify this requirement using the `eval_python` process configuration.
 
@@ -202,7 +207,7 @@ interfaces:
 
 If a script does have a `.py` extension and you want it to be executed in an external process, pass `false` to the `eval_python` process configuration. Note that accessing the operation context in this case processed via the [context proxy](#context-proxy), as with any other none Python script.
 
-## Command Prefix
+### Command Prefix
 
 In some cases, you might not want to use `#!` to specify how to execute the script (or cannot, in the event that you are running the script on Windows). In this case, you can use the `command_prefix` process configuration as follows
 
@@ -225,7 +230,7 @@ node_templates:
 
 This executes `start.rb` with the ruby binary in `/opt/ruby/bin/ruby`.
 
-### Windows PowerShell scripts
+#### Windows PowerShell scripts
 
 Windows PowerShell scripts receive specific treatment in the Script plugin. If the script path ends with a `.ps1` extension, it is automatically executed as if `command_prefix` was already set to `powershell`
 This can be achieved as follows:
@@ -245,7 +250,7 @@ node_templates:
 
 This executes `start.ps1` using the PowerShell console application in the script's execution environment.
 
-#### Running PowerShell in 64-bit mode
+##### Running PowerShell in 64-bit mode
 
 The Windows agent runs as a 32-bit service. If PowerShell scripts are invoked, they will be invoked in a 32-bit
 PowerShell process.
@@ -261,11 +266,11 @@ inputs:
 
 (`sysnative` will be automatically resolved to the 32-bit Windows system libraries when used in a 32-bit process)
 
-## Hello World Example
+### Hello World Example
 For a more complete usage example, see the [Hello World]({{< field "hello_world_example_link" >}}) example.
 
 
-# Operation Inputs
+## Operation Inputs
 
 The Script plugin supports passing node template operation inputs as environment variables that are available in the script's execution environment.
 Complex data structures such as dictionaries and lists will be JSON-encoded when exported as environment variables.
@@ -303,7 +308,7 @@ nohup python -m SimpleHTTPServer ${port} > /dev/null 2>&1 &
 
 
 
-# Process Configuration Options
+## Process Configuration Options
 * `cwd` - Sets the working directory for the script.
 * `env` - Updates environment variables of the script process.
 * `args` - Sepcifies arguments to pass to the scripts.
@@ -312,7 +317,7 @@ nohup python -m SimpleHTTPServer ${port} > /dev/null 2>&1 &
 * `ctx_proxy_type` - The [context proxy](#context-proxy-protocol) type. (`none`, `unix`, `tcp` or `http`).
 
 
-# Workflow Scripts
+## Workflow Scripts
 You can use the Script plugin to execute workflow scripts.
 
 For example, to add a custom workflow that runs a custom operation on each node, write a simple blueprint with two nodes, as follows:
@@ -381,15 +386,15 @@ All the node instances now have their `touched` runtime property set to `my_valu
 Workflow scripts are always evaluated as Python code. You cannot write workflow scripts in other languages.
 {{% /gsNote %}}
 
-# Context Proxy
+## Context Proxy
 
 In the previous examples, `ctx` was referenced several times from within the scripts. This mechanism provides the means for accessing the `ctx` object in the manner in which it is usually accessed when [writing plugins]({{< relref "plugins/creating-your-own-plugin.md" >}}).
 
 Following is a description of how calls to the `ctx` executable, translate to the `ctx` object access.
 
-## Attribute access
+### Attribute access
 {{< gsHighlight  bash  >}}
-#! /bin/bash
+##! /bin/bash
 ctx bootstrap-context cloudify-agent agent-key-path
 {{< /gsHighlight >}}
 Translates to
@@ -399,9 +404,9 @@ ctx.bootstrap_context.cloudify_agent.agent_key_path
 
 In addition, note in this example that `-` in attributes (as an argument) is replaced with `_`.
 
-## Simple Method Invocation
+### Simple Method Invocation
 {{< gsHighlight  bash  >}}
-#! /bin/bash
+##! /bin/bash
 ctx logger info "Some logging"
 {{< /gsHighlight >}}
 Translates to
@@ -411,9 +416,9 @@ ctx.logger.info('Some logging')
 
 In the immediately above example, a `logger` attribute is searched on the `ctx` object. After being found, an `info` attribute is searched on the `logger` result. After that is found, it discovers that `info` is callable, so it invokes it with the remaining arguments.
 
-## Method Invocation with kwargs
+### Method Invocation with kwargs
 {{< gsHighlight  bash  >}}
-#! /bin/bash
+##! /bin/bash
 ctx download-resource images/hello.png '@{"target_path": "/tmp/hello.png"}'
 {{< /gsHighlight >}}
 Translates to
@@ -425,16 +430,16 @@ In the above example, note that the final argument starts with `@`. This is furt
 
 Note that the last argument is a dictionary, as the above demonstrates. If the last argument of a method invocation is a dictionary, it is treated as `kwargs` to the method invocation.
 
-## Dictionary Access
+### Dictionary Access
 {{< gsHighlight  bash  >}}
-#! /bin/bash
-# read access
+##! /bin/bash
+## read access
 ctx node properties application_name
 ctx target instance runtime-properties username
 ctx instance runtime-properties endpoint.port
 ctx instance runtime-properties endpoint.urls[2]
 
-# write access
+## write access
 ctx instance runtime-properties my_property my_value
 ctx instance runtime-properties my_properties.my_nested_property nested_value
 {{< /gsHighlight >}}
@@ -456,11 +461,11 @@ Once a dictionary attribute is discovered during the attribute search, the follo
 * If there are two remaining arguments, the call is determined to be write access and the key path is set to the value
   of the second remaining argument. If a dictionary does not exist in the intermediate path, it is created on-the-fly.
 
-## Non-String Arguments
+### Non-String Arguments
 To pass arguments that are not strings, for example when setting a runtime property to a number, you can prefix the argument with `@` so that it is json-parsed before being evaluated.
 
 {{< gsHighlight  bash  >}}
-#! /bin/bash
+##! /bin/bash
 ctx instance runtime-properties number_of_clients @14
 {{< /gsHighlight >}}
 Translates to
@@ -468,13 +473,13 @@ Translates to
 ctx.instance.runtime_properties['number_of_clients'] = 14  # instead of = '14'
 {{< /gsHighlight >}}
 
-## Returning a Value
+### Returning a Value
 You can use `ctx returns some_value` to have the operation to return a value.
 This invocation sets `some_value` on the current `ctx`, and the Script plugin returns the value when the script terminates.
 
 Note that this call does not make the script terminate, however it is best practice to make this call at the end of the script.
 
-## Command-Line Optional Arguments of ctx
+### Command-Line Optional Arguments of ctx
 The following flags must appear before the positional arguments.
 
 * `-t, --timeout=TIMEOUT` - The request timeout in seconds (Default: `5`)
@@ -482,7 +487,7 @@ The following flags must appear before the positional arguments.
 * `--json-arg-prefix=PREFIX` - The prefix for arguments to be processed as json (Default: `@`)
 * `--socket-url=SOCKET_URL` - The ctx socket URL (Default: the environment variable `CTX_SOCKET_URL`). Normally the environment variable `CTX_SOCKET_URL` is injected by the Script plugin. Therefore, it is recommended that this is only be used in conjunction with `ctx-server` during script debugging.
 
-# Context Proxy Protocol
+## Context Proxy Protocol
 
 To call the `ctx` executable, you invoke the CLI client that is pre-installed with the plugin.
 When the Script plugin executes your script, it also starts a ctx proxy server that delegates calls to the actual `ctx` object instance.
@@ -541,9 +546,9 @@ In the case of a failed execution:
 
 See the [CLI implementation]({{< field "client_reference_link" >}}) for reference.
 
-# Troubleshooting
+## Troubleshooting
 
-### nohup
+#### nohup
 When you use `nohup` in your scripts, you must redirect the output and stderr to `/dev/null`
 and to run the operation in the background using `&`.
 For example:
@@ -551,7 +556,7 @@ For example:
 nohup python -m SimpleHTTPServer > /dev/null 2>&1 &
 {{< /gsHighlight >}}
 
-### File Not Found Error
+#### File Not Found Error
 Different Linux distributions use different default interpreters. One might use bash, while the other uses sh. While bash will normally return an informative message in regards to the shebang line, the sh message might look something like this:
 {{< gsHighlight  bash  >}}
 /bin/sh: 1: <tmp_path>/...<script_name>: not found

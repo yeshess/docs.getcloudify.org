@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Cloudify Composer Overview
+
+
+
+##  Cloudify Composer Overview
+
+
 category: Docs
 draft: false
 weight: 200
@@ -15,7 +20,7 @@ Among its drag-and-drop components are platform and network items such as `compu
 
 The generated output from Cloudify Composer is a downloadable TGZ or ZIP archive containing a blueprint.yaml *file* that provides a TOSCA-based description for the application topology and its lifecycle management. In addition to YAML artifacts, the blueprint archive includes a blueprint *package* that contains multiple resources such as configuration and installation scripts, code, and basically any other resource you require for running your application.
 
-## Logging In
+### Logging In
 
 Cloudify Composer is part of the Cloudify Manager premium package and uses the Cloudify Manager user definitions. 
 
@@ -32,16 +37,16 @@ The left side of the Cloudify Composer Topology tab displays a Stencils pane tha
 You can click the Star icon in any node type in the Stencils pane to mark it as a favorite and move it to the Favorites section of the Stencils pane.
 
 
-## Workflow
+### Workflow
 This section describes the main functions related to creating a Blueprint. Typically, when you are using Cloudify Composer, your workflow will follow a similar order to that described in this section. 
 
-### Adding Node Types###
+#### Adding Node Types###
 
 Before you start to design your blueprint, you will typically want to add the stencils that contain the basic node types that you need to work with, and the operations that they expose. For more information about node types, [click here]({{< relref "blueprints/spec-node-types.md" >}}).
 
 Cloudify Composer supports two methods for adding node types to your Stencils catalog, by importing stencils (for existing node types) and by adding custom node types.
 
-#### Importing Stencils
+##### Importing Stencils
 
 You can import a `.yaml` file that contains definitions of multiple node types. These files are referred to as _stencils_.
   
@@ -58,7 +63,7 @@ When you add a plugin as an import to Composer, both the nodes types and the ope
 
 ![Implementation Tree]({{< img "composer/implementation-tree.png" >}})
 
-#### Adding Custom Node Types
+##### Adding Custom Node Types
 
 You can add a new node type by clicking the Add icon at the top of the Stencils pane. When you select this option, you must specify the details of the node type that you are creating, for example the node type's name, parent node type, and so on. You can add new properties and interfaces, or edit the ones that the node type derives from its parent node type.
 
@@ -66,21 +71,21 @@ You can add a new node type by clicking the Add icon at the top of the Stencils 
 
  After you save the new node type, it is displayed in the Stencils pane, under Custom Types. To edit or delete the node type, click the relevant icon at the right of the node type. 
 
-### Blueprints List
+#### Blueprints List
 You can display the menu of all available blueprints that you created or imported by clicking the dropdown arrow next to the name of the currently displayed blueprint. The most commonly used blueprints appear at the top of the list. The other blueprints appear in alaphabetical order.
 
 ![Blueprints List]({{< img "composer/blueprints-list.png" >}})
 
 At the bottom of the list are buttons to enable you to create or import a blueprint. To delete a blueprint, hover your cursor over its name and click the X icon.
 
-#### Importing a Blueprint
+##### Importing a Blueprint
 To import a blueprint, you must specify the archive that contains the blueprint package (either local or a URL), and the name of the main .yaml file in the package that represents the topology of your environment (in cases in which the archive package contains more than one .yaml file).If the field is left empty, the default is “blueprint.yaml”.
 
 You can click the current blueprint name to edit its name. You can also add a description to the file, which will be added to the .yaml file, and will also appear next to the blueprint name in the list. 
 
 ![Edit Blueprint Name]({{< img "composer/edit-blueprint-name.png" >}})
 
-### Working with Nodes
+#### Working with Nodes
 You add a node by dragging the required node type from the Stencils panel and dropping it on to the canvas. You then click it to edit its properties. The properties that are available are dependent on the node type.
 
 ![Working with Nodes]({{< img "composer/working-with-nodes.png" >}})
@@ -93,7 +98,7 @@ To connect networks, subnets and ports to a platform node, click and drag a line
 
 ![Blueprints List]({{< img "composer/connect-to-network.png" >}})
 
-### Adding Plugins to the Blueprint Package
+#### Adding Plugins to the Blueprint Package
 
 Composer enables you to package plugins together with the .yaml file, so that they are part of the archive that you download or upload to Cloudify Manager. The recommended way to work with plugins is to upload them to the Manager, not to tie them with the blueprint package, therefore you would usually only use this option if you want to use plugins that you have written yourself, or if you have very specific reasons to package them with the blueprint itself.
 
@@ -110,7 +115,7 @@ You add plugins on the **Definitions** tab. Cloudify supports many plugins, whic
 
 After a plugin is attached to a package, the operations it exposes appear in the interface’s operations implementations tree.
 
-### Adding a Relationship Type
+#### Adding a Relationship Type
 Custom Relationships, like types, derive from existing relationships and can also have additional properties and interfaces. Interfaces are defined per the source and target nodes that define the relationship.
 
 **Adding a Custom Relationship**
@@ -118,13 +123,13 @@ Custom Relationships, like types, derive from existing relationships and can als
 1. Go to the **Relationships** tab on the Stencils pane and click the Add icon.
 2. Specify the required properties and interfaces, and click **Save**.
 
-### Viewing Topology Source Code
+#### Viewing Topology Source Code
 Every addition or change that you make to the topology of your Blueprint package is 
 reflected in code that you can see on the **Source** tab. This tab provides a representation of the generated TOSCA code behind the application modeling.
 
 ![Topology Source Code]({{< img "composer/source-tab.png" >}})<br />
 
-### Node Settings 
+#### Node Settings 
 Clicking a node on the Blueprint canvas opens its settings window. The settings are divided into four sections.<br />
    
  - **Properties:**
@@ -143,19 +148,19 @@ The networks and networks’ components associated with the current node. For ex
 		security groups and IP addresses. By adding one or more relevant components, you can 
 		assign them to the node and also see them reflected in the VNIC square. 
 
-### Intrinsic Functions
+#### Intrinsic Functions
 
 As in Cloudify Manager, the values of a node’s properties, inputs or outputs can be specified as intrinsic function return values. The intrinsic functions list is available at [http://getcloudify.org/guide/4.0/dsl-spec-intrinsic-functions.html](http://getcloudify.org/guide/4.0/dsl-spec-intrinsic-functions.html).
 
 Cloudify Composer auto-fills the functions and displays the available properties in the existing topology. Note that, for the `get_attribute` function you must be familiar with and use the run-time attributes' names, not the auto-filled properties names. For example, to obtain a virtual IP address using the `get_attribute` function, use the run-time attribute `VirtualIp_address`, not the `VirtualIP` property.
 
-### Creating a Group
+#### Creating a Group
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 You can group a number of components using the “drag to select” button ![drag to select mode]({{< img "composer/drag-to-select.png" >}}). Select the required nodes and click on the “create group” button ![create node group]({{< img "composer/create-node-group.png" >}}) to create a resource group in the topology view. The resource group is also created in the source code, which you can view on the **Source** tab. You can click the group to display its properties and add or remove members.<br><br>
 ![create group]({{< img "composer/create-group.png" >}})
 
  
-### Inputs and Outputs
+#### Inputs and Outputs
 Cloudify Composer enables you to add inputs and outputs to the Blueprint on the **Inputs & Outputs** tab.
 
 Inputs are parameters that are inserted into the Blueprint when a deployment is created. They are useful when you need to use information that is still unknown at the time that the Blueprint is created. Inputs can also be used to differentiate between deployments of the same Blueprint. You can reference inputs from other parts of the topology, using the `get_input` intrinsic function.
@@ -164,7 +169,7 @@ Outputs provide a way to expose the global aspects of a blueprint's deployment, 
 
 Inuputs and outputs can be referenced from other parts of the topology, using the `get-input` intrinsic function.
 
-## Uploading, Saving, Downloading and Validating Blueprints
+### Uploading, Saving, Downloading and Validating Blueprints
 
 Use the buttons on the top right of the Cloudify Composer screen to upload a blueprint to Cloudify Manager, or to save, download or validate a blueprint.
 

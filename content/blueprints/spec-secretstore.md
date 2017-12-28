@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Secrets Store
+
+
+
+##  Secrets Store
+
+
 category: Blueprints
 draft: false
 weight: 1250
@@ -11,13 +16,13 @@ The secrets store is implemented inside the Cloudify PostgreSQL database, to pro
 
 For additional information about creating secrets, refer to the [CLI documentation]({{< relref "cli/secrets.md" >}}).
 
-## Adding Secrets
+### Adding Secrets
 
 You can add secrets to the secrets store repository for the tenant to which you are currently logged in using the following command:
 ```cfy secrets create ```
 
 
-## Retrieving Data from a Tenant's Secrets Store
+### Retrieving Data from a Tenant's Secrets Store
 
 To retrieve data from a tenant's secrets store, use the following command:
 ```cfy secrets get SECRET-KEY```

@@ -1,12 +1,17 @@
 ---
 layout: bt_wiki
-title: Upgrading to a newer version
+
+
+
+##  Upgrading to a newer version
+
+
 category: Manager
 draft: true
 weight: 900
 
 ---
-## Overview
+### Overview
 The Cloudify Manager in-place upgrade process enables the upgrade of all running Manager components to a newer version.
 Before starting the manager upgrade, it is important to understand the upgrade process. The following will cover the end to end tasks required for preforming
 an in-place upgrade.
@@ -14,11 +19,11 @@ an in-place upgrade.
 {{% gsNote title="Important Note" %}}The Cloudify Manager in-place upgrade is supported for versions 3.4 and above.{{% /gsNote %}}
 
 
-## Configuration
+### Configuration
 Upgrading the running Cloudify Manager requires having the latest [simple-manager-blueprint](https://github.com/cloudify-cosmo/cloudify-manager-blueprints/blob/3.3.1/simple-manager-blueprint.yaml) at hand.
 This blueprint will be used to configure and install the upgraded Cloudify Manager.
 
-### Required Inputs
+#### Required Inputs
 Executing the Manage upgrade requires specifying the following inputs in the [simple-manager-blueprint-inputs.yaml](https://github.com/cloudify-cosmo/cloudify-manager-blueprints/blob/3.3.1/simple-manager-blueprint-inputs.yaml):
 
 * `private_ip` - The manager's private IP address. This address will be used when reconfiguring services as part of the upgrade process.
@@ -27,7 +32,7 @@ Executing the Manage upgrade requires specifying the following inputs in the [si
 
 These inputs are mandatory when using the CLI used for bootstrapping.
 
-### Node Input Properties
+#### Node Input Properties
 
 By default, the upgrade process is set to reuse the properties used upon bootstrap or previous upgrade. This behavior can be overridden by setting `use_existing_on_upgrade` property to `false`
 in the appropriate service node type specified in the [manager-types.yaml](https://github.com/cloudify-cosmo/cloudify-manager-blueprints/blob/3.3.1/types/manager-types.yaml).
@@ -64,12 +69,12 @@ Once the `use_existing_on_upgrade` property is set to `false`, it will apply to 
 
 For reference use, properties and resources can be found under `/opt/cloudify/<SERVICE_NAME>/`on the manager file-system.
 
-### Sources And Resources:
+#### Sources And Resources:
 All service node sources such as service RPMs and all Cloudify component packages, along with all resources such as agent packages and configuration files,
 will be replaced upon upgrade with the new resources specified in the new [simple-manager-blueprint-inputs.yaml](https://github.com/cloudify-cosmo/cloudify-manager-blueprints/blob/3.3.1/simple-manager-blueprint-inputs.yaml).
 This applies to all except resources of type `user_resource`.
 
-#### User Resources
+##### User Resources
 User resources are resources that should not be replaced as part of the upgrade
 process and include the following resources:
 
@@ -88,7 +93,7 @@ Setting the `use_existing_on_upgrade` flag to `false` for any of the nodes in th
 resources used by the new manager blueprint.
 
 
-## Upgrade
+### Upgrade
 
 The following diagram illustrates the upgrade/rollback flow that will be discussed in this document:
 ![Blueprints table]({{< img "guide/manager-upgrade-flow-diagram.png" >}})
@@ -109,7 +114,7 @@ This can be useful in-case of failures due to power/network issues or in case of
 {{% /gsNote %}}
 
 
-### Upgrade Execution
+#### Upgrade Execution
 Starting the upgrade process requires having the Cloudify Manager in [maintenance-mode]({{< relref "manager/maintenance-mode.md" >}}). This will prevent having running executions during the upgrade process.
 To activate maintenance-mode, run:
 {{< gsHighlight  bash  >}}
@@ -150,7 +155,7 @@ Once the upgrade process is complete, exit maintenance-mode to allow access the 
 cfy maintenance-mode deactivate
 {{< /gsHighlight >}}
 
-## Rollback
+### Rollback
 The upgrade process supports rollback, meaning a Manager can be rolled back to it's previous version.
 Manager rollback should be done in-case of failure in the upgrade process or simply due to dissatisfaction from the upgraded version.
 Similarly to the upgrade process, the rollback process also uses the `install` workflow to execute and can be divided into two steps as can also be seen in the diagram above:
@@ -166,7 +171,7 @@ Similarly to the upgrade command, the rollback command is also idempotent and ca
 This can be useful in-case of failures due to power/network issues.
 {{% /gsNote %}}
 
-### Recover From Failure
+#### Recover From Failure
 Recovering from an upgrade failure can be handled in two ways:
 1. Rerunning the `cfy upgrade` command again. Try running it with a different configuration. Since the upgrade process is idempotent, it will not have any harmful effect.
 2. Running the `cfy rollback` command. This will result in having all services reinstalled in their old version.
@@ -175,7 +180,7 @@ Recovering from an upgrade failure can be handled in two ways:
 The snapshot used for the upgrade process should not be deleted until it certain rollback will not be used though it is advised to keep it anyways.
 {{% /gsNote %}}
 
-### Rollback Execution:
+#### Rollback Execution:
 Again, in a similar fashion to the upgrade process, set Manager to [maintenance-mode](http://??).
 This command should not be invoked in-case the upgrade process failed since the Manager should still be in maintenance-mode.
 
@@ -200,18 +205,18 @@ This issue will be solved in future versions.
 {{% /gsNote %}}
 
 
-## Pre-Upgrade Validations
+### Pre-Upgrade Validations
 Prior to performing the actual upgrade, a `cloudify.interfaces.validation.creation` operation is executed. It's purpose is to validate the new inputs and spot any
 invalid states to prevent them from turning up at runtime. This section will describe the validations preformed for each of the services prior to the upgrade workflow
 execution.
 
-### General Validations
+#### General Validations
 
 * The Manager service components must be in status ‘running’.
 * The Manager file-system must hold all sources and resources used by the previous installation/upgrade under `/opt/cloudify/<NODE_NAME>/resources/`. These resources will be used to allow rollback.
 * The Manager file-system must hold the input properties used by the previous installation/upgrade under `/opt/cloudify/<NODE_NAME>/node_proprties/properties.json` to allow rollback.
 
-### Node Specific Validations
+#### Node Specific Validations
 
 * Elasticsearch
     * `es_heap_size` property must be atr least the size of the current memory size.

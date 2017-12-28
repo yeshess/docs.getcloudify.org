@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Upload Blueprint Workflow
+
+
+
+##  Upload Blueprint Workflow
+
+
 category: Manager Architecture
 draft: false
 abstract: Describes the flow for uploading a Cloudify Blueprint to a Cloudify management environment

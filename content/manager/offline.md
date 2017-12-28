@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Installing Offline
+
+
+
+##  Installing Offline
+
+
 category: Blueprints
 draft: true
 weight: 11000
@@ -17,7 +22,7 @@ In order to resolve this issue, Cloudify manager starts up a file server on port
 Cloudify manager blueprint provides a simple api for uploading resources, and resolving resources paths:
 
 <a id="uploading-resources"></a>
-### Uploading resources 
+#### Uploading resources 
 Cloudify provides you with a simple way for uploading resources to the manager through the `upload_resource` section. 
 The following example is taken from the [Upload Resources]({{< relref "blueprints/spec-upload-resources.md" >}}) docs page:
 
@@ -34,7 +39,7 @@ The snippet shows how to upload a plugin from http://www.my-plugin.com/path/to/p
 http://www.my-plugin.com/path/to/plugin.yaml, and place it on the manager file server with the relative path of /path/to/local/plugin.yaml.
 
 <a id="resolving-inputs"></a>
-### Resolving inputs 
+#### Resolving inputs 
 Cloudify uses the [Import resolver]({{< relref "blueprints/import-resolver.md" >}}) section in the manager blueprint, to create a mapping between URLs.
 Below we can see and example of an `import_resolver` section: 
 

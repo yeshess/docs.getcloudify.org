@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Resource Availability
+
+
+
+##  Resource Availability
+
+
 category: Manager
 draft: false
 weight: 625
@@ -13,7 +18,7 @@ The resource's availability defines who can access the resource. It can have one
 
 The actions the users can perform on the resources depend on their roles, so even if a resources is available to them they will not necessarily be able to perform all actions on it. For example, a user with the role “viewer” in a specific tenant will be able to see the blueprints with the availability value ‘tenant’ which are uploaded to this specific tenant, but will not be able to deploy them. You can find more about the different roles in Cloudify under **roles-management**. 
 
-## Global Resources
+### Global Resources
 
 A global resource is exposed to all users who have access to at least one of the manager's tenants.
 In Cloudify 4.2, A resource has to be created first with either private or tenant availability. Then, it can be set to global using the set-global command. 
@@ -32,7 +37,7 @@ Global resources names must be unique in the entire system, across all tenants. 
 - When creating a new resource, it must not have the same name as any of the global resources available.
 
 
-## Private Resources
+### Private Resources
 
 To separate resources and provide robust access control, Cloudify supports the upload of blueprints, deployments, plugins and snapshots as private resources, using the `--private-resource` flag.
 When you specify this flag, the uploaded resource and its related logs and events are only accessible and visible to its creator, the tenant’s managers and SysAdmin users. 
@@ -44,7 +49,7 @@ Using the private resources flag enables you to create internal resource separat
 The availability of executions is derived from the deployment’s one:  Executions of public deployments are public, whereas those of private deployments are private.
 
 
-### Private Resources in Cloudify UI
+#### Private Resources in Cloudify UI
 
 In the Cloudify UI, private resources are indicated with a red lock icon in the top right corner, as shown below.
 

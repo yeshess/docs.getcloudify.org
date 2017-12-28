@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Overview
+
+
+
+##  Overview
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -21,7 +26,7 @@ If you attempt to run a command that is not supported in local mode, an error me
 
 If you haven't already [installed Cloudify]({{< relref "installation/from-packages.md" >}}), now would be a good time to do so.
 
-# Usage
+## Usage
 
 You can access the CLI by running the `cfy` command in your terminal. Use `cfy -h` to display a list of all the commands and their descriptions.
 
@@ -85,7 +90,7 @@ Commands:
 
 Note that some features. such as viewing metric graphs and application topologies, are only available via the Web interface if you are running Cloudify Manager.
 
-# Verbose Output
+## Verbose Output
 
 The ``-v/--verbose`` flag is available for all commands. It sets the command verbosity level. There are four verbosity levels:
 
@@ -99,7 +104,7 @@ The ``-v/--verbose`` flag is available for all commands. It sets the command ver
 {{% /gsNote %}}
 
 
-# Inputs and Parameters
+## Inputs and Parameters
 
 For commands that accept inputs or parameters (for example, `cfy executions start` or `cfy deployments create`) the value must represent a dictionary. Valid formats are:
 
@@ -114,13 +119,13 @@ You cannot pass non-string values when using the `key=value` method.
 {{% /gsNote %}}
 
 
-# Configuration
+## Configuration
 
 By default, a `.cloudify` directory is created under ~(Home directory). You can change the location using an `_env_` variable (for example, `cfy init` or `cfy use`). 
 
 The directory contains a file named `config.yaml` that you can customize according to your preferences. 
 
-## Configurable Parameters
+### Configurable Parameters
 
 You can configure the parameters described in this section.
 

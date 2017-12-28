@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: init
+
+
+
+##  init
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -11,7 +16,7 @@ The `cfy init` command is used to initialize a working Cloudify directory.
 
 Before you can use `cfy`, you must initialize a working directory for it, in which relevant functional information will be stored.
 
-#### Usage 
+##### Usage 
 `cfy init [OPTIONS] [BLUEPRINT_PATH]`
 
 Initialize a Cloudify environment.
@@ -29,7 +34,7 @@ Providing a `BLUEPRINT_PATH` also initializes a blueprint to work on.
 After initialization, the CLI's configuration can be found under
 ~/.cloudify/config.yaml. 
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
@@ -53,7 +58,7 @@ These will work on each command:
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy init

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Deleting a Blueprint
+
+
+
+##  Deleting a Blueprint
+
+
 category: Manager Intro
 draft: false
 weight: 800

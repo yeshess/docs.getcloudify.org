@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: events
+
+
+
+##  events
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -9,7 +14,7 @@ weight: 60
 
 The `cfy events` command is used to view events of a specific execution.
 
-#### Optional Flags
+##### Optional Flags
 
 These will work on each command:
 
@@ -17,11 +22,11 @@ These will work on each command:
 
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### list
+#### list
 
-#### Usage 
+##### Usage 
 `cfy events list [OPTIONS]`
 
 Display events for an execution
@@ -29,7 +34,7 @@ Display events for an execution
 *  `-e, --execution-id TEXT`     The unique identifier for the execution. Mandatory.
                               
 
-#### Optional flags
+##### Optional flags
 
 
 *  `--include-logs / --no-logs` - 
@@ -42,7 +47,7 @@ Display events for an execution
 
 
 &nbsp;
-#### Example
+##### Example
 {{< gsHighlight  bash  >}}
 $ cfy events list -e dcf2dc2f-dc4f-4036-85a6-e693196e6331
 ...
@@ -56,16 +61,16 @@ Total events: 2
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage 
+##### Usage 
 `cfy events delete [OPTIONS] EXECUTION_ID`
 
 Delete events attached to a deployment.
 
 `EXECUTION_ID` is the ID of the execution events to delete.
 
-#### Optional flags
+##### Optional flags
 
 *  `--include-logs / --no-logs` - 
 						Include logs in returned events [default: True]
@@ -73,7 +78,7 @@ Delete events attached to a deployment.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy events delete cloudify-nodecellar-example

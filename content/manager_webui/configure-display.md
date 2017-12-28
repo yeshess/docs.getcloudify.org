@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Configuring the Web Interface Display
+
+
+
+##  Configuring the Web Interface Display
+
+
 category: Web Interface
 draft: false
 abstract: Configuring the Web Interface Display Reference
@@ -18,7 +23,7 @@ You can sort data in table-style widgets by clicking on a column header.
 **Viewing Additional Data**<br>
 You can click on data in most widgets, to drill down to additional context-sensitive information.
 
-## Configuration Processes
+### Configuration Processes
 
 This section provides information about the following processes:
 
@@ -26,14 +31,14 @@ This section provides information about the following processes:
 * Configuring widgets
 * Adding pages
 
-### Opening Edit Mode
+#### Opening Edit Mode
 
 To make configuration changes, you must enter Edit mode. <br>
 Click the dropdown arrow next to your user name and select **Edit Mode**. If you do not see Edit mode in the dropdown menu, you do not have permissions to edit configuration or add pages.<br>
 
 When you have entered Edit mode, the **Add Widget** button appears below your user name. In addition, you can now move widgets already on the page by clicking on their title bar and dragging them to the preferred position. You can also remove them from the page by clicking the **X** in the right corner of the widget (visible when hovering over the widget's title bar), or click the widget configuration button.
 
-### Adding Widgets
+#### Adding Widgets
 
 A catalog of widgets is available to enable you to select your preferred data display on any page.
 
@@ -46,7 +51,7 @@ A catalog of widgets is available to enable you to select your preferred data di
 
  * To delete a widget, click the **x** icon in the top right corner of the widget.
 
-### Configuring Widgets
+#### Configuring Widgets
 
 Some widgets have configuration option that you can define or edit.<br>
 ![Configure Widget dialog]({{<img "ui/configure-display/configure-widget.png">}})
@@ -59,7 +64,7 @@ Some widgets have configuration option that you can define or edit.<br>
 You can choose to display catalog widget contents as a table.
 {{% /gsTip %}}    
 
-### Adding Pages
+#### Adding Pages
 
 1. In Edit mode, click **Add Page** at the bottom of the pages list in the left column.
 2. Click the Page number field at the top of the page and enter a new title for the page.

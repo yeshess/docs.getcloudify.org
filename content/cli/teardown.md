@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: teardown
+
+
+
+##  teardown
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -24,17 +29,17 @@ These will work on each command:
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-#### Usage 
+##### Usage 
 `cfy teardown [OPTIONS]`
 
 Tear down a Cloudify Manager.
 
-#### Required flags
+##### Required flags
 
 * `-f, --force` - 		This is mandatory for performing the teardown.
 
 
-#### Optional flags
+##### Optional flags
 
 
 * `--ignore-deployments` -	
@@ -49,7 +54,7 @@ Tear down a Cloudify Manager.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy teardown -f 

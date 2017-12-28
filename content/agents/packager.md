@@ -1,6 +1,11 @@
 ---
 
-title: Agent Packager
+
+
+
+##  Agent Packager
+
+
 category: Agents
 draft: false
 weight: 220
@@ -33,7 +38,7 @@ You can use the Cloudify agent packager to create an agent on the distribution o
 
 {{% /gsNote %}}
 
-# Creation Process
+## Creation Process
 
 During the creation process, the agent-packager performs the following actions:
 
@@ -52,7 +57,7 @@ During the creation process, the agent-packager performs the following actions:
 The tool creates a TAR file for use in Cloudify Linux-based environments. For other environments, a different type of agent might be required.
 {{% /gsNote %}}
 
-# Installation
+## Installation
 
 {{< gsHighlight  bash  >}}
 pip install cloudify-agent-packager
@@ -65,7 +70,7 @@ pip install https://github.com/cloudify-cosmo/cloudify-agent-packager/archive/ma
 {{< /gsHighlight >}}
 
 
-# Usage
+## Usage
 
 IMPORTANT NOTES:
 
@@ -73,7 +78,7 @@ IMPORTANT NOTES:
 - You must have the required version of Python installed on your selected image.
 - You must have the `tar` binary in your distribution (run `which tar` to verify that you have TAR installed).
 
-## Creating the Agent Packager from the CLI
+### Creating the Agent Packager from the CLI
 
 To create the agent packager from the CLI, do the following:
 
@@ -102,7 +107,7 @@ example:
 cfy-ap -f -c my_config.yaml -v
 {{< /gsHighlight >}}
 
-## Creating the Agent Packager from Python
+### Creating the Agent Packager from Python
 
 To create the agent packager from Python, do the following:
 
@@ -123,27 +128,27 @@ cfyap.create(config=config,
 Using the tool from Python enables you to pass the configuration dictionary directly to the creation method, which enables automation of the agent creation process.
 {{% /gsNote %}}
 
-## The cloudify-agent Module
+### The cloudify-agent Module
 
 See [here]({{< relref "agents/overview.md" >}}).
 
-## Using the Agent
+### Using the Agent
 
 After creating the agent you can do one of the following:
 
-### Use the Agent on a Per-Node Basis
+#### Use the Agent on a Per-Node Basis
 
 You can define the paths to the agent TAR file in a blueprint on a per-node basis.
 See the [cloudify-agent documentation]({{< relref "agents/overview.md" >}}) for more information.
 
-### Install Agents in Cloudify Manager during Bootstrap
+#### Install Agents in Cloudify Manager during Bootstrap
 
 You can provide URLs for agents that you want to provide during Cloudify Manager bootstrap.
 
 
-# Configuring the Tool
+## Configuring the Tool
 
-## The YAML Configuration File
+### The YAML Configuration File
 
 {{< gsNote title="Note" >}}
 It is important that all modules under `core_modules`, `core_plugins` and `additional_plugins` are written using their actual module names and that dashes are replaced with underscores (for example, the fabric plugin under additional plugins must be called `cloudify_fabric_plugin`.)
@@ -174,14 +179,14 @@ output_tar: Ubuntu-trusty-agent.tar.gz
 keep_virtualenv: true
 {{< /gsHighlight >}}
 
-### Explanation of the Configuration YAML File
+#### Explanation of the Configuration YAML File
 
 {{% gsNote title="Note" %}}
 The `distribution` and `release` variables must correspond with the output generated when running:
 
 ```
 python -c "import platform; print platform.dist()"
-# e.g. ('Ubuntu', '14.04', 'trusty')
+## e.g. ('Ubuntu', '14.04', 'trusty')
 ```
 
 {{% /gsNote %}}
@@ -205,25 +210,25 @@ All modules and plugins, with the exception of `additional_modules` and modules 
 {{< /gsNote >}}
 
 
-# Agent Modules
+## Agent Modules
 
 Each agent contains a set of Python packages.
 These modules can be either simple Python libraries, or plugins.
 
-## Core External Modules:
+### Core External Modules:
 
 These are modules, which are not developed by Cloudify, that are used by the agent.
 
 - [Celery]({{< field "celery_link" >}}) (Mandatory)
 
-## Core Modules
+### Core Modules
 
 These modules are developed by Cloudify and provide core functionality for the agent. The default agents provided with Cloudify come with these modules pre-installed.
 
 - [Cloudify REST Client]({{< relref "apis/rest-client-python.md" >}}) (Mandatory)
 - [Cloudify Plugins Common]({{< field "plugins_common_api_link" >}}) (Mandatory)
 
-## Core Plugins
+### Core Plugins
 
 These plugins are developed by Cloudify and provide core functionality for the agent. The default agents provided with Cloudify come with these modules pre-installed.
 

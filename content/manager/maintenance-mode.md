@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Maintenance Mode
+
+
+
+##  Maintenance Mode
+
+
 category: Manager
 draft: false
 weight: 900
@@ -18,7 +23,7 @@ Cloudify Manager has three maintenance states, activated, activating, and deacti
 * **Deactivated**   
    Cloudify Manager operates normally. No requests are blocked.
 
-## Usage and Flow
+### Usage and Flow
 By default, the maintenance mode state is `deactivated`.
 
 To activate maintenance mode, run `cfy maintenance-mode activate`. Cloudify Manager either enters the `activated` or `activating` state.
@@ -53,5 +58,5 @@ If you run the maintenance mode status command in verbose mode, you can view det
 
 Run `cfy maintenance-mode deactivate` to deactivate maintenance mode.
 
-## Running Maintenance Mode from the Cloudify UI
+### Running Maintenance Mode from the Cloudify UI
 For Premiun users, you can manage maintenance mode by selecting **Maintenance Mode** in the dropdown menu adjacent to your user name.

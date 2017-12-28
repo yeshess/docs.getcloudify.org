@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: bootstrap
+
+
+
+##  bootstrap
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -16,7 +21,7 @@ After bootstrapping a Cloudify Manager, the user and provided SSH-key that are u
 See [bootstrapping]({{< relref "manager/bootstrapping.md" >}}) for more information.
 
 
-#### Usage 
+##### Usage 
 `cfy bootstrap [OPTIONS] BLUEPRINT_PATH`
 
 Bootstrap a Cloudify manager
@@ -31,7 +36,7 @@ host does not necessarily exist prior to bootstrapping.
 `--skip-validations` skips both resource creation
 validation *and* any additional validations performed on the host after it is running.
 
-#### Optional flags
+##### Optional flags
 
 *  `-n --blueprint-filename TEXT`     The name of the archive's main blueprint. Only relevant when uploading an archive. 
 
@@ -71,7 +76,7 @@ validation *and* any additional validations performed on the host after it is ru
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy bootstrap simple-manager-blueprint.yaml -i simple-manager-blueprint-inputs.yaml --install-plugins
@@ -89,9 +94,9 @@ Collecting https://github...
 2017-03-29 12:27:12.582  CFY <manager> 'execute_operation' workflow execution succeeded
 Bootstrap complete
 Manager is up at 35.157.9.188
-##################################################
+###################################################
 Manager password is cQkvEEUW1QM7
-##################################################
+###################################################
 
 ...
 {{< /gsHighlight >}}

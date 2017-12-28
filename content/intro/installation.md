@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Installing Cloudify
+
+
+
+##  Installing Cloudify
+
+
 category: Intro
 draft: true
 weight: 200
@@ -9,11 +14,11 @@ weight: 200
 To start using Cloudify, you must first install it.
 
 
-# Installing using packages
+## Installing using packages
 
 Currently, packages are distributed for Centos 6+/RHEL 6+, Debian 7+/Ubuntu 14+ and Windows (all packages are provided for x64 only).
 
-## Windows
+### Windows
 
 To install on Windows:
 
@@ -25,9 +30,9 @@ To install on Windows:
 After the installation is complete, try running `cfy -h` in your terminal.
 
 
-## Linux
+### Linux
 
-### Centos/RHEL
+#### Centos/RHEL
 
 * Download the installer from the [Downloads page](http://getcloudify.org/downloads/get_cloudify_3x.html) corresponding with the version you would like to install.
 * Open a terminal at the directory where you downloaded the file.
@@ -41,7 +46,7 @@ $ sudo rpm -i <pkg.rpm>
 
 After the installation is complete, try running `cfy -h` in your terminal.
 
-### Debian/Ubuntu
+#### Debian/Ubuntu
 
 * Download the installer from the [Downloads page](http://getcloudify.org/downloads/get_cloudify_3x.html) corresponding with the version you would like to install.
 * Open a terminal at the directory where you downloaded the file.
@@ -55,11 +60,11 @@ $ sudo dpkg -i <pkg.deb>
 
 After the installation is complete, try running `cfy -h` in your terminal.
 
-# Installing using an installation script
+## Installing using an installation script
 
 A script is supplied for you to install Cloudify on Linux, Windows and OS X.
 
-## Prerequisites
+### Prerequisites
 
 To install using the script, you must have Python 2.7.x preinstalled.
 
@@ -72,7 +77,7 @@ Note that the script requires an internet connection.
 Run `python get-cloudify.py -h` for additional information.
 
 
-## Installation
+### Installation
 
 You can download the script from [here](http://gigaspaces-repository-eu.s3.amazonaws.com/org/cloudify3/get-cloudify.py)
 
@@ -81,7 +86,7 @@ Then, run `sudo python get-cloudify.py` on Linux or OS X and `python get-cloudif
 After the installation is complete, try running `cfy -h` in your terminal.
 
 
-# Which method should I use?
+## Which method should I use?
 
 Our provided packages should be used unless one of the following applies:
 

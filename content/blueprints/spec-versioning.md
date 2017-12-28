@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Versioning
+
+
+
+##  Versioning
+
+
 category: Blueprints
 draft: false
 weight: 100
@@ -15,7 +20,7 @@ The version declaration must be included in the main blueprint file. It may also
 In future Cloudify versions, as the DSL specification evolves, this mechanism will enable providing backward compatibility for blueprints written in older versions.
 <br>
 
-# Example
+## Example
 {{< gsHighlight  yaml >}}
 tosca_definitions_version: cloudify_dsl_1_3
 

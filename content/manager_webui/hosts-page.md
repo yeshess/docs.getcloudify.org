@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Nodes Page
+
+
+
+##  Nodes Page
+
+
 category: Web Interface
 draft: true
 abstract: 
@@ -13,7 +18,7 @@ The `Nodes` page displays a list of all the nodes that are related to a `Deploym
 
 ![Nodes Overview]({{< img "ui/ui-nodes-overview.png" >}})
 
-##Filtering Data
+###Filtering Data
 You can filter the nodes data in the table by:  
 * Deployed Blueprint
 * Deployments

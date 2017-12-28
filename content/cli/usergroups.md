@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: user-groups
+
+
+
+##  user-groups
+
+
 category: Docs
 draft: false
 weight: 250
@@ -11,7 +16,7 @@ The `cfy user-groups` command is used to define and manage user groups on Cloudi
 To use the command you must have Cloudify `admin` credentials.<br>
 If your Cloudify Manager is integrated with LDAP/AD. ensure that the group names that you define exactly match those defined in LDAP.
 
-#### Requirements
+##### Requirements
 
 * To use the command you must have Cloudify `admin` credentials.<br>
 * User names and passwords must conform to the following requirements:  
@@ -22,18 +27,18 @@ If your Cloudify Manager is integrated with LDAP/AD. ensure that the group names
   * Value must begin with a letter
   * Cannot be empty
 
-#### Optional flags
+##### Optional flags
 
 These will work on each command:
 
 * `-v, --verbose` - Show verbose output. You can supply this up to three times (i.e. -vvv)
 * `-h, --help` - Show this message and exit.
 
-## Commands
+### Commands
 
-### create
+#### create
 
-#### Usage
+##### Usage
 
 `cfy user-group create [OPTIONS] USER_GROUP_NAME`
 
@@ -41,14 +46,14 @@ Create a new user group on the manager
 
 `USER_GROUP_NAME` is the name of the new user group
 
-#### Optional flags
+##### Optional flags
 
 *  `-l, --ldap-distinguished-name TEXT` - 
                                   The ldap group's distinguished name. This
                                   option is required when using ldap
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy user-groups create users
@@ -59,21 +64,21 @@ Group `users` created
 ...
 {{< /gsHighlight >}}
 
-### add-user
+#### add-user
 
-#### Usage
+##### Usage
 
 `cfy user-groups add-user [OPTIONS] USERNAME`
 
 Add a user group.
  `USERNAME` is the name of the user to add to the user group
 
-#### Required flags
+##### Required flags
 
 * `-g, --group-name TEXT` - The name of the user group.
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy user-groups add-user sue -g users
@@ -84,9 +89,9 @@ User `sue` added successfully to user group `users`
 ...
 {{< /gsHighlight >}}
 
-### delete
+#### delete
 
-#### Usage
+##### Usage
 `cfy user-groups delete [OPTIONS] USER_GROUP_NAME`
 
 Delete a user group from Cloudify Manager.
@@ -94,7 +99,7 @@ Delete a user group from Cloudify Manager.
 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy user-group del users2
@@ -107,15 +112,15 @@ User group removed
 {{< /gsHighlight >}}
 
 
-### list
+#### list
 
-#### Usage
+##### Usage
 ` cfy user-groups list [OPTIONS]`
 
 List all users assigned to this users' group.<br>
 By default, when you generate the list of user groups, only the number of linked resources are displayed. You can retrieve full details with the use of a `--get-data` flag.
 
-#### Optional flags
+##### Optional flags
 
 * `--sort-by TEXT` -  Key for sorting the list.
 * `--descending` -  Sort list in descending order. [default: False]
@@ -125,7 +130,7 @@ By default, when you generate the list of user groups, only the number of linked
                   connected resources. (default:False)
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy user-group list
@@ -143,15 +148,15 @@ User groups:
 ...
 {{< /gsHighlight >}}
 
-### get
+#### get
 
-#### Usage
+##### Usage
 ` cfy user-groups get [OPTIONS] USER_GROUP_NAME`
 
 Get details for a specific user group.
  `USER_GROUP_NAME` is the name of the user group.
 
-#### Optional flags
+##### Optional flags
 
 
 * `--get-data` - When set to `True`, displays the full list of connected
@@ -160,7 +165,7 @@ Get details for a specific user group.
                   connected resources. (default:False) 
 
 &nbsp;
-#### Example
+##### Example
 
 {{< gsHighlight  bash  >}}
 $ cfy user-group get users

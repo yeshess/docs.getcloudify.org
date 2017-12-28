@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: dev
+
+
+
+##  dev
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -17,23 +22,23 @@ The tasks do not have to be decorated with the ``@task`` decorator, because they
 For example, you could write a task that deploys and upgrades a monitoring agent you use to monitor your systems. During that manager's lifecycle, you could rerun the same task to update that agent.
 {{% /gsNote %}}
 
-#### Usage 
+##### Usage 
 `cfy dev [options] -p TASKS_FILE -t TASK`
 
 Run fabric tasks on the manager.
 
-#### Required flags
+##### Required flags
 
 *  `-t, --task=TASK` -  The name of fabric task to run
 *  `-p, --tasks-file=TASKS_FILE` - 
                         The path to the tasks file
 
-#### Optional flags
+##### Optional flags
 
 *  `-a ..., --args ...` -    Arguments for the fabric task
 
 
-## Examples
+### Examples
 
 {{< gsHighlight  bash  >}}
 $ cfy dev --tasks-file my_tasks.py -v -t my_task -a --arg1=something --arg2=otherthing ...

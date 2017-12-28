@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Installing an Example Blueprint
+
+
+
+##  Installing an Example Blueprint
+
+
 category: Intro
 draft: true
 weight: 300
@@ -17,7 +22,7 @@ Blueprints can contain everything your application requires - from infrastructur
 Let's deploy a blueprint which sets up a Python web server locally.
 
 
-## Installing the example application
+### Installing the example application
 
 We've already prepared the application for you and you can download it [here](https://github.com/cloudify-examples/simple-python-webserver-blueprint/archive/master.zip).
 
@@ -79,7 +84,7 @@ $ cfy local install-plugins -p BLUEPRINT_PATH
 In this instance, we're only using the script plugin, which we already installed when we installed Cloudify, so.. this will pretty much do nothing.
 
 
-## Retrieving some information about your deployed application
+### Retrieving some information about your deployed application
 
 Cloudify keeps the entire structure of your application in a `model`.
 
@@ -146,7 +151,7 @@ $ cfy local instances
 We can see all available information on our two instances like their names and their `relationships` to other nodes.
 
 
-## Uninstalling the application
+### Uninstalling the application
 
 An `uninstall` workflow is also built-in to Cloudify, which allows you to uninstall a deployed blueprint.
 

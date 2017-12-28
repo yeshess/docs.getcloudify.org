@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: Relationships
+
+
+
+##  Relationships
+
+
 category: Blueprints
 draft: false
 weight: 700
@@ -9,7 +14,7 @@ weight: 700
 
 `relationships` enable you to define how nodes relate to one another. For example, a `web_server` node can be `contained_in` a `vm` node or an `application` node can be `connected_to` a `database` node.
 
-# Declaration
+## Declaration
 
 {{< gsHighlight  yaml >}}
 node_templates:
@@ -27,7 +32,7 @@ node_templates:
 {{< /gsHighlight >}}
 
 
-# Schema
+## Schema
 
 Keyname          | Required | Type        | Description
 -----------      | -------- | ----        | -----------
@@ -41,7 +46,7 @@ target_interfaces| no       | dict        | A dictionary of interfaces.
 
 By default, nodes can be related using the relationship types described below. You may also [declare your own](#declaring-relationship-types) relationship types.
 
-## The *cloudify.relationships.depends_on* Relationship Type
+### The *cloudify.relationships.depends_on* Relationship Type
 
 Describes a node that depends on another node. For example, the creation of a new subnet depends on the creation of a new network.
 
@@ -52,7 +57,7 @@ The `cloudify.relationships.depends_on` relationship type is for use as a logica
 The other two relationship types inherit from the `cloudify.relationships.depends_on` relationship type. The semantics of the `cloudify.relationships.connected_to` relationship type is the same. Therefore, usage reference should be dictated by `cloudify.relationships.connected_to` which is described below.
 
 
-## The *cloudify.relationships.contained_in* Relationship Type
+### The *cloudify.relationships.contained_in* Relationship Type
 
 A node is contained in another node. For example, a Web server is contained within a VM.
 
@@ -113,7 +118,7 @@ there's some workflow-related API which also touches on the 'contained_in' type,
  -->
 
 
-## The *cloudify.relationships.connected_to* Relationship Type
+### The *cloudify.relationships.connected_to* Relationship Type
 
 A node is connected to another node. For example, an application is connected to a database and both of them are contained in a VM.
 
@@ -159,7 +164,7 @@ Since there are two vm node instances, two application node instances and one da
 This actually means that there are four application node instances (two on each VM node instance) and two database node instances (one on each VM node instance). All application node instances are connected to each of the two databases residing on the two VM's.
 
 
-# Multi-Instance cloudify.relationships.connected_to semantics
+## Multi-Instance cloudify.relationships.connected_to semantics
 
 A specific feature in `cloudify.relationships.connected_to` allows you to connect a node to an arbitrary instance of another node.
 
@@ -195,11 +200,11 @@ The default configuration for `connection_type` is `all_to_all`.
 The same `connection_type` configuration can be applied to a `cloudify.relationships.contained_in` relationship type, although it has virtually no effect.
 
 
-## *connection_type*: *all_to_all* and *all_to_one*
+### *connection_type*: *all_to_all* and *all_to_one*
 As mentioned previously, the relationship types `cloudify.relationships.connected_to` and `cloudify.relationships.depends_on` and those that derive from it have a property named `connection_type` for which the value can be either `all_to_all` or `all_to_one` (The default value is `all_to_all`).
 The following diagrams make their semantics clearer.
 
-### *all_to_all*
+#### *all_to_all*
 Consider the following blueprint:
 
 {{< gsHighlight  yaml >}}
@@ -227,7 +232,7 @@ When deployed, there are two node instances of the `application` node and two no
 
 ![all_to_all diagram]({{< img "guide/relationships-all-to-all.png" >}})
 
-### *all_to_one*
+#### *all_to_one*
 Consider the following blueprint:
 
 {{< gsHighlight  yaml >}}
@@ -256,17 +261,17 @@ When deployed, there are two node instances of the `application` node and two no
 ![all_to_one diagram]({{< img "guide/relationships-all-to-one.png" >}})
 
 
-# Relationship Instances
+## Relationship Instances
 
 In the case in which you have a node with two instances and two relationships configured for them, when a deployment is created, the node instances are instantiated in the model. In the same way that node instances are instantiated for each node, relationship instances are instantiated for each relationship.
 
 
-# Declaring Relationship Types
+## Declaring Relationship Types
 
 You can declare your own relationship types in the relationships section in the blueprint.
 This is useful when you want to change the default implementation of how nodes interact.
 
-## Relationship Type Declaration
+### Relationship Type Declaration
 
 Declaring relationship types is done as follows:
 
@@ -284,7 +289,7 @@ relationships:
     ...
 {{< /gsHighlight >}}
 
-## Relationship Type Schema
+### Relationship Type Schema
 
 Keyname           | Required | Type        | Description
 -----------       | -------- | ----        | -----------
@@ -296,7 +301,7 @@ connection_type   | no       | string      | Valid values: `all_to_all` and `all
 <br>
 
 
-## Relationship Type Example
+### Relationship Type Example
 
 {{< gsHighlight  yaml >}}
 relationships:
@@ -324,7 +329,7 @@ node_templates:
 In the above example, a relationship type called `app_connected_to_db` is created that inherits from the base `cloudify.relationships.connected_to` relationship type and implements a specific configuration (by running scripts/configure_my_connection.py) for the type.
 
 
-# Relationship Interfaces
+## Relationship Interfaces
 
 Each relationship type (and instance) has `source_interfaces` and `target_interfaces`.
 
@@ -362,7 +367,7 @@ node_templates:
 
 In the above example, the `postconfigure` lifecycle operation in the `source_connected_to_target` relationship type is configured once in its `source_interfaces` section and in the `target_interfaces` section. This means that the configure_source_node.py script will be executed on host instances of `source_node` and the configure_target_node.py will be executed on host instances of `target_node`. (This assumes that the plugin executor is configured as `host_agent` and not `central_deployment_agent`. Otherwise, `source_interfaces` operations and `target_interfaces` operations are all executed on the Manager.)
 
-# How Relationships Affect Node Creation
+## How Relationships Affect Node Creation
 
 Declaring relationships affects the node creation/teardown flow in respect to the `install`/`uninstall` workflows respectively.
 

@@ -1,6 +1,11 @@
 ---
 layout: bt_wiki
-title: agents
+
+
+
+##  agents
+
+
 category: Docs
 draft: false
 abstract: Cloudify's Command-Line Interface
@@ -22,11 +27,11 @@ This should only be used in very specific circumstances and should not be used i
 See [agents]({{< relref "agents/overview.md" >}}) for more information.
 
 
-## Commands
+### Commands
 
-### install
+#### install
 
-#### Usage 
+##### Usage 
 `cfy agents install [OPTIONS] [DEPLOYMENT_ID]`
 
 Install agents on the hosts of existing deployments.
@@ -34,7 +39,7 @@ Install agents on the hosts of existing deployments.
 
 `DEPLOYMENT_ID` - The ID of the deployment you would like to install agents for.
 
-#### Optional Flags
+##### Optional Flags
 
 * `--include-logs / --no-logs`  - Include logs in returned events  
 								  [default: `true`]
