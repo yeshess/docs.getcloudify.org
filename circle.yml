@@ -1,7 +1,15 @@
 machine:
   node:
-    version: 0.10.40
+    version: 6.11.4
 
+checkout:
+  post:
+    - >
+      if [ -n "$CI_PULL_REQUEST" ]; then
+        PR_ID=${CI_PULL_REQUEST##*/}
+        git fetch origin +refs/pull/$PR_ID/merge:
+        git checkout -qf FETCH_HEAD
+      fi
 dependencies:
   pre:
     - wget https://github.com/spf13/hugo/releases/download/v0.14/hugo_0.14_linux_amd64.tar.gz -O /tmp/hugo.tar.gz
@@ -21,9 +29,3 @@ test:
         environment:
           PATH: $PATH:$PWD/hugo_0.14_linux_amd64
           CONFIG_JSON: $PWD/config.json
-
-deployment:
-  release:
-    tag: /.*/
-    commands:
-      - (true)
