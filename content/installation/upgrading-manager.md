@@ -2,119 +2,100 @@
 layout: bt_wiki
 title: Upgrading Cloudify Manager
 category: Installation
-draft: true
-weight: 350
+draft: false
+weight: 900
 
 ---
 
+This topic describes how to upgrade Cloudify Manager.
+It is also applicable when restoring snapshots onto a new Cloudify Manager (e.g. to move to a larger host).
+
 {{% gsTip title="Version Relevance" %}}
-You can use this process to upgrade an existing Cloudify Manager 4.x to a later version.
+You can use this process to replace an existing Cloudify Manager 3.4.2 or 4.x with a new one of version 4.2, or higher.
 {{% /gsTip %}}
 
-* **Reinstall** - Replace Cloudify Manager with the same version on the same host
-* **Migration** - Replace Cloudify Manager with the same version on another host
-* **In-place upgrade** - Replace Cloudify Manager with a higher version on the same host
-* **Migration upgrade** - Replace Cloudify Manager with a higher version on another host
+Upgrading Cloudify Manager is possible in one of two ways:<br>
+1. In place, tearing down the existing manager and bootstrapping over the top (only supported in 4.0.1+ with simple manager blueprints).<br>
+2. On a new manager, migrating agents from the existing manager.<br>
 
-{{% gsNote title="Version Relevance" %}}
-The upgrade process is supported for upgrade from any currently supported version. To upgrade from an unsupported version, contact Cloudify Support.
+{{% gsNote title="Caution" %}}
+If you are upgrading to a new manager (rather than in place), do not delete the old manager until you are told to do so or you will be likely to require support.
 {{% /gsNote %}}
 
 {{% gsNote title="Caution" %}}
-Make sure that no users are connected to any manager services during the upgrade or migration.
+Ensure that during the upgrade process no other users are connecting to any manager services (e.g. to the web UI or the composer).
+Having users connected to these services while the snapshot restore is in progress may cause problems with the restore (e.g. missing blueprints in composer).
 {{% /gsNote %}}
 
-The upgrade or migration process includes:
-
-* Reinstall -
-
-  1. Save snapshot of the Cloudify Manager.
-  1. Uninstall the Cloudify Manager from the host
-  1. Install the Cloudify Manager on the host.
-  1. Restore snapshot of the Cloudify Manager to the host.
-
-* Migration -
-
-  1. Save snapshot of the Cloudify Manager.
-  1. Install the Cloudify Manager on the host.
-  1. Restore snapshot of the Cloudify Manager to the host.
-  1. (Optional) Uninstall (teardown in Cloudify 4.2 and below) the Cloudify Manager from the host.
-  1. Migrate agents from the old Cloudify Manager.
-
-* In-place upgrade -
-
-  1. Save snapshot of Cloudify Manager.
-  1. Uninstall (teardown in Cloudify 4.2 and below) the Cloudify Manager from the host.
-  1. Install the Cloudify Manager latest version on the host.
-  1. Restore snapshot of the Cloudify Manager to the host.
-
-* Migration upgrade -
-
-  1. Save snapshot of the the Cloudify Manager.
-  1. Install the Cloudify Manager on the host.
-  1. Restore snapshot of the Cloudify Manager to the host.
-  1. (Optional) Uninstall (teardown in Cloudify 4.2 and below) the Cloudify Manager from the host.
-  1. Migrate agents from the old Cloudify Manager.
-
 {{% gsNote title="Web interfaces" %}}
-Cloudify Composer and the Web UI are restored to the snapshot state if the snapshot is from a Cloudify Manager 4.2. If you made changes to the Cloudify Manager components, such as creating blueprints in composer or adding widgets to Stage, contact Cloudify Support before you restore the snapshot.
+Please note that Composer and Stage (the web interfaces) will only be restored to the state they were in in the snapshot if the snapshot is from a 4.2 manager.<br>
+If you have a snapshot and have made any modifications to these components (e.g. creating blueprints in composer or adding widgets to Stage), please discuss with your support contact.
 {{% /gsNote %}}
 
 {{% gsNote title="Premium users" %}}
-We recommend that premium users contact Cloudify Support for additional assistance with upgrade and migration.
+If you are a premium user and are at any point uncertain about the process please discuss with your support contact before proceeding.
 {{% /gsNote %}}
 
-  By default, the certificate folder to backup, is: `/etc/cloudify/ssl`.
+# Preparation
 
-1. (For in-place upgrade) Make sure that the Cloudify Manager is completely removed from the machine.
+{{% gsNote title="Caution" %}}
+If you are restoring a 4.0.1 manager please ensure you have applied update-3 to the manager. Contact support for information.
+{{% /gsNote %}}
 
-  * For Cloudify Manager 4.0.0, run these commands on the Cloudify Manager virtual instance to download the teardown script and run it as `sudo`:
-      ```curl -o ~/cfy_teardown_4_0_0.sh https://raw.githubusercontent.com/cloudify-cosmo/cloudify-dev/master/scripts/cfy_teardown_4_0_0.sh```<br>
+1. To keep your existing data, take a snapshot on your old manager and download it. For example (consult documentation for the manager you are upgrading from if these commands are invalid):<br>
+    ```cfy snapshots create upgrade_snapshot```<br>
+    ```cfy snapshots download upgrade_snapshot```<br>
 
-      ```sudo bash cfy_teardown_4_0_0.sh```. You must supply an -f flag.<br>
-      For high availability clusters, you must also run ```https://github.com/cloudify-cosmo/cloudify-dev/blob/master/scripts/delete_cluster_4_0_1.py```.
-
-1. (Optional) We recommend that you run this command to remove the profile directory of this Cloudify Manager from your local `~/.cloudify/profiles` directory:
-   ```rm -rf ~/.cloudify/profiles/{{ your Manager’s IP address }}```
-
-    Cloudify Manager is now completely removed from the virtual instance.
-
-1. [Install]({{< relref "installation/installing-manager.md" >}}) a new Cloudify Manager.
-
-1. To upload the previously created snapshot to the new Manager, run:
-   ```cfy snapshots upload {{ /path/to/the/snapshot/file }} --snapshot-id my_snapshot```<br>
-
-1. To restore the snapshot to Cloudify 4.x and above, run: <br>
-
-  * For Cloudify Manager 4.0.1 and above: ```cfy snapshots restore my_snapshot --restore-certificates```
-  * For Cloudify Manager 4.0.0: ```cfy snapshots restore my_snapshot```
-
-1. To check the status of the execution after it is complete, run:
-   ```cfy executions list --include-system-workflows```
-
-1. (Optional) To apply the agent certificates from the previous Manager, run these commands to replace the new SSL directory with the copied one.
-      ```sudo rm -rf /etc/cloudify/ssl```<br>
-      ```sudo cp -r {{ the previously saved SSL directory. For example, `/home/centos/ssl` }} /etc/cloudify```
-
-      To ensure that the directory has Read permissions, run:
-      ```sudo chmod -R 644 /etc/cloudify/ssl```
-
-1. Reboot the virtual instance with the new Cloudify Manager.
-
-1. If you have running agents, make sure that you apply `patch-1`, then run `cfy agents install`.
+2. If you are upgrading a Cloudify 4.0.0 manager in-place you must manually copy the certificates from the manager. By default they are located in `/etc/cloudify/ssl`<br>
+   If this is the case, please contact support for assistance in restoring them.
 
 
-## Upgrading into the new roles system
+Once you have your snapshot, proceed to either [In-place upgrade](#in-place-upgrade) or [New host upgrade](#new-host-upgrade)
 
-While upgrading to Cloudify to 4.2 and above, you must also consider user roles and permissions.
+# In-place upgrade
 
-In previous versions, Cloudify had only system-wide roles: user and admin. When you restore a snapshot from below Cloudify 4.2 on a Cloudify Manager 4.2 and above, user roles are changed:
+{{% gsNote title="Caution" %}}
+4.0.1+ with simple manager blueprints only!
+{{% /gsNote %}}
 
-- `user` becomes `default`
-- `admin` becomes `sys_admin`
+1. If you are upgrading a Cloudify 4.x manager prior to 4.2.0 and are using multiple Cloudify users, ensure that you copy the rest security configuration. By default this is in `/opt/manager/rest-security.conf`<br>
+   If you do not do this then you will need to reset the password of every user after the snapshot is restored.
 
-These roles are equivalent in order to maintain backward compatibility.
+2. Tear down the old manager- consult the documentation for the old version of the manager for the correct procedure.
 
-Also, in versions below Cloudify 4.2, users and groups were associated to tenants without a role. In Cloudify 4.2 and above, users and groups are added to a tenant with a specific role. The role affects the user and group permissions to access tenant resources.
+3. Upload and restore the snapshot, e.g.:<br>
+  ```cfy snapshots upload -s upgrade_snapshot upgrade_snapshot.zip```<br>
+  ```cfy snapshots restore upgrade_snapshot --restore-certificates```<br>
+  The manager will reboot once the restore process is complete.
 
-When you restore a snapshot from below Cloudify 4.2 on a Cloudify Manager 4.2 and above, each user or group that was associated to a tenant now have the role “user” in this tenant. A user that has the role “user” in a tenant has the same permissions on resources in this tenant as a user that was associated with a tenant in previous versions.
+4. If you backed up the rest security configuration in the first step you will now need to restore it to the manager. Please contact support for this.
+
+5. Update the agents:<br>
+  ```cfy agents install --all-tenants```
+
+# New host upgrade
+
+1. Update your cloudify CLI to version 4.2, e.g.:<br>
+   ```pip install cloudify==4.2```
+
+2. Make sure cloudify is using your new manager:<br>
+  ```cfy profiles use --manager-username <username of new manager> --manager-password <password of new manager> --manager-tenant default_tenant <manager ip address>```
+
+3. Upload and restore the snapshot, e.g.<br>
+  ```cfy snapshots upload -s upgrade_snapshot upgrade_snapshot.zip```<br>
+  ```cfy snapshots restore upgrade_snapshot```<br>
+  If this was a 4.2 snapshot then the manager rest service will restart a few seconds after the workflow finishes. You should wait at least 10 seconds after the workflow completes in this case.
+
+4. If you are updating from a pre-4.2 snapshot and using multiple users you will now need to restore the old users. Please contact support for this.<br>
+   Alternatively, you may reset the passwords of all old users to make them work again.
+
+5. Update the agents:<br>
+  ```cfy agents install --all-tenants```
+
+6. Shut down the old manager. It may now be deleted. If you intend to keep the old manager for any purposes and you use auto heal policies then the old manager MUST be disconnected entirely from any networks it would use to conduct healing workflows.
+
+{{% gsNote title="Caution" %}}
+If you are using auto-heal policies then from the moment the new agents are installed until the old manager is deleted any heal workflows that execute are likely to duplicate VMs.
+You will be able to see if this has happened using ```cfy executions list --all-tenants``` to check for heal workflows run during that time.
+If you are a premium user support can assist you in disabling riemann on the old manager during the upgrade process, but please be aware that this will cause any healing or scaling to be disabled entirely during the restore process. This may result in nodes that fail during the upgrade process to remain in a failed state  as the new manager will only attempt to heal nodes once it has received some events from them.
+{{% /gsNote %}}
